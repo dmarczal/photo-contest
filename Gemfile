@@ -8,14 +8,15 @@ gem 'jquery-rails', '4.0.3'
 gem 'turbolinks',   '2.3.0'
 gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
+gem 'simple_form',  '3.1.0'
 
 group :development, :test do
   gem 'date_validator', '0.8.0'
   gem 'sqlite3',        '1.3.9'
-  gem 'byebug',         '3.4.0'
+  gem 'byebug',         '4.0.0'
   gem 'web-console',    '2.0.0.beta3'
   gem 'spring',         '1.1.3'
-  gem 'pry-byebug'
+  gem 'pry-byebug',     '3.1.0'
 end
 
 group :test do
