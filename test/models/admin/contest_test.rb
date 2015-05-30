@@ -2,8 +2,7 @@ require 'test_helper'
 
 class Admin::ContestTest < ActiveSupport::TestCase  
   should validate_presence_of(:title)
-  should validate_presence_of(:description)
-  should validate_presence_of(:folder)
+  should validate_presence_of(:description)  
   should validate_presence_of(:opening_enrollment)
   should validate_presence_of(:closing_enrollment)
   should validate_presence_of(:opening)

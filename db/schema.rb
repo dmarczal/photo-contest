@@ -11,18 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526232023) do
+ActiveRecord::Schema.define(version: 20150530220726) do
 
   create_table "admin_contests", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "folder"
     t.datetime "opening_enrollment"
     t.datetime "closing_enrollment"
     t.datetime "opening"
     t.datetime "closing"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "folder_file_name"
+    t.string   "folder_content_type"
+    t.integer  "folder_file_size"
+    t.datetime "folder_updated_at"
   end
 
 end

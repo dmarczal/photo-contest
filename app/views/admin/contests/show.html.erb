@@ -12,7 +12,7 @@
 
 <p>
   <strong>Folder:</strong>
-  <%= @admin_contest.folder %>
+  <%= image_tag @admin_contest.folder(:thumb) unless @admin_contest.folder.blank? %>
 </p>
 
 <p>

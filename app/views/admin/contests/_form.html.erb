@@ -1,45 +1,10 @@
-<%= form_for(@admin_contest) do |f| %>
-  <% if @admin_contest.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@admin_contest.errors.count, "error") %> prohibited this admin_contest from being saved:</h2>
-
-      <ul>
-      <% @admin_contest.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :folder %><br>
-    <%= f.text_field :folder %>
-  </div>
-  <div class="field">
-    <%= f.label :opening_enrollment %><br>
-    <%= f.datetime_select :opening_enrollment %>
-  </div>
-  <div class="field">
-    <%= f.label :closing_enrollment %><br>
-    <%= f.datetime_select :closing_enrollment %>
-  </div>
-  <div class="field">
-    <%= f.label :opening %><br>
-    <%= f.datetime_select :opening %>
-  </div>
-  <div class="field">
-    <%= f.label :closing %><br>
-    <%= f.datetime_select :closing %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(@admin_contest, html: { multipart: true }) do |f| %>
+  <%= f.input :title %>  
+  <%= f.input :description, as: :text %>  
+  <%= f.input :folder, as: :file %>
+  <%= f.input :opening_enrollment, as: :datetime %> 
+  <%= f.input :closing_enrollment, as: :datetime %>
+  <%= f.input :opening, as: :datetime %> 
+  <%= f.input :closing, as: :datetime %>
+  <%= f.button :submit %> 
 <% end %>

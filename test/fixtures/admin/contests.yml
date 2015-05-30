@@ -2,8 +2,7 @@
 
 one:
   title: MyString
-  description: MyText
-  folder: MyString
+  description: MyText  
   opening_enrollment: <%= Time.now %>
   closing_enrollment: <%= Time.now + 2.days %>
   opening: <%= Time.now + 4.days %>
@@ -11,8 +10,7 @@ one:
 
 two:
   title: MyString
-  description: MyText
-  folder: MyString
+  description: MyText  
   opening_enrollment: 2015-05-26 20:20:23
   closing_enrollment: 2015-05-26 20:20:23
   opening: 2015-05-26 20:20:23

@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails',        '4.2.0'
-gem 'sass-rails',   '5.0.2'
-gem 'uglifier',     '2.5.3'
-gem 'coffee-rails', '4.1.0'
-gem 'jquery-rails', '4.0.3'
-gem 'turbolinks',   '2.3.0'
-gem 'jbuilder',     '2.2.3'
-gem 'sdoc',         '0.4.0', group: :doc
-gem 'simple_form',  '3.1.0'
+gem 'rails',                 '4.2.0'
+gem 'sass-rails',            '5.0.2'
+gem 'uglifier',              '2.5.3'
+gem 'coffee-rails',          '4.1.0'
+gem 'jquery-rails',          '4.0.3'
+gem 'turbolinks',            '2.3.0'
+gem 'jbuilder',              '2.2.3'
+gem 'sdoc',                  '0.4.0', group: :doc
+gem 'simple_form',           '3.1.0'
+gem 'paperclip',             '~> 4.2'
 
 group :development, :test do
   gem 'date_validator', '0.8.0'

@@ -21,7 +21,7 @@
       <tr>
         <td><%= admin_contest.title %></td>
         <td><%= admin_contest.description %></td>
-        <td><%= admin_contest.folder %></td>
+        <td><%= image_tag admin_contest.folder(:thumb) unless admin_contest.folder.blank? %></td>
         <td><%= admin_contest.opening_enrollment %></td>
         <td><%= admin_contest.closing_enrollment %></td>
         <td><%= admin_contest.opening %></td>
