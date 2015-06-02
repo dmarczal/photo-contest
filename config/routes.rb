@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
 
+  get 'sessions/new'
+
   get 'home/index'
   get '/admin' => 'admin/home#index'
+
+  get    'login'   => 'admin/sessions#new'
+  post   'login'   => 'admin/sessions#create'
 
   namespace :admin do
     resources :contests
