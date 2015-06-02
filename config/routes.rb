@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/admin' => 'admin/home#index'
+
   namespace :admin do
     resources :contests
   end
