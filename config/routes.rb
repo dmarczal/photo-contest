@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  root 'home#index'
+  get '/admin' => 'admin/home#index'
+
   namespace :admin do
     root to: 'home#index'
     get    'sign_in'   => 'sessions#new'
