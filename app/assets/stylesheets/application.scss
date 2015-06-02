@@ -14,14 +14,20 @@
  *= require_self
  */
 
+ /*
+ *= require bootstrap-material-design
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* header */
+#logo { width: auto; max-height: 44px; }
+.navbar-brand { padding: 7px 10px; }
 
 
 
 
 
-/*
- *= require bootstrap-material-design
- */
+
+
