@@ -26,8 +26,14 @@
 .navbar-brand { padding: 7px 10px; }
 
 footer{
-width: 100%;text-align: center;
+position: absolute;
+bottom: 0;
+width: 100%;
+text-align: center;
+color:#E9E9E9;
 	#bottom-footer, #top-footer{background: #424242;}
+	#top-footer{padding: 15px;}
+	#top-footer span{text-transform: uppercase;display: block;}
 	#middle-footer{background: #BCBCBC;}
 
 }
