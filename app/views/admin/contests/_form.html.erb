@@ -1,0 +1,10 @@
+<%= simple_form_for(@admin_contest, html: { multipart: true }) do |f| %>
+  <%= f.input :title %>  
+  <%= f.input :description, as: :text %>  
+  <%= f.input :folder, as: :file %>
+  <%= f.input :opening_enrollment, as: :datetime %> 
+  <%= f.input :closing_enrollment, as: :datetime %>
+  <%= f.input :opening, as: :datetime %> 
+  <%= f.input :closing, as: :datetime %>
+  <%= f.button :submit %> 
+<% end %>

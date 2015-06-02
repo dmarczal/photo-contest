@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Contests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Folder</th>
+      <th>Opening enrollment</th>
+      <th>Closing enrollment</th>
+      <th>Opening</th>
+      <th>Closing</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_contests.each do |admin_contest| %>
+      <tr>
+        <td><%= admin_contest.title %></td>
+        <td><%= admin_contest.description %></td>
+        <td><%= image_tag admin_contest.folder(:thumb) unless admin_contest.folder.blank? %></td>
+        <td><%= admin_contest.opening_enrollment %></td>
+        <td><%= admin_contest.closing_enrollment %></td>
+        <td><%= admin_contest.opening %></td>
+        <td><%= admin_contest.closing %></td>
+        <td><%= link_to 'Show', admin_contest %></td>
+        <td><%= link_to 'Edit', edit_admin_contest_path(admin_contest) %></td>
+        <td><%= link_to 'Destroy', admin_contest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contest', new_admin_contest_path %>
