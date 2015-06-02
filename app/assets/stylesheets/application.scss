@@ -16,12 +16,12 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-
-
-
-
-
 /*
  *= require bootstrap-material-design
  */
+footer{
+width: 100%;text-align: center;
+	#bottom-footer, #top-footer{background: #424242;}
+	#middle-footer{background: #BCBCBC;}
+
+}
