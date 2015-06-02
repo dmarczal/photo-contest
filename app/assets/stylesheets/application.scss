@@ -21,6 +21,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Universal */
+html, body {
+  height: 100%;
+}
 
 /* header */
 header{
@@ -34,9 +38,6 @@ header{
 
 /* footer */
 footer{
-position: absolute;
-bottom: 0;
-width: 100%;
 text-align: center;
 color:#E9E9E9;
 	#bottom-footer, #top-footer{background: #424242;}
