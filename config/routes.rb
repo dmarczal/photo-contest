@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'contests/archive'
+
+  get 'contests/list'
+
+  get 'contests/show'
+
   root 'home#index'
   get '/admin' => 'admin/home#index'
 
