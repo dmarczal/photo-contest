@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get 'contests/archive'
+
+  get 'contests/list'
+
+  get 'contests/show'
+
   root 'home#index'
   get '/admin' => 'admin/home#index'
 
