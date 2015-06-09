@@ -31,7 +31,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
 
       t.string :name
-      t.string :login
+      # t.string :login
       t.text :biography
       t.string :avatar
       t.boolean :admin
