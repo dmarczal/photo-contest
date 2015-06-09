@@ -52,6 +52,7 @@ namespace :db do
       user.email = Faker::Internet.email
       user.encrypted_password = User.new(:password => password).encrypted_password
       user.sign_in_count = 0
+      user.username = Faker::Internet.user_name
     end
   end
 end
