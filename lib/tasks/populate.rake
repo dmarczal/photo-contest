@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    Contest.delete_all
+    [Contest, User].each(&:delete_all)
 
     # Old contests
     Contest.populate(5) do |contest|
@@ -43,6 +43,16 @@ namespace :db do
     Contest.all.each do |contest|
       contest.image =  File.open(Dir["#{Rails.root}/lib/images/*"].sample)
       contest.save(validate: false)
+    end
+
+    # Some users
+    password = 'password'
+    User.populate(20) do |user|
+      user.name = Faker::Name.name
+      user.email = Faker::Internet.email
+      user.encrypted_password = User.new(:password => password).encrypted_password
+      user.sign_in_count = 0
+      user.username = Faker::Internet.user_name
     end
   end
 end
