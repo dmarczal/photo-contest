@@ -1,4 +1,4 @@
-class Admin::Contest < ActiveRecord::Base
+class Contest < ActiveRecord::Base
   validates :title,               presence: true
   validates :description,         presence: true  
   validates :opening_enrollment,  presence: true
@@ -11,7 +11,7 @@ class Admin::Contest < ActiveRecord::Base
   validates :closing,              date: { after_or_equal_to: Time.now }
   validates :closing_enrollment,   date: { after_or_equal_to: Time.now }
 
-  has_attached_file :folder, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :folder, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 end

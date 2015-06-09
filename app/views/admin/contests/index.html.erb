@@ -17,18 +17,18 @@
   </thead>
 
   <tbody>
-    <% @admin_contests.each do |admin_contest| %>
+    <% @contests.each do |contest| %>
       <tr>
-        <td><%= admin_contest.title %></td>
-        <td><%= admin_contest.description %></td>
-        <td><%= image_tag admin_contest.folder(:thumb) unless admin_contest.folder.blank? %></td>
-        <td><%= admin_contest.opening_enrollment %></td>
-        <td><%= admin_contest.closing_enrollment %></td>
-        <td><%= admin_contest.opening %></td>
-        <td><%= admin_contest.closing %></td>
-        <td><%= link_to 'Show', admin_contest %></td>
-        <td><%= link_to 'Edit', edit_admin_contest_path(admin_contest) %></td>
-        <td><%= link_to 'Destroy', admin_contest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= contest.title %></td>
+        <td><%= contest.description %></td>
+        <td><%= image_tag contest.image(:thumb) unless contest.image.blank? %></td>
+        <td><%= contest.opening_enrollment %></td>
+        <td><%= contest.closing_enrollment %></td>
+        <td><%= contest.opening %></td>
+        <td><%= contest.closing %></td>
+        <td><%= link_to 'Show', admin_contest_path(contest) %></td>
+        <td><%= link_to 'Edit', edit_admin_contest_path(contest) %></td>
+        <td><%= link_to 'Destroy', admin_contest_path(contest), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,9 +1,9 @@
-class CreateAdminContests < ActiveRecord::Migration
+class CreateContests < ActiveRecord::Migration
   def change
-    create_table :admin_contests do |t|
+    create_table :contests do |t|
       t.string   :title
       t.text     :description
-      t.string   :folder
+      t.string   :image
       t.datetime :opening_enrollment
       t.datetime :closing_enrollment
       t.datetime :opening
