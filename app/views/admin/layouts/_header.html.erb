@@ -20,11 +20,11 @@
 								<li> <%= link_to 'Principal', admin_root_url %> </li>
 								<% if user_signed_in? %>
 								<li>
-									<%= link_to('Logout', admin_logout_path, :method => :delete) %>        
+									<%= link_to('Logout', admin_logout_path, :method => :delete) %>
 								</li>
 								<% else %>
 								<li>
-									<%= link_to('Login', admin_login_path)  %>  
+									<%= link_to('Login', admin_login_path)  %>
 								</li>
 								<% end %>
 							</ul>
