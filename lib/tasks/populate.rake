@@ -47,12 +47,18 @@ namespace :db do
 
     # Some users
     password = 'password'
+    i = 0
     User.populate(20) do |user|
-      user.name = Faker::Name.name
-      user.email = Faker::Internet.email
+      i += 1
+      name = Faker::Name.first_name
+      last_name = Faker::Name.last_name
+      username = (name + '.' + last_name + i.to_s).downcase
+
+      user.name = name + ' ' + last_name
       user.encrypted_password = User.new(:password => password).encrypted_password
       user.sign_in_count = 0
-      user.username = Faker::Internet.user_name
+      user.username = username
+      user.email = Faker::Internet.email(username)
     end
   end
 end
