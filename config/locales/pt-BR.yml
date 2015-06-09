@@ -1,5 +1,12 @@
 ---
 pt-BR:
+  activerecord:
+    models:
+      contest: Concurso
+    attributes:
+      contest:
+        title: Título
+        description: Descrição
   date:
     abbr_day_names:
     - Dom

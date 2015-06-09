@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Contests</h1>
+<h1><%= Contest.model_name.human %></h1>
+
+<%= t('helpers.select.prompt') %>
 
 <table>
   <thead>
-    <tr>
-      <th>Title</th>
+    <tr>      
+      <th><%= Contest.human_attribute_name :title %></th>
       <th>Description</th>
       <th>Folder</th>
       <th>Opening enrollment</th>
