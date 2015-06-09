@@ -25,6 +25,7 @@
 /* Universal */
 html, body {
   height: 100%;
+  padding: 0;
 }
 
 /* header */
@@ -33,6 +34,15 @@ header{
 	nav.navbar { margin-bottom: 0 }
 	#logo { width: auto; max-height: 44px; }
 	.navbar-brand { padding: 7px 10px; }
+}
+
+
+/* Container */
+.main.container{
+	min-height: 100vh;
+	min-height: -moz-calc(100vh - 287px);
+	min-height: -webkit-calc(100vh - 287px);
+	min-height: calc(100vh - 287px);
 }
 
 /* home */

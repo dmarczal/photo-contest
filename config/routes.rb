@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'contests/show'
 
   root 'home#index'
+
   get '/admin' => 'admin/home#index'
 
   namespace :admin do
@@ -19,5 +20,4 @@ Rails.application.routes.draw do
     resources :contests
   end
 
-  root to: 'home#index'
 end
