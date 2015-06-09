@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'home#index'
-    get    'login'   => 'sessions#new'
-    post   'login'   => 'sessions#create'
+    get    'sign_in'   => 'sessions#new'
+    post   'sign_in'   => 'sessions#create'
 
     resources :contests
   end

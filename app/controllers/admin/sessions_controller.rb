@@ -1,4 +1,6 @@
 class Admin::SessionsController < Admin::ApplicationController
+  layout "admin/layouts/login"
+  
   def new
   end
 
