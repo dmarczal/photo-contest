@@ -23,6 +23,7 @@ group :development, :test do
   gem 'spring',         '1.1.3'
   gem 'pry-byebug',     '3.1.0'
   gem 'faker',          '1.0.1'
+  gem "better_errors"
 end
 
 group :test do

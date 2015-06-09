@@ -7,10 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <h1>AREA ADMIN</h1>
-  </header>
+  <!-- navbar -->
+  <%= render 'admin/layouts/header' %>
 
-  <%= yield %>
+  <%= render 'shared/flash_messages' %>
+  <div class="container">
+    <h1> Área administrativa </h1>
+		<%= yield %>
+	</div>
+  
 </body>
 </html>
