@@ -42,7 +42,7 @@ namespace :db do
 
     Admin::Contest.all.each do |admin_contest|
       admin_contest.folder =  File.open(Dir["#{Rails.root}/lib/images/*"].sample)
-      admin_contest.save
+      admin_contest.save(validate: false)
     end
   end
 end
