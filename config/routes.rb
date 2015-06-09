@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'contests/list'
 
+  get 'contests/open'
+
   get 'contests/show'
 
   get '/admin' => 'admin/home#index'
