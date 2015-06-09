@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  
+  root to 'home#index'
 
   get 'contests/archive'
-
 
   get 'contests/list'
 
   get 'contests/show'
 
-  root 'home#index'
   get '/admin' => 'admin/home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
