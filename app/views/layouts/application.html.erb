@@ -12,17 +12,8 @@
   <!-- navbar -->
   <%= render 'layouts/header' %>
 
-<<<<<<< HEAD
-  <!-- flash messages -->
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-  <% end %>
-
-  <div class="main container">
-=======
   <%= render 'shared/flash_messages' %>
-  <div class="container">
->>>>>>> Added Adminstrative login
+  <div class="main container">
 		<%= yield %>
 	</div>
   
