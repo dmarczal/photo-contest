@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'contests/open'
 
   get 'contests/show'
+  
+  get 'photographers/list'
+
+  get 'photographers/show'
 
   get '/admin' => 'admin/home#index'
 
