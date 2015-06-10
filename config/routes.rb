@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'contests/list'
   get 'contests/open'
   get 'contests/show'
+  
+  get 'photographers/list'
+
+  get 'photographers/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
