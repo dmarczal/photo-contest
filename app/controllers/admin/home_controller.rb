@@ -25,7 +25,6 @@ class Admin::HomeController < Admin::ApplicationController
 
      # Confirms an admin user.
     def admin_user
-    	flash[:danger] = "Você não possui permissão para acessar esta área!"
       redirect_to(root_path) unless current_user.admin?
     end
 end
