@@ -13,20 +13,19 @@
 
 ActiveRecord::Schema.define(version: 20150609134921) do
 
-  create_table "contests", force: :cascade do |t|
+  create_table "admin_contests", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image"
     t.datetime "opening_enrollment"
     t.datetime "closing_enrollment"
     t.datetime "opening"
     t.datetime "closing"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "folder_file_name"
+    t.string   "folder_content_type"
+    t.integer  "folder_file_size"
+    t.datetime "folder_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150609134921) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
+    t.string   "login"
     t.text     "biography"
     t.string   "avatar"
     t.boolean  "admin"
