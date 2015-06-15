@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609134921) do
+ActiveRecord::Schema.define(version: 20150609230644) do
 
   create_table "contests", force: :cascade do |t|
     t.string   "title"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20150609134921) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "permalink"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pages", ["permalink"], name: "index_pages_on_permalink"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
