@@ -24,4 +24,8 @@ class Contest < ActiveRecord::Base
     current.try(:first)
  end
 
+  def self.old
+    where("closing <= ?", Time.zone.now)
+  end
+
 end
