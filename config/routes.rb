@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to:'home#index'
 
   get 'contests/archive'
-  get 'contests/list'
+  get '/contests'   => 'contests#list' 
   get 'contests/open'
   get 'contests/show'
   
