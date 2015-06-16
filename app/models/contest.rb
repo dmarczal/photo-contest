@@ -17,10 +17,11 @@ class Contest < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def self.current
-    current = where("opening >= ? AND closing <= ?", Time.zone.now, Time.zone.now).limit(1)
-    if current == nil
-      current = where("opening_enrollment >= ? AND closing_enrollment <= ?", Time.zone.now, Time.zone.now).limit(1)
+    current = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now).limit(1)
+    if current.nil?
+      current = where("opening_enrollment <= ? AND closing_enrollment >= ?", Time.zone.now, Time.zone.now).limit(1)
     end
+    current.try(:first)
  end
 
 end
