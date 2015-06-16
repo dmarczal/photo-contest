@@ -9,3 +9,8 @@ two:
   name: Contato
   permalink: contato
   content: Uma página de contato
+
+about:
+  name: About us
+  permalink: about
+  content: Page About US

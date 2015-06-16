@@ -38,6 +38,16 @@ class Admin::PagesController < ApplicationController
     redirect_to admin_pages_url, notice: 'Page was successfully destroyed.'
   end
 
+  def route    
+    @page = Page.find_by(permalink: params[:permalink])
+
+    if @page
+      render template: 'static_pages/index'
+    else
+      page_not_found
+    end
+  end
+
   private    
     def set_page
       @page = Page.find(params[:id])
@@ -45,5 +55,9 @@ class Admin::PagesController < ApplicationController
     
     def page_params      
       params.require(:page).permit(:name, :permalink, :content)
+    end
+
+    def page_not_found      
+      head :not_found
     end
 end
