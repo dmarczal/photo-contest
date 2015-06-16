@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   get 'contests/archive'
   get '/contests'   => 'contests#list' 
-  get 'contests/open'
   get 'contests/show'
   
   get 'photographers/list'
