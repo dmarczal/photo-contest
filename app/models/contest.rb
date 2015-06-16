@@ -1,4 +1,6 @@
 class Contest < ActiveRecord::Base
+
+  scope :closed_home, -> { where("closing < ?", Time.zone.now).limit(3) }
   validates :title,               presence: true
   validates :description,         presence: true  
   validates :opening_enrollment,  presence: true
@@ -13,5 +15,13 @@ class Contest < ActiveRecord::Base
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  def self.current
+    current = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now).limit(1)
+    if current.nil?
+      current = where("opening_enrollment <= ? AND closing_enrollment >= ?", Time.zone.now, Time.zone.now).limit(1)
+    end
+    current.try(:first)
+ end
 
 end

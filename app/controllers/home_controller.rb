@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-  	@currentContest = Contest.last
-  	@oldContests = Contest.last(3)
-	# @contests = Contest.where(":opening_enrollment < ?", Time.zone.now)
+  	@current_contest = Contest.current
+	@old_contests = Contest.closed_home
+  	#@oldContests = Contest.all
   end
 end
