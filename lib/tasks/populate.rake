@@ -11,10 +11,10 @@ namespace :db do
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
-      contest.opening_enrollment   =   Time.now - 2.days
-      contest.closing_enrollment   =   Time.now - 4.days
-      contest.opening              =   Time.now - 6.days
-      contest.closing              =   Time.now - 8.days
+      contest.opening_enrollment   =   Time.zone.now - 8.days
+      contest.closing_enrollment   =   Time.zone.now - 6.days
+      contest.opening              =   Time.zone.now - 4.days
+      contest.closing              =   Time.zone.now - 2.days
     end
     
     # Future contests
@@ -22,10 +22,10 @@ namespace :db do
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
-      contest.opening_enrollment   =   Time.now + 2.days
-      contest.closing_enrollment   =   Time.now + 4.days
-      contest.opening              =   Time.now + 6.days
-      contest.closing              =   Time.now + 8.days
+      contest.opening_enrollment   =   Time.zone.now + 2.days
+      contest.closing_enrollment   =   Time.zone.now + 4.days
+      contest.opening              =   Time.zone.now + 6.days
+      contest.closing              =   Time.zone.now + 8.days
     end
 
     # Current contest
@@ -33,10 +33,10 @@ namespace :db do
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
-      contest.opening_enrollment   =   Time.now - 4.days
-      contest.closing_enrollment   =   Time.now - 2.days
-      contest.opening              =   Time.now
-      contest.closing              =   Time.now + 8.days
+      contest.opening_enrollment   =   Time.zone.now - 2.days
+      contest.closing_enrollment   =   Time.zone.now - 4.days
+      contest.opening              =   Time.zone.now
+      contest.closing              =   Time.zone.now + 8.days
     end
 
 
