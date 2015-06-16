@@ -32,5 +32,6 @@ Rails.application.routes.draw do
 
     resources :contests
   end
-
+  
+  get ':permalink' => 'admin/pages#route'
 end
