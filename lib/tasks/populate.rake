@@ -54,5 +54,15 @@ namespace :db do
       user.sign_in_count = 0
       user.username = Faker::Internet.user_name
     end
+
+    user = User.new
+    user.name = 'Admin' 
+    user.email = 'admin@admin.com'
+    user.password = '12345678'
+    user.password_confirmation = '12345678'
+    user.username = 'admin'
+    user.admin = true
+    user.save!
+
   end
 end

@@ -1,5 +1,17 @@
 ---
 pt-BR:
+  activerecord:
+    models:
+      contest: Concurso
+    attributes:
+      contest:
+        title: Título
+        description: Descrição
+        image: Imagem
+        opening_enrollment: Abertura das Inscrições
+        closing_enrollment: Encerramento das Inscrições
+        opening: Abertura 
+        closing: Encerramento
   date:
     abbr_day_names:
     - Dom

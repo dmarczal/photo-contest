@@ -19,17 +19,10 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
 								<li> <%= link_to 'Principal', root_url %> </li>
-								<li><a href="#">Concursos</a></li>
+								<li><a href="<%= contests_path %>">Concursos</a></li>
 								<li><a href="#">Participantes</a></li>
-								<% if user_signed_in? %>
-								<li>
-									<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-								</li>
-								<% else %>
-								<li>
-									<%= link_to('Login', new_user_session_path)  %>  
-								</li>
-								<% end %>
+								<li><%= link_to_login() %></li>
+								<li><%= link_to_sign_up() %></li>
 							</ul>
 						</div>
 					</div>
