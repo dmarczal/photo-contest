@@ -1,5 +1,6 @@
 class ContestsController < ApplicationController
   def list
+  	@open = Contest.list
   end
 
   def show

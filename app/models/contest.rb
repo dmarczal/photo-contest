@@ -24,4 +24,12 @@ class Contest < ActiveRecord::Base
     current.try(:first)
  end
 
+  def self.list
+    # open = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now)
+    # open_enrollment = where("opening_enrollment <= ? AND closing_enrollment >= ?", Time.zone.now, Time.zone.now)
+    # future = where("opening_enrollment > ?", Time.zone.now)
+    contests = where("closing > ? ORDER BY opening", Time.zone.now)
+
+  end
+
 end
