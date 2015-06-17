@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-material-design
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
+//= require moment/pt-br.js
 //= require_tree .
 
 

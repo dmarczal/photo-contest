@@ -2,7 +2,7 @@ class Contest < ActiveRecord::Base
 
   scope :closed_home, -> { where("closing < ?", Time.zone.now).limit(3) }
   validates :title,               presence: true
-  validates :description,         presence: true  
+  validates :description,         presence: true
   validates :opening_enrollment,  presence: true
   validates :closing_enrollment,  presence: true
   validates :opening,             presence: true
