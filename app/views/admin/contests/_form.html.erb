@@ -1,10 +1,10 @@
-<%= simple_form_for([:admin, @contest], html: { multipart: true }) do |f| %>
+<%= simple_form_for([:admin, @contest], html: { multipart: true, class: '' }) do |f| %>
   <%= f.input :title %>
-  <%= f.input :description, as: :text%>
+  <%= f.input :description, as: :text %>
   <%= f.input :image, as: :file %>
   <%= f.input :opening_enrollment, :as => :datetime_picker %>
   <%= f.input :closing_enrollment, :as => :datetime_picker %>
   <%= f.input :opening, :as => :datetime_picker %>
   <%= f.input :closing, :as => :datetime_picker %>
-  <%= f.button :submit, class: 'btn btn-success' %>
+  <%= f.button :submit, class: 'mdi-content-save' %>
 <% end %>

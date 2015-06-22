@@ -1,39 +1,38 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <header class="without-background clearfix">
+    <h1 class="text-left pull-left"><%= @contest.title %></h1>
+    <div class="pull-right">
+      <%= link_to '', admin_contests_path, class: 'btn btn-primary btn-fab btn-raised mdi-navigation-arrow-back' %>
+      <%= link_to '', edit_admin_contest_path(@contest), class: 'btn btn-primary btn-fab btn-raised mdi-content-create' %>
+    </div>
+  </header>
 
-<p>
-  <strong>Title:</strong>
-  <%= @contest.title %>
-</p>
+  <br/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @contest.description %>
-</p>
+  <article>
+    <div class="row">
+      <div class="media">
+        <p class="media-left pull-right img-responsive">
+          <%= image_tag @contest.image(:large) unless @contest.image.blank? %>
+        </p>
+        <div class="media-body">
+          <p><strong><%= Contest.human_attribute_name :description %>:</strong></p>
+          <p><%= @contest.description %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @contest.image(:original) unless @contest.image.blank? %>
-</p>
+          <p><strong><%= Contest.human_attribute_name :opening_enrollment %>:</strong>
+          <%= l(@contest.opening_enrollment, format: :short) %></p>
 
-<p>
-  <strong>Opening enrollment:</strong>
-  <%= @contest.opening_enrollment %>
-</p>
+          <p><strong><%= Contest.human_attribute_name :closing_enrollment %>:</strong>
+          <%= l(@contest.closing_enrollment, format: :short) %></p>
 
-<p>
-  <strong>Closing enrollment:</strong>
-  <%= @contest.closing_enrollment %>
-</p>
+          <p><strong><%= Contest.human_attribute_name :opening %>:</strong>
+          <%= l(@contest.opening, format: :short) %></p>
 
-<p>
-  <strong>Opening:</strong>
-  <%= @contest.opening %>
-</p>
+          <p><strong><%= Contest.human_attribute_name :closing %>:</strong>
+          <%= l(@contest.closing, format: :short) %></p>
+        </div>
+      </div>
 
-<p>
-  <strong>Closing:</strong>
-  <%= @contest.closing %>
-</p>
-
-<%= link_to 'Edit', edit_admin_contest_path(@contest) %> |
-<%= link_to 'Back', admin_contests_path %>
+    </div>
+  </article>
+</section>

@@ -10,7 +10,7 @@ pt-BR:
         image: Imagem
         opening_enrollment: Abertura das Inscrições
         closing_enrollment: Encerramento das Inscrições
-        opening: Abertura 
+        opening: Abertura
         closing: Encerramento
   date:
     abbr_day_names:
@@ -22,7 +22,7 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
-    - 
+    -
     - Jan
     - Fev
     - Mar
@@ -48,7 +48,7 @@ pt-BR:
       long: "%d de %B de %Y"
       short: "%d de %B"
     month_names:
-    - 
+    -
     - Janeiro
     - Fevereiro
     - Março
@@ -145,7 +145,7 @@ pt-BR:
   helpers:
     select:
       prompt: Por favor selecione
-    submit:
+  submit:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
