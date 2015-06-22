@@ -6,6 +6,6 @@ class ContestsController < ApplicationController
   end
 
   def archive
-  	@contest_old = Contest.old
+  	@contests = Contest.old.paginate(page: params[:page], per_page: 10)
   end
 end

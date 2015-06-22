@@ -240,6 +240,7 @@ GEM
       binding_of_caller (= 0.7.3.pre1)
       railties (~> 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -272,3 +273,4 @@ DEPENDENCIES
   sqlite3 (= 1.3.9)
   uglifier (= 2.5.3)
   web-console (= 2.0.0.beta3)
+  will_paginate (~> 3.0.6)
