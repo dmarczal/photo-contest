@@ -16,6 +16,14 @@ class Contest < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  def closed?
+    self.closing < Time.zone.now
+  end
+
+  def open?
+    self.opening <= Time.zone.now && self.closing >= Time.zone.now
+  end
+
   def self.current
     current = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now).limit(1)
     if current.nil?
@@ -28,7 +36,7 @@ class Contest < ActiveRecord::Base
     # open = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now)
     # open_enrollment = where("opening_enrollment <= ? AND closing_enrollment >= ?", Time.zone.now, Time.zone.now)
     # future = where("opening_enrollment > ?", Time.zone.now)
-    contests = where("closing > ? ORDER BY opening", Time.zone.now)
+    contests = where("closing > ?", Time.zone.now).order(:opening)
   end
 
   def self.old

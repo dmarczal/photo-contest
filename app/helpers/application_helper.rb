@@ -18,4 +18,14 @@ def link_to_sign_up()
 	link_to('Register', new_user_registration_path) unless user_signed_in?
 end
 
+  # Returns the Gravatar for the given user.
+  def contest_status_label(contest)
+    if contest.closed?
+    	"Votação Encerrada"
+    elsif contest.open?
+    	"<span class='label label-success'>Votação Aberta</span>".html_safe
+    end
+  end
+
+
 end
