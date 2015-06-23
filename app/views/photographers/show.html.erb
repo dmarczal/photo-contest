@@ -7,7 +7,7 @@
            <%= image_tag(@photographer.avatar, alt: "Placeholder-user", class: "img-thumbnail picture") %>
            <div class="photographer-infos">
                 <h1><%= @photographer.name %></h1>
-                <h4>Estudante TSI 3º periodo</h4>
+                <h4><%= @photographer.short_description%></h4>
                 <span><%= @photographer.biography %></span>
            </div>
         </div>

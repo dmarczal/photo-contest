@@ -93,6 +93,9 @@ namespace :db do
       user.name = Faker::Name.name
       user.email = Faker::Internet.email
       user.encrypted_password = User.new(:password => password).encrypted_password
+      user.short_description = Faker::Name.title
+      user.biography = Faker::Lorem.paragraph(5)
+      user.avatar = Faker::Avatar.image
       user.sign_in_count = 0
       user.username = Faker::Internet.user_name
     end
