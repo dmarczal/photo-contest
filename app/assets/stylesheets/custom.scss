@@ -20,6 +20,28 @@ h1 {
   margin-bottom: 15px;
 }
 
+.text-right {
+    float: right;
+    width: 300px;
+}
+
+.align-center {
+  width: 700px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
+.font-info-image-px {
+  font-size: 10px;
+}
+
+.term-description {
+  background-color: #eeeeee;
+  padding:20px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
 /* Flaired edges, by Tomas Theunissen */
 
 hr.style-hr {

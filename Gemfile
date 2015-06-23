@@ -23,7 +23,7 @@ group :development, :test do
   gem 'web-console',    '2.0.0.beta3'
   gem 'spring',         '1.1.3'
   gem 'pry-byebug',     '3.1.0'
-  gem 'faker',          '1.0.1'
+  gem 'faker',          '1.3.0'
   gem "better_errors"
 end
 
