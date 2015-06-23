@@ -98,6 +98,9 @@ namespace :db do
       user.avatar = Faker::Avatar.image
       user.sign_in_count = 0
       user.username = Faker::Internet.user_name
+      user.first = Faker::Number.number(1)
+      user.second= Faker::Number.number(1)
+      user.third = Faker::Number.number(1)
     end
 
     user = User.new
