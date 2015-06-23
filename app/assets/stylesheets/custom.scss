@@ -20,6 +20,28 @@ h1 {
   margin-bottom: 15px;
 }
 
+.text-right {
+    float: right;
+    width: 300px;
+}
+
+.align-center {
+  width: 700px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
+.font-info-image-px {
+  font-size: 10px;
+}
+
+.term-description {
+  background-color: #eeeeee;
+  padding:20px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
 /* Flaired edges, by Tomas Theunissen */
 
 hr.style-hr {
@@ -32,10 +54,10 @@ hr.style-hr {
 .photographers-rating .rating-full-star{ background: url(../images/full-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}
 .photographers-rating .rating-no-star{ background: url(../images/no-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}
 
-.well {
+#photographer .well {
     margin-top:-20px;
-    background-color:#007FBD;
-    border:2px solid #0077B2;
+    background-color: #E9E9E9;
+    border: 2px solid #BCBCBC;
     text-align:center;
     cursor:pointer;
     font-size: 25px;
@@ -43,16 +65,16 @@ hr.style-hr {
     border-radius: 0px !important;
 }
 
-.well:hover {
+#photographer .well:hover {
     margin-top:-20px;
-    background-color:#0077B2;
-    border:2px solid #0077B2;
+    background-color: #E9E9E9;
+    border: 2px solid #BCBCBC;
     text-align:center;
     cursor:pointer;
     font-size: 25px;
     padding: 15px;
     border-radius: 0px !important;
-    border-bottom : 2px solid rgba(97, 203, 255, 0.65);
+    border-bottom: 2px solid #3299BB;
 }
 
 body {
@@ -64,7 +86,8 @@ background-color: #F1F1F1;
 }
 
 /* Photographer show */
-.bg_blur{height: 300px;background-size: cover;}
+.bg_blur{height: 260px;background-size: cover;}
+.bg_blur img.img-responsive{padding-top: 15px;}
 .photographer-infos{color : #808080;margin-left:10%;margin-top:70px;}
 .picture{height:150px;width:150px; position:absolute;top: 75px;left:-75px;}
 .picture_mob{position: absolute;width: 35%;left: 35%;bottom: 70%;}

@@ -1,15 +1,14 @@
-<div class="container">
+<div id="photographer" class="container">
 	<div class="row panel">
 		<div class="col-md-4 bg_blur ">
 			<%= image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive") %>
 		</div>
         <div class="col-md-8  col-xs-12">
-           <%= image_tag("placeholder-user.png", alt: "Placeholder-user", class: "img-thumbnail picture") %>
+           <%= image_tag(@photographer.avatar, alt: "Placeholder-user", class: "img-thumbnail picture") %>
            <div class="photographer-infos">
-                <h1>Fotografo 1</h1>
-                <h4>Estudante TSI 3º periodo</h4>
-                <span>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+                <h1><%= @photographer.name %></h1>
+                <h4><%= @photographer.short_description%></h4>
+                <span><%= @photographer.biography %></span>
            </div>
         </div>
     </div>   

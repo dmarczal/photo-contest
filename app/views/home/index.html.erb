@@ -2,72 +2,51 @@
 	<div id="description" class="row">
 		<div class="col-xs-12">
 			Todos os meses a UTFPR escolhe a melhor foto enviada pelos alunos. Você também tem uma bacana? Então envie pra gente. O vencedor do mês ganha atividades complementares.
+			<br>
 		</div>
 	</div>
-	<div id="new-contest" class="row">
-		<div class="col-xs-12 col-sm-4">
-			<a href="#" class="thumbnail">
-		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-		    </a>
-		</div>
-		<div class="col-xs-12 col-sm-8">
-			<div class="well well-md">
-			    <div class="row">
-			    	<div class="col-xs-12">
-			    		<p>Concurso de Fotografia 2015: "A Foto Mais Curtida do Câmpus"</p>
-					    <br>
-					    <p>Visando incentivar a comunidade acadêmica e externa à fotografia temática, bem como agregar valor aos objetos advindos da prática fotográfica interna, promover e divulgar a universidade, a UTFPR promove este concurso</p>
-			    	</div>
-			    	<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-sm-8 col-sm-offset-4 col-lg-7 col-lg-offset-5">
-			    		<a href="javascript:void(0)" class="btn btn-default btn-raised">Envie sua foto</a>
-						<a href="#">Ler regulamento</a>
-			    	</div>
-			    </div>
+	<% unless @current_contest.nil? %>
+		<div id="new-contest" class="row">
+			<div class="col-xs-12 col-sm-4">
+				<a href="#" class="thumbnail">
+			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+			    </a>
+			</div>
+			<div class="col-xs-12 col-sm-8">
+				<div class="well well-md">
+				    <div class="row">
+				    	<div class="col-xs-12">
+				    		<p><%= @current_contest.title %></p>
+						    <br>
+						    <p><%= @current_contest.description %></p>
+				    	</div>
+				    	<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-sm-8 col-sm-offset-4 col-lg-7 col-lg-offset-5">
+							<%= link_to('Inscrever-me', new_inscription_path(@current_contest.id), :class => "btn btn-default btn-raised") %>
+							<a href="#">Ler regulamento</a>
+				    	</div>
+				    </div>
+				</div>
 			</div>
 		</div>
-	</div>
+	<% end %>
 	<div class="row">
 		<h2>Edições Anteriores</h2>
 		<div class="col-xs-12">
-			<div class="row">
-				<div class="col-xs-12 col-sm-3">
-					<a href="#" class="thumbnail">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    </a>
+			<% @old_contests.each do |contest| %>
+				<div class="row">
+					<div class="col-xs-12 col-sm-3">
+						<a href="#" class="thumbnail">
+					    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+					    </a>
+					</div>
+					<div class="col-xs-12 col-sm-9">
+						<p><b><%= contest.title %></b></p>
+						<p><%= contest.closing %></p>
+						<br>
+						<p><a href="#">Ler mais</a></p>
+					</div>
 				</div>
-				<div class="col-xs-12 col-sm-9">
-					<p><b>Janeiro de 2015</b></p>
-					<p>Vencedor: Lais A.</p>
-					<br>
-					<p><a href="#">Ler mais</a></p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-3">
-					<a href="#" class="thumbnail">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    </a>
-				</div>
-				<div class="col-xs-12 col-sm-9">
-					<p><b>Janeiro de 2015</b></p>
-					<p>Vencedor: Lais A.</p>
-					<br>
-					<p><a href="#">Ler mais</a></p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-3">
-					<a href="#" class="thumbnail">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    </a>
-				</div>
-				<div class="col-xs-12 col-sm-9">
-					<p><b>Janeiro de 2015</b></p>
-					<p>Vencedor: Lais A.</p>
-					<br>
-					<p><a href="#">Ler mais</a></p>
-				</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
