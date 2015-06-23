@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20150623012255) do
     t.integer  "user_id"
     t.integer  "contest_id"
     t.integer  "placing"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "status",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,18 +2,23 @@
 	<div class="well well-md">
 		<div class="row">
 			<div class="col-xs-12">
-				<form>
+				<form accept-charset="UTF-8" id="new_participant" name="new_participant" action="/contests/<%= @contest.id %>/participate" method="POST">
+					<div style="display:none">
+						<input name="utf8" type="hidden" value="&#x2713;" />
+						<input name="authenticity_token" type="hidden"
+						value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
+					</div>
 					<center><h3><b>Formulário de Participação</b></h3>
 						<p><h4><%= @contest.title %></h4></p>
 					</center>
 					<br>
-					<input type="file" name="picture[image]" id="photo" class="image-upload">
+					<input type="file" name="participant[picture]" id="photo" class="image-upload">
 					<p class="font-info-image-px">Foto (formato .jpg, ter definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 1.5MB).</p>
-
+					<%= @store %>
 					<div class="form-group">
 						<label for="textArea" class="control-label">Descrição da Foto:</label> 
 						<div>
-							<textarea class="form-control" rows="3" name="picture[description]" autofocus placeholder="Informe a descrição da foto"></textarea>
+							<textarea class="form-control" rows="3" name="participant[description]" autofocus placeholder="Informe a descrição da foto"></textarea>
 						</div>
 					</div>
 					<hr>
@@ -31,13 +36,13 @@
 					
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" name="picture[term]"><span class="checkbox-material"><span class="check"></span></span> Eu aceito o Termo de Autoria.
+							<input type="checkbox" name="participant[term]"><span class="checkbox-material"><span class="check"></span></span> Eu aceito o Termo de Autoria.
 						</label>
 					</div>
 					<hr>
 					<center>
 						<div class="form-control-wrapper fileinput">
-							<%= link_to('Enviar Foto para aprovação', new_inscription_path(@contest.id), :class => "btn btn-default btn-raised") %>
+							<input type="submit" name="regiter" value="Enviar Foto para aprovação" class="btn btn-default btn-raised">
 						</div>
 					</center>
 				</form>
