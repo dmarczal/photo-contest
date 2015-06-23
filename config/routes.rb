@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'contests/:id' => 'contests#show', as: 'contest'
   
   get 'photographers/list'
-  get 'photographers/show'
+  get 'photographers/:id' => 'photographers#show', as: 'photographers'
 
   get '/admin' => 'admin/home#index'
 

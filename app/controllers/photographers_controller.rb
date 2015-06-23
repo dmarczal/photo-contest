@@ -3,5 +3,6 @@ class PhotographersController < ApplicationController
   end
 
   def show
+  	@photographer = User.find_by_id(params[:id])
   end
 end
