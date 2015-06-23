@@ -6,9 +6,6 @@ class ContestsController < ApplicationController
 	before_action :user_is_registered, only: [:new_participant, :register]
 	
 
-	def archive
-	end
-
 	def new_participant
 		render :register_photographer
 	end
@@ -17,7 +14,19 @@ class ContestsController < ApplicationController
 
 	end
 
-	private
+  def list
+    @contests = Contest.list#.paginate(page: params[:page], per_page: 10)
+  end
+
+  def show
+    @contest = Contest.find_by_id(params[:id])
+  end
+  
+  def archive
+    @contests = Contest.old.paginate(page: params[:page], per_page: 10)
+  end
+
+  private
 	# Check by user logged
 	def logged_in_user
 		unless user_signed_in?
@@ -33,14 +42,9 @@ class ContestsController < ApplicationController
   		flash[:danger] = "Concurso inexistente!"
   		redirect_to root_url
   	end
-
-  def list
-  	@contests = Contest.list#.paginate(page: params[:page], per_page: 10)
   end
 
-  def show
-  	@contest = Contest.find_by_id(params[:id])
-
+  
   # Check by  enrollment contest deadline
   def between_deadline
   	if (@contest.opening_enrollment..@contest.closing_enrollment+50.days).cover?(Time.now)
@@ -50,24 +54,19 @@ class ContestsController < ApplicationController
   		flash[:danger] = "Inscrições encerradas!!"
   		redirect_to root_url
   	end
-
   end
 
-  def archive
-  	@contests = Contest.old.paginate(page: params[:page], per_page: 10)
-  end
-  
   # Check if user is already subscribed in contest
   def user_is_registered
   	@registered = @contest.users.find_by(id:current_user.id)
   	if @registered.nil? 
   			#flash[:success] = "Registrado com sucesso!"
   			#@contest.users << current_user
-  	end
-  end
+     end
+   end
 
-	def contest_params
-		params.require(:contest).permit(:id)
-	end
+   def contest_params
+    params.require(:contest).permit(:id)
+  end
 end
 
