@@ -12,7 +12,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @page.content %>
+  <%= markdown @page.content %>
 </p>
 
 <%= link_to 'Edit', edit_admin_page_path(@page) %> |

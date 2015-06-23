@@ -5,10 +5,10 @@ one:
   permalink: sobre
   content: Uma página sobre
 
-two:
+contact:
   name: Contato
   permalink: contato
-  content: Uma página de contato
+  content: "### Contato \n\n Essa é uma página de *contato*"
 
 about:
   name: About us
