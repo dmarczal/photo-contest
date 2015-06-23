@@ -21,7 +21,7 @@
 					<div class="form-group term-description">
 						<center><p><b>Termo de Autoria</b></p></center>
 						<p>
-							Eu, <%= @current_user.username %>. DECLARO para todos os fins legais, que sou o autor e proprietário da foto que estou inscrevendo no concurso de Fotografia “A Foto Mais Curtida” do Câmpus Guarapuava da UTFPR, e que estou ciente de que responderei às sanções previstas na legislação brasileira, pelo uso indevido de qualquer foto ou imagem da qual eu não seja autor (Lei de Direito Autoral – Lei nº 9610/98).
+							Eu, <%= @current_user.username %>. DECLARO para todos os fins legais, que sou o autor e proprietário da foto que estou inscrevendo no concurso de Fotografia “<b><%= @contest.title %></b>” do Câmpus Guarapuava da UTFPR, e que estou ciente de que responderei às sanções previstas na legislação brasileira, pelo uso indevido de qualquer foto ou imagem da qual eu não seja autor (Lei de Direito Autoral – Lei nº 9610/98).
 							Guarapuava, <%= Time.now.strftime("%d") %> do <%= Time.now.strftime("%m") %> de <%= Time.now.strftime("%Y") %>.
 						</p> 
 						<div class="text-right">
