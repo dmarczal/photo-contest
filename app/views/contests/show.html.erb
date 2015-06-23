@@ -1,4 +1,4 @@
-<div id="show" class="container">
+<div id="contest" class="container">
 	<div id="description" class="row">
 		<div class="col-xs-12">
 			<h2><%= @contest.title %></h2>
@@ -7,7 +7,8 @@
 	<div id="new-contest" class="row">
 		<div class="col-xs-12 col-sm-4">
 			<a href="#" class="thumbnail">
-		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %> 
+		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @contest.image.blank? == false %>
 		    </a>
 		    <ul class="list-group">
 				<li class="list-group-item">Início das Inscrições: <%= @contest.opening_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
@@ -69,17 +70,37 @@
 			    </a></div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="container">
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
+	</div>
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	  Modal teste
+	</button>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Título da foto</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row image">
+						<div class="col-xs-12">
+							<%= image_tag("placeholder.png", alt: "Placeholder") %>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-xs-3 col-sm-2">
+							<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+						</div>
+						<div class="col-xs-9 col-sm-10">
+							<p>Autor: Juca da Silva</p>
+							<p>Descrição: Breve descrição da imagem</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary">Votar</button>
+				</div>
 			</div>
 		</div>
 	</div>
