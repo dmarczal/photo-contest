@@ -4,6 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
     
+
     [Contest, User].each(&:delete_all)
 
     # Old contests
