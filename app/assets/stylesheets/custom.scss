@@ -91,7 +91,24 @@ background-color: #F1F1F1;
 .photographer-infos{color : #808080;margin-left:10%;margin-top:70px;}
 .picture{height:150px;width:150px; position:absolute;top: 75px;left:-75px;}
 .picture_mob{position: absolute;width: 35%;left: 35%;bottom: 70%;}
+.position-user{position: absolute;top: 35px;left: 30px;}
+@media (max-width: 1199px){
+  .position-user{position: absolute;top: 18px;left: 23px;}
+}
+@media (max-width: 991px){
+  .position-user{position: absolute;top: 20px;left: 25px;}
+}
+@media (max-width: 890px){
+  .bg_blur img{margin: 0 auto;}
+  .picture {top: -93px;left: 14px;}
+}
 @media (max-width: 767px) {
+    .img-user-position{max-width: 30px!important;}
+    .position-user{position: initial!important;}
     .photographer-infos{text-align : center;}
     .nav{margin-top : 30px;}
+}
+
+@media (max-width: 600px){
+  .user-position-content{min-width: 240px;}
 }

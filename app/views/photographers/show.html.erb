@@ -14,11 +14,23 @@
     </div>   
     
 	<div class="row nav">    
-        <div class="col-md-4"></div>
-        <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i><%= @photographer.first %></div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-heart-o fa-lg"></i><%= @photographer.second %></div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i><%= @photographer.third %></div>
+        <div class="col-md-8 col-xs-7"></div>
+        <div class="col-md-4 col-xs-5 user-position-content" style="margin: 0px;padding: 0px;">
+            <div class="col-md-4 col-xs-4 well ">
+            	<i class="col-md-10 col-sm-6 col-xs-12 "><%= image_tag("first.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+            		<span class="position-user"><%= @photographer.first %></span>
+            	</i>
+            </div>
+            <div class="col-md-4 col-xs-4 well">
+            	<i class="col-md-10 col-sm-6 col-xs-12"><%= image_tag("second.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+            		<span class="position-user"><%= @photographer.second %></span>
+            	</i>
+            </div>
+            <div class="col-md-4 col-xs-4 well">
+            	<i class="col-md-10 col-sm-6 col-xs-12"><%= image_tag("third.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+            		<span class="position-user"><%= @photographer.third %></span>
+            	</i>
+            </div>
         </div>
     </div>
     <hr class="style-hr">
