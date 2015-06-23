@@ -2,8 +2,8 @@ class ContestsController < ApplicationController
 
 	before_action :logged_in_user, only: [:new_participant, :register]
 	before_action :set_contest, only: [:new_participant, :register]
-	before_action :between_deadline, only: [:new_participant, :register]
-	before_action :user_is_registered, only: [:new_participant, :register]
+	#before_action :between_deadline, only: [:new_participant, :register]
+	#before_action :user_is_registered, only: [:new_participant, :register]
 	
 
 	def new_participant
@@ -14,16 +14,16 @@ class ContestsController < ApplicationController
 
 	end
 
-  def list
+	def list
     @contests = Contest.list#.paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @contest = Contest.find_by_id(params[:id])
+  	@contest = Contest.find_by_id(params[:id])
   end
   
   def archive
-    @contests = Contest.old.paginate(page: params[:page], per_page: 10)
+  	@contests = Contest.old.paginate(page: params[:page], per_page: 10)
   end
 
   private
@@ -60,13 +60,13 @@ class ContestsController < ApplicationController
   def user_is_registered
   	@registered = @contest.users.find_by(id:current_user.id)
   	if @registered.nil? 
-  			#flash[:success] = "Registrado com sucesso!"
-  			#@contest.users << current_user
-     end
-   end
+  		flash[:success] = "Registrado com sucesso!"
+  		@contest.users << current_user
+  	end
+  end
 
-   def contest_params
-    params.require(:contest).permit(:id)
+  def contest_params
+  	params.require(:contest).permit(:id)
   end
 end
 
