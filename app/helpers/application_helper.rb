@@ -29,6 +29,12 @@ end
     	"Votação Encerrada"
     elsif contest.open?
     	"<span class='label label-success'>Votação Aberta</span>".html_safe
+   	elsif contest.open_enrollment?
+   		"<span class='label label-info'>Inscrições Abertas</span>".html_safe
+   	elsif contest.idle?
+   		"<span class='label label-default'>Votação inicia em #{format_date_old(contest.opening)}</span>".html_safe
+    elsif contest.waiting?
+		"<span class='label label-default'>Inscrições iniciam em #{format_date_old(contest.opening_enrollment)}</span>".html_safe
     end
   end
 

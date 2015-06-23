@@ -6,10 +6,6 @@ class ContestsController < ApplicationController
 	before_action :user_is_registered, only: [:new_participant, :register]
 	
 
-	def list
-  	@contests = Contest.list
-	end
-
 	def archive
 	end
 
@@ -37,6 +33,9 @@ class ContestsController < ApplicationController
   		flash[:danger] = "Concurso inexistente!"
   		redirect_to root_url
   	end
+
+  def list
+  	@contests = Contest.list#.paginate(page: params[:page], per_page: 10)
   end
 
   def show
