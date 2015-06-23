@@ -10,15 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
-//= require_self
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require bootstrap-material-design
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
+//= require moment/pt-br.js
+//= require_self
+//= require_tree .
 
-
-
+$(document).ready(function() {
+  $.material.init();
+});
 
 
 

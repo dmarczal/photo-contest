@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PhotoContest</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -17,15 +17,9 @@
 
   <%= render 'shared/flash_messages' %>
   <div class="container">
-    <h1> Área administrativa </h1>
 		<%= yield %>
 	</div>
 
-<script>
-$(document).ready(function() {
-  $.material.init();
-});
-</script>
-
+  <%= render 'admin/layouts/footer' %>
 </body>
 </html>

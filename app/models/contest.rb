@@ -1,11 +1,10 @@
 class Contest < ActiveRecord::Base
-
   scope :closed_home, -> { where("closing < ?", Time.zone.now).limit(3) }
   has_many :participants
   has_many :users, through: :participants
-  
+
   validates :title,               presence: true
-  validates :description,         presence: true  
+  validates :description,         presence: true
   validates :opening_enrollment,  presence: true
   validates :closing_enrollment,  presence: true
   validates :opening,             presence: true
@@ -16,7 +15,7 @@ class Contest < ActiveRecord::Base
   validates :closing,              date: { after_or_equal_to: Time.now }
   validates :closing_enrollment,   date: { after_or_equal_to: Time.now }
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>", large: "500x500>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def closed?
@@ -46,7 +45,7 @@ class Contest < ActiveRecord::Base
       current = where("opening_enrollment <= ? AND closing_enrollment >= ?", Time.zone.now, Time.zone.now).limit(1)
     end
     current.try(:first)
- end
+  end
 
   def self.list
     # open = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now)
