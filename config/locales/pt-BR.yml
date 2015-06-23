@@ -145,7 +145,7 @@ pt-BR:
   helpers:
     select:
       prompt: Por favor selecione
-  submit:
+    submit:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
@@ -213,7 +213,7 @@ pt-BR:
   time:
     am: ''
     formats:
-      default: "%a, %d de %B de %Y, %H:%M:%S %z"
-      long: "%d de %B de %Y, %H:%M"
-      short: "%d de %B, %H:%M"
+      default: "%d/%m/%Y %H:%M" #default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d/%m/%Y %H:%M" #"%d de %B de %Y, %H:%M"
+      short: "%d/%m/%Y %H:%M" #"%d de %B, %H:%M"
     pm: ''
