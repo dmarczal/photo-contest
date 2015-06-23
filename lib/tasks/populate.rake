@@ -48,6 +48,28 @@ namespace :db do
       contest.closing              =   Time.zone.now + 8.days
     end
 
+    # Current open enrollment contest
+    Contest.populate(1) do |contest|
+      contest.title                =   "Concurso #{Faker::Name.title}"
+      contest.description          =   Faker::Lorem.paragraphs(8)
+
+      contest.opening_enrollment   =   Time.zone.now - 4.days
+      contest.closing_enrollment   =   Time.zone.now + 2.days
+      contest.opening              =   Time.zone.now + 4.days
+      contest.closing              =   Time.zone.now + 8.days
+    end
+
+    # Current idle contest
+    Contest.populate(1) do |contest|
+      contest.title                =   "Concurso #{Faker::Name.title}"
+      contest.description          =   Faker::Lorem.paragraphs(8)
+
+      contest.opening_enrollment   =   Time.zone.now - 4.days
+      contest.closing_enrollment   =   Time.zone.now - 2.days
+      contest.opening              =   Time.zone.now + 2.days
+      contest.closing              =   Time.zone.now + 8.days
+    end
+
     # Current contest
     Contest.populate(1) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"

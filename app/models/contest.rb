@@ -24,6 +24,19 @@ class Contest < ActiveRecord::Base
     self.opening <= Time.zone.now && self.closing >= Time.zone.now
   end
 
+  def open_enrollment?
+    self.opening_enrollment <= Time.zone.now && self.closing_enrollment >= Time.zone.now
+  end
+
+  # If current date is between closing enrollment and opening contest
+  def idle?
+    self.closing_enrollment <= Time.zone.now && self.opening >= Time.zone.now
+  end
+
+  def waiting?
+    self.opening > Time.zone.now
+  end
+
   def self.current
     current = where("opening <= ? AND closing >= ?", Time.zone.now, Time.zone.now).limit(1)
     if current.nil?
