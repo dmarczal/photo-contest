@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   get 'contests/archive'
   get '/contests'   => 'contests#list' 
-  get 'contests/:id' => 'contests#show', as: 'contest'
+  get '/contests/:id/participate'   => 'contests#new_participant', as: 'new_inscription'
+  #post '/contests/:id/participate'   => 'contests#register'
+  get 'contests/open'
+  get 'contests/show'
   
   get 'photographers/list'
   get 'photographers/show'

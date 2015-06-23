@@ -1,7 +1,8 @@
 class PhotographersController < ApplicationController
-  def list
-  end
+	
+	def list
+	end
 
-  def show
-  end
+	def show
+	end
 end
