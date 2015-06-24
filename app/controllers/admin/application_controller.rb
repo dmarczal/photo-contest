@@ -5,17 +5,15 @@ class Admin::ApplicationController < ActionController::Base
   layout "admin/layouts/application"
 
   private
-
     # Confirms a logged-in user.
     def logged_in_user
       unless user_signed_in?
-        flash[:danger] = "Please log in."
-        redirect_to admin_root_path
+        flash[:danger] = "Por favor logue para acessar essa pagina"
+        redirect_to admin_login_path
       end
     end
 
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
-
 end

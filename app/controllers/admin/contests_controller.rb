@@ -1,5 +1,5 @@
 class Admin::ContestsController < Admin::ApplicationController
-  #before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
 
   def index
