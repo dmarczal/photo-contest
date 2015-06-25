@@ -13,13 +13,14 @@ h1 {
 }
 
 
-/* forms */
+/* form sign in */
 .submit_sign_in {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
 }
 
+/* form inscription in contest */
 .text-right {
     float: right;
     width: 300px;
@@ -40,6 +41,14 @@ h1 {
   padding:20px;
   border-style: solid;
   border-radius: 10px;
+  border-color: #009688;
+}
+
+.align-check-term {
+  margin-left: 8px;
+  position: fixed;
+  top: 4px;
+  left: 20px;
 }
 
 /* Flaired edges, by Tomas Theunissen */
