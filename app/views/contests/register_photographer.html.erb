@@ -8,37 +8,45 @@
 				</center>
 				
 				<br>
-				<%= f.label :picture, 'Upload da Foto:' %>
+
+
+			<div class="form-control-wrapper fileinput"><input type="text" readonly="" class="form-control empty">
 				<%= f.file_field :picture, class: 'form-control', :'autofocus' =>  "autofocus" %>
-				<p class="font-info-image-px">Foto (formato .jpg, ter definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 1.5MB).</p> <br>
-
-				<%= f.label :title, 'Título da Foto:' %>
-				<%= f.text_field :title, class: 'form-control', :placeholder => "Informe o título da foto" %>
-				
-				<%= f.label :description, 'Descrição da Foto:' %>
-				<%= f.text_area :description, class: 'form-control', :placeholder => "Informe uma descrição sobre a foto" %>
-				<hr>
-
-				<div class="form-group term-description">
-					<center><p><b>Termo de Autoria</b></p></center>
-					<p>
-						Eu, <%= @current_user.username %>. DECLARO para todos os fins legais, que sou o autor e proprietário da foto que estou inscrevendo no concurso de Fotografia “<b><%= @contest.title %></b>” do Câmpus Guarapuava da UTFPR, e que estou ciente de que responderei às sanções previstas na legislação brasileira, pelo uso indevido de qualquer foto ou imagem da qual eu não seja autor (Lei de Direito Autoral – Lei nº 9610/98).
-						Guarapuava, <%= Time.now.strftime("%d") %> do <%= Time.now.strftime("%m") %> de <%= Time.now.strftime("%Y") %>.
-					</p> 
-					<div class="text-right">
-						<a href="#" title="Leia mais sobre o regulamento" title="Leia mais sobre o regulamento"> Regulamento - Leia mais </a>
-					</div> <br>
-				</div>
-				
-				<%= f.check_box  :accepted_term, class: 'checkbox-material' %>
-				<%= f.label  :accepted_term, 'Eu aceito o Termo de Autoria.' %>
-				<hr>
-				<center>
-					<%= f.submit "Enviar Formulário inscrição", class: "btn btn-primary" %>
-				</center>
-				<% end %>
+				<div class="floating-label"><%= f.label :picture, 'Upload da Foto:' %></div>
+				<span class="material-input"></span>
 			</div>
+
+
+
+			<p class="font-info-image-px">Foto (formato .jpg, ter definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 1.5MB).</p> <br>
+
+			<%= f.label :title, 'Título da Foto:' %>
+			<%= f.text_field :title, class: 'form-control', :placeholder => "Informe o título da foto" %>
+
+			<%= f.label :description, 'Descrição da Foto:' %>
+			<%= f.text_area :description, class: 'form-control', :placeholder => "Informe uma descrição sobre a foto" %>
+			<hr>
+
+			<div class="form-group term-description">
+				<center><p><b>Termo de Autoria</b></p></center>
+				<p>
+					Eu, <%= @current_user.username %>. DECLARO para todos os fins legais, que sou o autor e proprietário da foto que estou inscrevendo no concurso de Fotografia “<b><%= @contest.title %></b>” do Câmpus Guarapuava da UTFPR, e que estou ciente de que responderei às sanções previstas na legislação brasileira, pelo uso indevido de qualquer foto ou imagem da qual eu não seja autor (Lei de Direito Autoral – Lei nº 9610/98).
+					Guarapuava, <%= Time.now.strftime("%d") %> do <%= Time.now.strftime("%m") %> de <%= Time.now.strftime("%Y") %>.
+				</p> 
+				<div class="text-right">
+					<a href="#" title="Leia mais sobre o regulamento" title="Leia mais sobre o regulamento"> Regulamento - Leia mais </a>
+				</div> <br>
+			</div>
+
+			<%= f.check_box  :accepted_term, class: 'checkbox-material' %>
+			<%= f.label  :accepted_term, 'Eu aceito o Termo de Autoria.' %>
+			<hr>
+			<center>
+				<%= f.submit "Enviar Formulário inscrição", class: "btn btn-primary" %>
+			</center>
+			<% end %>
 		</div>
 	</div>
+</div>
 </div>
 

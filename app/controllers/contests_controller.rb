@@ -14,7 +14,7 @@ class ContestsController < ApplicationController
 
   def register
     begin
-      @contest.participants.create!(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term])
+      @contest.participants.create!(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
       flash[:success] = "Sua inscrição foi efetuada com sucesso!"
       redirect_to root_url
     rescue => e
