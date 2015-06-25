@@ -42,7 +42,7 @@ class ContestsController < ApplicationController
   private
 	# Check by user logged
 	def logged_in_user
-    #store_location
+    store_location
     unless user_signed_in?
      flash[:danger] = "Efetue seu login para se inscrever no concurso!"
      redirect_to new_user_session_path
