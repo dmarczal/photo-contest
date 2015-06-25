@@ -7,21 +7,23 @@ class ContestsController < ApplicationController
 	
 
 	def new_participant
-    #@contest.participants.delete(1)
     @participant = Participant.new
     render :register_photographer
   end
 
   def register
-    begin
-      @contest.participants.create!(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
-      flash[:success] = "Sua inscrição foi efetuada com sucesso!"
-      redirect_to root_url
-    rescue => e
-      Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
-      flash[:danger] = e.message
-      @participant = Participant.new
-      render :register_photographer
+    @participant = Participant.new
+    @participant = @contest.participants.build(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
+    respond_to do |format|
+      if @participant.save
+        flash[:success] = "Sua inscrição foi efetuada com sucesso!"
+        format.html { redirect_to root_url, notice: 'Participant was successfully created.' }
+        #format.json { render :show, status: :created, location: @participant }
+      else
+        flash[:danger] = "Possui erros no formulário!"
+        format.html { render :register_photographer }
+        format.json { render json: @participant.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -40,7 +42,7 @@ class ContestsController < ApplicationController
   private
 	# Check by user logged
 	def logged_in_user
-    store_location
+    #store_location
     unless user_signed_in?
      flash[:danger] = "Efetue seu login para se inscrever no concurso!"
      redirect_to new_user_session_path
@@ -49,7 +51,6 @@ class ContestsController < ApplicationController
 
   # Check if user is admin
   def can_not_admin
-    @u = current_user.admin?
     unless !current_user.admin?
      flash[:danger] = "Seu login não permite incrições em concursos!"
      redirect_to root_url
@@ -79,8 +80,8 @@ class ContestsController < ApplicationController
 
   # Check if user can be sign up in contest
   def can_be_registered?
-  	@registered = @contest.users.find_by(id:current_user.id)
-  	if @registered.nil?
+  	@user_found = @contest.users.find_by(id:current_user.id)
+  	if @user_found.nil?
   		return true
      return false
    end

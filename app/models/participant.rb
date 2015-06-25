@@ -3,7 +3,7 @@ class Participant < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :contest
 
-	has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/logo.png"
+	has_attached_file :picture, :styles => { :medium => "600x800>", :thumb => "100x100>" }, :default_url => "/images/logo.png"
   	
   	#Validation to presence true and unique ids
   	validates_uniqueness_of :user_id, :message => 'Você já está inscrito neste concurso!', :scope => :contest_id
@@ -17,8 +17,12 @@ class Participant < ActiveRecord::Base
 
   	#Validation to picture properties
   	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
-	validates :picture, :attachment_presence => true
-	validates_attachment :picture, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }, :size => { :in => 0..10.megabytes }
+	  validates :picture, :attachment_presence => true
+	  validates_attachment :picture, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }, :size => { :in => 0..20.megabytes }
 	
 	#:message => '%{value} Você já está inscrito neste concurso!',
+
+    def registered?
+      self.validates_uniqueness_of?
+    end
 end

@@ -8,6 +8,17 @@
 				</center>
 				
 				<br>
+				<% if @participant.errors.any? %>
+				<div id="error_explanation">
+					<h4>O formulário possui <%= pluralize(@participant.errors.count, "error") %>!</h4>
+					<ul>
+						<% @participant.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+
 				<%= f.label :picture, 'Upload da Foto:' %> <p></p>
 				<div class="form-control-wrapper fileinput"><input type="text" readonly="" class="form-control empty">
 					<%= f.file_field :picture, class: 'form-control', :'autofocus' =>  "autofocus" %>
@@ -37,13 +48,11 @@
 
 				<div class="checkbox">
 					<label>
-						<%= f.check_box  :accepted_term %><span class="checkbox-material"> 
+						<%= f.check_box  :accepted_term %>
 						<%= f.label  :accepted_term, 'Eu aceito o Termo de Autoria.', class: 'align-check-term' %>
 					</label>
 				</div>
 
-				
-				
 				<hr>
 				<center>
 					<%= f.submit "Enviar Formulário inscrição", class: "btn btn-primary" %>
@@ -53,4 +62,3 @@
 		</div>
 	</div>
 </div>
-
