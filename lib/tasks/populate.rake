@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [Contest, User, Participant].each(&:delete_all)
+    [Contest, User].each(&:delete_all)
 
     # Old contests
     Contest.populate(5) do |contest|
@@ -112,14 +112,14 @@ namespace :db do
     user.admin = true
     user.save!
 
-    users = User.all.ids
-    contests = Contest.all.ids
+    # users = User.all.ids
+    # contests = Contest.all.ids
 
-    i = 0
-    Participant.populate(5) do |participant|
-      participant.user_id = users[i]
-      participant.contest_id = contests[i]
-      i = i + 1 
-    end
+    # i = 0
+    # Participant.populate(5) do |participant|
+    #   participant.user_id = users[i]
+    #   participant.contest_id = contests[i]
+    #   i = i + 1 
+    # end
   end
 end

@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623215503) do
+
+ActiveRecord::Schema.define(version: 20150625065446) do
+
 
   create_table "contests", force: :cascade do |t|
     t.string   "title"
@@ -33,9 +35,16 @@ ActiveRecord::Schema.define(version: 20150623215503) do
     t.integer  "user_id"
     t.integer  "contest_id"
     t.integer  "placing"
-    t.boolean  "status",     default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "approved",             default: false
+    t.boolean  "accepted_term",        default: false
+    t.text     "description"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.text     "title"
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,15 +7,20 @@ class ContestsController < ApplicationController
 	
 
 	def new_participant
-		render :register_photographer
-	end
+    #@contest.participants.delete(1)
+    @participant = Participant.new
+    render :register_photographer
+  end
 
-	def register
+  def register
     begin
-      @contest.participants.create!(user: current_user)
-      flash[:success] = "Registrado com sucesso!"
-    rescue
-      flash[:danger] = "Você já está inscrito neste concurso!"
+      @contest.participants.create!(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term])
+      flash[:success] = "Sua inscrição foi efetuada com sucesso!"
+      redirect_to root_url
+    rescue => e
+      Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+      flash[:danger] = e.message
+      @participant = Participant.new
       render :register_photographer
     end
   end
@@ -84,5 +89,9 @@ class ContestsController < ApplicationController
  def contest_params
    params.require(:contest).permit(:id)
  end
+
+ def participant_params
+  params.require(:participant).permit(:picture, :title, :description, :accepted_term)
+end
 end
 
