@@ -1,0 +1,42 @@
+<% provide(:title, "My Inscriptions") %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<center><h4><center>Fotógrafo</center></h4></h4></center>
+		</div>
+	</div>
+
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<a href="#" class="thumbnail">
+				<%= image_tag("placeholder-user.png", alt: "Placeholder", class: "img-responsive") %>
+			</a>
+			<div class="well infobox">
+				<p><b>Fotógrafo:</b> <%= @inscription.first.user.name %></p>
+				<p><b>Username:</b> <%= @inscription.first.user.username %> </p>
+				<p><b>Email:</b> <%= @inscription.first.user.email %> </p>
+				<p><b>Descrição breve:</b> <%= @inscription.first.user.short_description %> </p>
+				<p><b>Biografia:</b> <%= @inscription.first.user.biography %> </p>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+		<% @inscription.each do |inscription| %>
+			<div class="row">
+				<div class="col-sm-2"> 
+					<a href="#" class="thumbnail thumb-miniature">
+						<%= image_tag(inscription.contest.image(:original), alt: inscription.contest.title, class: "img-responsive") unless inscription.contest.image.blank? %> 
+					</a>
+				</div>
+				<div class="col-xs-8">
+					<h4 class="list-group-item-heading"><%= inscription.contest.title %></h4>
+					<%= inscription_approved_label(inscription) %>
+					<p></p>
+					<p ><a href="#"> Mais detalhes </a></p>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<hr class="style-hr">
+	</div>
+</div>	

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'contests/:id' => 'contests#show', as: 'contest'
   get  '/contests/:id/participate'   => 'contests#new_participant', as: 'new_inscription'
   post '/contests/:id/participate'   => 'contests#register'
+  get '/contests/:id/participants/:id/inscriptions' => 'contests#index_inscriptions', as: 'show_inscriptions'
 
   get 'contests/open'
   get 'contests/show'

@@ -18,13 +18,17 @@ class ContestsController < ApplicationController
     respond_to do |format|
       if @participant.save
         flash[:success] = "Sua inscrição foi efetuada com sucesso! Aguarde pela aprovação." 
-        format.html { redirect_to root_url, notice: 'Participant inscription was successfully created.' }
-        #format.json { render :show, status: :created, location: @participant }
+        format.html { redirect_to show_inscriptions_path(@contest.id, current_user.id)}
       else
         format.html { render :register_photographer }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def index_inscriptions
+    @inscription = Participant.all.where("user_id = ?", current_user.id) 
+    render :index_inscriptions     
   end
 
   def list

@@ -54,5 +54,10 @@ def contest_link_register(contest)
     (contest.open_enrollment?) ? link_to('Inscrever-me', new_inscription_path(contest.id)) : ''
 end
 
+# show approved label status 
+def inscription_approved_label(inscription)
+    (inscription.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
+end
+
 
 end
