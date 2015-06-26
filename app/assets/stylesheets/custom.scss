@@ -51,6 +51,39 @@ h1 {
   left: 20px;
 }
 
+/* Simple form style */
+
+.simple_form label {
+  float: left;
+  margin-right: 5px;
+}
+
+
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0;
+  width:100%;
+}
+
+
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
 /* Flaired edges, by Tomas Theunissen */
 
 hr.style-hr {

@@ -20,7 +20,6 @@ class ContestsController < ApplicationController
         format.html { redirect_to root_url, notice: 'Participant was successfully created.' }
         #format.json { render :show, status: :created, location: @participant }
       else
-        flash[:danger] = "Possui erros no formulário!"
         format.html { render :register_photographer }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
       end

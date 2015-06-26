@@ -2,61 +2,37 @@
 	<div class="well well-md">
 		<div class="row">
 			<div class="col-xs-12">
-				<%= form_for(@participant, url: new_inscription_path(@contest.id), :html => { :multipart => true }, authenticity_token: 'external_token') do |f| %>
 				<center><h3><b>Formulário de Inscrição</b></h3>
 					<p><h4><%= @contest.title %></h4></p>
 				</center>
 				
 				<br>
-				<% if @participant.errors.any? %>
-				<div id="error_explanation">
-					<h4>O formulário possui <%= pluralize(@participant.errors.count, "error") %>!</h4>
-					<ul>
-						<% @participant.errors.full_messages.each do |message| %>
-						<li><%= message %></li>
-						<% end %>
-					</ul>
-				</div>
-				<% end %>
+				<%= simple_form_for(@participant, url: new_inscription_path(@contest.id)) do |f| %>
+				<%= f.error_notification %>
+				
+				<div class="form-inputs">
+					<%= f.input :picture, as: :file, label: 'Upload da Foto:' %>
+					<%= f.input :title, label: 'Título da Foto: ' %>
+					<%= f.input :description, label: 'Descrição da Foto: ' %>
+					<hr>
 
-				<%= f.label :picture, 'Upload da Foto:' %> <p></p>
-				<div class="form-control-wrapper fileinput"><input type="text" readonly="" class="form-control empty">
-					<%= f.file_field :picture, class: 'form-control', :'autofocus' =>  "autofocus" %>
-					<div class="floating-label">Procurar Foto</div>
-					<span class="material-input"></span>
-				</div>
-
-				<p class="font-info-image-px">Foto (formato .jpg, ter definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 1.5MB).</p> <br>
-
-				<%= f.label :title, 'Título da Foto:' %>
-				<%= f.text_field :title, class: 'form-control', :placeholder => "Informe o título da foto" %>
-
-				<%= f.label :description, 'Descrição da Foto:' %>
-				<%= f.text_area :description, class: 'form-control', :placeholder => "Informe uma descrição sobre a foto" %>
-				<hr>
-
-				<div class="form-group term-description">
-					<center><p><b>Termo de Autoria</b></p></center>
-					<p>
-						Eu, <%= @current_user.username %>. DECLARO para todos os fins legais, que sou o autor e proprietário da foto que estou inscrevendo no concurso de Fotografia “<b><%= @contest.title %></b>” do Câmpus Guarapuava da UTFPR, e que estou ciente de que responderei às sanções previstas na legislação brasileira, pelo uso indevido de qualquer foto ou imagem da qual eu não seja autor (Lei de Direito Autoral – Lei nº 9610/98).
-						Guarapuava, <%= Time.now.strftime("%d") %> do <%= Time.now.strftime("%m") %> de <%= Time.now.strftime("%Y") %>.
-					</p> 
-					<div class="text-right">
-						<a href="#" title="Leia mais sobre o regulamento" title="Leia mais sobre o regulamento"> Regulamento - Leia mais </a>
-					</div> <br>
+					<div class="form-group term-description">
+						<center><p><b>Termo de Autoria</b></p></center>
+						<p>
+							Eu, <%= @current_user.username %>. DECLARO para todos os fins legais, que sou o autor e proprietário da foto que estou inscrevendo no concurso de Fotografia “<b><%= @contest.title %></b>” do Câmpus Guarapuava da UTFPR, e que estou ciente de que responderei às sanções previstas na legislação brasileira, pelo uso indevido de qualquer foto ou imagem da qual eu não seja autor (Lei de Direito Autoral – Lei nº 9610/98).
+							Guarapuava, <%= Time.now.strftime("%d") %> do <%= Time.now.strftime("%m") %> de <%= Time.now.strftime("%Y") %>.
+						</p> 
+						<div class="text-right">
+							<a href="#" title="Leia mais sobre o regulamento" title="Leia mais sobre o regulamento"> Regulamento - Leia mais </a>
+						</div> <br>
+					</div>
+					<%= f.input :accepted_term, label: 'Eu aceito o Termo de Autoria.' %>
 				</div>
 
-				<div class="checkbox">
-					<label>
-						<%= f.check_box  :accepted_term %>
-						<%= f.label  :accepted_term, 'Eu aceito o Termo de Autoria.', class: 'align-check-term' %>
-					</label>
+				<div class="form-actions">
+					<%= f.button :submit, "Enviar Formulário inscrição", :class => 'submit_sign_in btn btn-primary btn-raised' %>
 				</div>
 
-				<hr>
-				<center>
-					<%= f.submit "Enviar Formulário inscrição", class: "btn btn-primary" %>
-				</center>
 				<% end %>
 			</div>
 		</div>
