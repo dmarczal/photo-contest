@@ -26,12 +26,17 @@ end
    distance_of_time_in_words(from_time, date) 
  end
 
+
  def link_to_login()
    user_signed_in? ? link_to('Logout', destroy_user_session_path, :method => :delete) : link_to('Login', new_user_session_path)
  end
 
  def link_to_sign_up()
-   link_to('Register', new_user_registration_path) unless user_signed_in?
+   link_to('Register', new_user_registration_path) unless user_signed_in? 
+ end
+
+ def link_to_show_inscriptions()
+  link_to('Minhas Inscrições', show_inscriptions_path(current_user.id)) if user_signed_in? && !current_user.admin?
  end
 
   # Returns the Gravatar for the given user.
@@ -51,12 +56,12 @@ end
 
 # show link to register in any contest if it is enrollment open
 def contest_link_register(contest)
-    (contest.open_enrollment?) ? link_to('Inscrever-me', new_inscription_path(contest.id)) : ''
+  (contest.open_enrollment?) ? link_to('Inscrever-me', new_inscription_path(contest.id)) : ''
 end
 
 # show approved label status 
 def inscription_approved_label(inscription)
-    (inscription.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
+  (inscription.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
 end
 
 

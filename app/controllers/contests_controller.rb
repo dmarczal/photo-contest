@@ -1,7 +1,7 @@
 class ContestsController < ApplicationController
   include ApplicationHelper
-  before_action :logged_in_user, only: [:new_participant, :register]
-  before_action :can_not_admin, only: [:new_participant, :register]
+  before_action :logged_in_user, only: [:new_participant, :register, :index_inscriptions]
+  before_action :can_not_admin, only: [:new_participant, :register, :index_inscriptions]
   before_action :set_contest, only: [:new_participant, :register]
   before_action :user_registered, only: [:new_participant, :register]
   before_action :between_deadline, only: [:new_participant, :register]
@@ -18,7 +18,7 @@ class ContestsController < ApplicationController
     respond_to do |format|
       if @participant.save
         flash[:success] = "Sua inscrição foi efetuada com sucesso! Aguarde pela aprovação." 
-        format.html { redirect_to show_inscriptions_path(@contest.id, current_user.id)}
+        format.html { redirect_to show_inscriptions_path(current_user.id)}
       else
         format.html { render :register_photographer }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class ContestsController < ApplicationController
   # Check if user is admin
   def can_not_admin
     unless !current_user.admin?
-     flash[:danger] = "Sua conta não permite inscrições em concursos!"
+     flash[:danger] = "Sua conta não permite executar esta ação!"
      redirect_to root_url
     end
   end
@@ -75,7 +75,7 @@ class ContestsController < ApplicationController
     if Time.now < @contest.opening_enrollment
       flash[:info] = "As incriçõs ainda não foram abertas!! Data de abertura: #{@contest.opening_enrollment.strftime("%d/%m/%Y")}"
       redirect_to root_url
-      elsif Time.now > @contest.closing_enrollment+70.days
+      elsif Time.now > @contest.closing_enrollment
         flash[:info] = "As inscrições já foram encerradas!! Data de encerramento: #{@contest.closing_enrollment.strftime("%d/%m/%Y")}"
       redirect_to root_url
     end    

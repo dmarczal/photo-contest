@@ -18,7 +18,8 @@
 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-								<li> <%= link_to 'Principal', root_url %> </li>
+								<li><%= link_to 'Principal', root_url %></li>
+								<li><%= link_to_show_inscriptions() %></li>
 								<li><a href="<%= contests_path %>">Concursos</a></li>
 								<li><a href="#">Participantes</a></li>
 								<li><a href="<%= contests_archive_path %>">Arquivo</a></li>
