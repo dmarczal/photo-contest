@@ -28,7 +28,15 @@ class ContestsController < ApplicationController
 
   def index_inscriptions
     @inscription = Participant.all.where("user_id = ?", current_user.id) 
-    render :index_inscriptions     
+    if @inscription.count <= 0 
+      flash[:info] = "Você ainda não possui nenhuma inscrição! Inscreva-se já!"
+      redirect_to contests_path
+    else  
+      render :index_inscriptions  
+    end
+  end
+
+  def show_inscription
   end
 
   def list
@@ -50,7 +58,7 @@ class ContestsController < ApplicationController
     unless user_signed_in?
      flash[:danger] = "Efetue seu login para se inscrever no concurso!"
      redirect_to new_user_session_path
-    end
+   end
  end
 
   # Check if user is admin
@@ -58,8 +66,8 @@ class ContestsController < ApplicationController
     unless !current_user.admin?
      flash[:danger] = "Sua conta não permite executar esta ação!"
      redirect_to root_url
-    end
-  end
+   end
+ end
 
   # Set Contest
   def set_contest
@@ -75,8 +83,8 @@ class ContestsController < ApplicationController
     if Time.now < @contest.opening_enrollment
       flash[:info] = "As incriçõs ainda não foram abertas!! Data de abertura: #{@contest.opening_enrollment.strftime("%d/%m/%Y")}"
       redirect_to root_url
-      elsif Time.now > @contest.closing_enrollment
-        flash[:info] = "As inscrições já foram encerradas!! Data de encerramento: #{@contest.closing_enrollment.strftime("%d/%m/%Y")}"
+    elsif Time.now > @contest.closing_enrollment
+      flash[:info] = "As inscrições já foram encerradas!! Data de encerramento: #{@contest.closing_enrollment.strftime("%d/%m/%Y")}"
       redirect_to root_url
     end    
   	# if (@contest.opening_enrollment..@contest.closing_enrollment+50.days).cover?(Time.now)

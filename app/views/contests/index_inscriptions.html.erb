@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4">
-			<center><h4><center>Fotógrafo</center></h4></h4></center>
+			<center><h4><center>Perfil do Fotógrafo</center></h4></h4></center>
 		</div>
 	</div>
 
@@ -21,7 +21,11 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-8">
-		<% @inscription.each do |inscription| %>
+			<center><h4><b>Minhas Inscrições</b></h4></center>
+			<hr class="style-hr">	
+		</div> 
+		<div class="col-xs-12 col-sm-8">
+			<% @inscription.each do |inscription| %>
 			<div class="row">
 				<div class="col-sm-2"> 
 					<a href="#" class="thumbnail thumb-miniature">
@@ -32,11 +36,11 @@
 					<h4 class="list-group-item-heading"><%= inscription.contest.title %></h4>
 					<%= inscription_approved_label(inscription) %>
 					<p></p>
-					<p ><a href="#"> Mais detalhes </a></p>
+					<p><%= link_to_show_inscription(inscription, inscription.user_id)  %></p>
 				</div>
 			</div>
 			<% end %>
 		</div>
-		<hr class="style-hr">
 	</div>
+	<hr class="style-hr">
 </div>	
