@@ -49,5 +49,10 @@ end
   end
 end
 
+# show link to register in any contest if it is enrollment open
+def contest_link_register(contest)
+    (contest.open_enrollment?) ? link_to('Inscrever-me', new_inscription_path(contest.id)) : ''
+end
+
 
 end

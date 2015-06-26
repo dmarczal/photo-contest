@@ -1,3 +1,4 @@
+<% provide(:title, "Contests Inscription") %>
 <div class="align-center">
 	<div class="well well-md">
 		<div class="row">
@@ -9,11 +10,23 @@
 				<br>
 				<%= simple_form_for(@participant, url: new_inscription_path(@contest.id)) do |f| %>
 				<%= f.error_notification %>
+				<% if @participant.errors.any? %>
+				<div id="error_explanation">
+					<h4>O formulário possui <%= pluralize(@participant.errors.count, "error") %>!</h4>
+					<ul>
+						<% @participant.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
 				
 				<div class="form-inputs">
 					<%= f.input :picture, as: :file, label: 'Upload da Foto:' %>
-					<%= f.input :title, label: 'Título da Foto: ' %>
-					<%= f.input :description, label: 'Descrição da Foto: ' %>
+					<p class="font-info-image-px">Foto (formato .jpg, ter definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 1.5MB).</p> <br>
+
+					<%= f.input :title, label: 'Título da Foto: ', placeholder: 'Informe o título da foto' %>
+					<%= f.input :description, label: 'Descrição da Foto: ', placeholder: 'Informe uma descrição sobre a foto' %>
 					<hr>
 
 					<div class="form-group term-description">

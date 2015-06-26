@@ -1,3 +1,4 @@
+<% provide(:title, "Contests List") %>
 <div class="container">
 	<div class="row">
 		<h2>Lista de Concursos</h2>
@@ -13,7 +14,7 @@
 						<p><b><%= contest.title %></b></p>
 						<p><%= contest_status_label(contest) %></p>
 						<br>
-						<p><%= link_to('Inscrever-me', new_inscription_path(contest.id)) %></p>
+						<p><%= contest_link_register(contest) %></p>
 						<p><%= link_to "Visitar a página do concurso", contest %></p>
 					</div>
 				</div>
