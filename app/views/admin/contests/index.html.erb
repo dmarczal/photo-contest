@@ -1,39 +1,35 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <header class="without-background clearfix">
+    <h1 class="text-left pull-left">Listagem de concursos</h1>
+    <div class="pull-right">
+      <%= link_to '', new_admin_contest_path, class: 'btn btn-primary btn-fab btn-raised mdi-content-add'%>
+    </div>
+  </header>
 
-<h1>Listing Admin Contests</h1>
+  <br />
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Folder</th>
-      <th>Opening enrollment</th>
-      <th>Closing enrollment</th>
-      <th>Opening</th>
-      <th>Closing</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+       <th><%= Contest.human_attribute_name :title %></th>
+       <th colspan="2"><%= Contest.human_attribute_name :opening %></th>
+       <th colspan="2"><%= Contest.human_attribute_name :closing %></th>
+       <th colspan="3">Opções</th>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @contests.each do |contest| %>
       <tr>
-        <td><%= contest.title %></td>
-        <td><%= contest.description %></td>
-        <td><%= image_tag contest.image(:thumb) unless contest.image.blank? %></td>
-        <td><%= contest.opening_enrollment %></td>
-        <td><%= contest.closing_enrollment %></td>
-        <td><%= contest.opening %></td>
-        <td><%= contest.closing %></td>
-        <td><%= link_to 'Show', admin_contest_path(contest) %></td>
-        <td><%= link_to 'Edit', edit_admin_contest_path(contest) %></td>
-        <td><%= link_to 'Destroy', admin_contest_path(contest), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to contest.title, admin_contest_path(contest) %></td>
+        <td><%= l(contest.opening_enrollment, format: :short) %></td>
+        <td><%= l(contest.closing_enrollment, format: :short) %></td>
+        <td><%= l(contest.opening, format: :short) %></td>
+        <td><%= l(contest.closing, format: :short) %></td>
+        <td><%= link_to raw('<i class="mdi-content-create"></i>'), edit_admin_contest_path(contest) %></td>
+        <td><%= link_to raw('<i class="mdi-content-clear"></i>'), admin_contest_path(contest), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Contest', new_admin_contest_path %>
+    </tbody>
+  </table>
+</section>

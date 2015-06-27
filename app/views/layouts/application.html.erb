@@ -6,27 +6,28 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">
 </head>
 
-<body>  
+<body>
   <!-- navbar -->
   <%= render 'layouts/header' %>
 
-<<<<<<< HEAD
-  <!-- flash messages -->
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-  <% end %>
-
-  <div class="main container">
-=======
   <%= render 'shared/flash_messages' %>
-  <div class="container">
->>>>>>> Added Adminstrative login
+  <div class="main container">
 		<%= yield %>
 	</div>
-  
+
   <%= render 'layouts/footer' %>
 
+<script>
+$(document).ready(function() {
+  $.material.init();
+});
+</script>
 </body>
 </html>

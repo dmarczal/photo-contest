@@ -13,15 +13,8 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-material-design
+ *= require bootstrap-datetimepicker
 */
-
- /*
- *= require bootstrap-material-design
- */
-
- /*
- *= require bootstrap-material-design
- */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -62,6 +55,4 @@ color:#E9E9E9;
 	#top-footer{padding: 15px;}
 	#top-footer span{text-transform: uppercase;display: block;}
 	#middle-footer{background: #BCBCBC;}
-
-
 }

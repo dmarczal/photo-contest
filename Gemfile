@@ -7,10 +7,13 @@ gem 'coffee-rails',              '4.1.0'
 gem 'jquery-rails',              '4.0.3'
 gem 'jbuilder',                  '2.2.3'
 gem 'simple_form',               '3.1.0'
+gem 'will_paginate',             '~> 3.0.6'
 gem 'paperclip',                 '~> 4.2'
 gem 'bootstrap-sass',            '~> 3.3.4'
 gem 'bootstrap-material-design', '~> 0.2.0'
 gem 'devise',                    '3.5.1'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 
 gem 'sdoc',                      '0.4.0',   group: :doc
 gem 'populator',                 '1.0.0',   group: :development
@@ -22,7 +25,7 @@ group :development, :test do
   gem 'web-console',    '2.0.0.beta3'
   gem 'spring',         '1.1.3'
   gem 'pry-byebug',     '3.1.0'
-  gem 'faker',          '1.0.1'
+  gem 'faker',          '1.3.0'
   gem "better_errors"
 end
 
