@@ -40,10 +40,18 @@ class Admin::ContestsController < Admin::ApplicationController
     redirect_to admin_contests_url, notice: 'Contest was successfully destroyed.'
   end
 
+  def contest_inscriptions
+    @inscriptions = Participant.all.where("contest_id = ?", params[:contest_id])
+    if @inscriptions.count == 0 
+      flash[:info] = "Ainda não existem inscrições para este concurso"  
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contest
       @contest = Contest.find(params[:id])
+      @inscriptions = contest_inscriptions
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
