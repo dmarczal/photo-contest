@@ -26,6 +26,10 @@ end
    distance_of_time_in_words(from_time, date) 
  end
 
+  def format_date (date)
+    date.strftime("%d/%m/%Y %H:%M")
+ end
+
 
  def link_to_login()
    user_signed_in? ? link_to('Logout', destroy_user_session_path, :method => :delete) : link_to('Login', new_user_session_path)

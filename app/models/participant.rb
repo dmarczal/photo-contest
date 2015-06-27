@@ -3,7 +3,7 @@ class Participant < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :contest
 
-	has_attached_file :picture, :styles => { :medium => "600x800>", :thumb => "100x100>" }, :default_url => "/images/logo.png"
+	has_attached_file :picture, :styles => { :medium => "600x800>", :thumb => "100x100>", :large => '1200x800>' }, :default_url => "/images/logo.png"
   	
   	#Validation to presence true and unique ids
   	validates_uniqueness_of :user_id, :message => 'Você já está inscrito neste concurso!', :scope => :contest_id
