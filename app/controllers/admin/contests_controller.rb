@@ -41,7 +41,7 @@ class Admin::ContestsController < Admin::ApplicationController
   end
 
   def contest_inscriptions
-    @inscriptions = Participant.all.where("contest_id = ?", params[:contest_id])
+    @inscriptions = Participant.all.where("contest_id = ?", Contest.find(params[:id]))
     if @inscriptions.count == 0 
       flash[:info] = "Ainda não existem inscrições para este concurso"  
     end
