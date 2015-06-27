@@ -1,23 +1,21 @@
 <% provide(:title, "My Inscriptions") %>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-2">
 			<center><h4><center>Perfil do Fotógrafo</center></h4></h4></center>
 		</div>
 	</div>
 
 	<br>
 	<div class="row">
-		<div class="col-xs-12 col-sm-4">
+		<div class="col-xs-12 col-sm-2">
 			<a href="#" class="thumbnail">
 				<%= image_tag("placeholder-user.png", alt: "Placeholder", class: "img-responsive") %>
 			</a>
 			<div class="well infobox">
-				<p><b>Fotógrafo:</b> <%= @inscription.first.user.name %></p>
-				<p><b>Username:</b> <%= @inscription.first.user.username %> </p>
-				<p><b>Email:</b> <%= @inscription.first.user.email %> </p>
-				<p><b>Descrição breve:</b> <%= @inscription.first.user.short_description %> </p>
-				<p><b>Biografia:</b> <%= @inscription.first.user.biography %> </p>
+				<p> <a href="#"> Editar Conta </a></p>
+				<p> <a href="#"> Alterar Senha </a></p>
+				<p> <a href="#"> Alterar Foto </a></p>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-8">
@@ -25,7 +23,7 @@
 			<hr class="style-hr">	
 		</div> 
 		<div class="col-xs-12 col-sm-8">
-			<% @inscription.each do |inscription| %>
+			<% @inscriptions.each do |inscription| %>
 			<div class="row">
 				<div class="col-sm-2"> 
 					<a href="#" class="thumbnail thumb-miniature">
@@ -36,7 +34,7 @@
 					<h4 class="list-group-item-heading"><%= inscription.contest.title %></h4>
 					<%= inscription_approved_label(inscription) %>
 					<p></p>
-					<p><%= link_to_show_inscription(inscription, inscription.user_id)  %></p>
+					<p><%= link_to_show_inscription(inscription.contest.id, inscription.user_id, inscription.id)  %></p>
 				</div>
 			</div>
 			<% end %>

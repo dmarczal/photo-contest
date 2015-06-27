@@ -27,8 +27,8 @@ class ContestsController < ApplicationController
   end
 
   def index_inscriptions
-    @inscription = Participant.all.where("user_id = ?", current_user.id) 
-    if @inscription.count <= 0 
+    @inscriptions = Participant.all.where("user_id = ?", current_user.id) 
+    if @inscriptions.count <= 0 
       flash[:info] = "Você ainda não possui nenhuma inscrição! Inscreva-se já!"
       redirect_to contests_path
     else  
@@ -37,6 +37,12 @@ class ContestsController < ApplicationController
   end
 
   def show_inscription
+    begin
+      @inscription = Participant.find params[:inscription_id]
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = "Inscrição inexistente!"
+      redirect_to show_inscriptions_path(current_user.id)
+    end
   end
 
   def list

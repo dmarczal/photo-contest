@@ -49,7 +49,7 @@ namespace :db do
     end
 
     # Current open enrollment contest
-    Contest.populate(1) do |contest|
+    Contest.populate(7) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 

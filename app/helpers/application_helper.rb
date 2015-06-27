@@ -39,8 +39,8 @@ end
   link_to('Minhas Inscrições', show_inscriptions_path(current_user.id)) if user_signed_in? && !current_user.admin?
  end
 
- def link_to_show_inscription(inscription_id, user_id)
-  link_to('Mais detalhes', show_inscription_path(inscription_id, user_id))
+ def link_to_show_inscription(contest_id, inscription_id, user_id)
+  link_to('Veja mais detalhes sobre sua inscrição', show_inscription_path(contest_id, inscription_id, user_id))
  end
 
   # Returns the Gravatar for the given user.

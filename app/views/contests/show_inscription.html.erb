@@ -1,1 +1,66 @@
-<h4> Exibir Inscrição detalhada </h4>
+<% provide(:title, "Destails Inscription") %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<center><h4><center>Perfil do Fotógrafo</center></h4></h4></center>
+		</div>
+	</div>
+
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-sm-2">
+			<a href="#" class="thumbnail">
+				<%= image_tag("placeholder-user.png", alt: "Placeholder", class: "img-responsive") %>
+			</a>
+			<div class="well infobox">
+				<p> <a href="#"> Editar Conta </a></p>
+				<p> <a href="#"> Alterar Senha </a></p>
+				<p> <a href="#"> Alterar Foto </a></p>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<div class="row">
+				<div class="col-xs-10 col-md-4	">
+					<a href="#" class="thumbnail ">
+						<%= image_tag(@inscription.contest.image(:original), alt: @inscription.contest.title, class: "img-responsive") unless @inscription.contest.image.blank? %> 
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-8">
+					<h4 class="list-group-item-heading"><b><%= @inscription.contest.title %></b></h4>
+					<p></p>
+					<p>Início das Inscrições: 18/06/2015 </p>
+					<p>Término das Inscrições: 20/06/2015 </p>
+					<p>Início das Votações: 22/06/2015 </p>
+					<p>Término das Votações: 22/06/2015 </p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-xs-12 col-sm-10">
+			<hr class="style-hr">	
+			
+			<div class="row">
+				<div class="col-xs-10 col-md-6">
+					<center> <h4> <b> Foto enviada para o concurso </b> </h4></center> <br>
+					<a href="#" class="thumbnail ">
+						<%= image_tag(@inscription.picture.url(:medium), alt: @inscription.contest.title, title: 'Click para Visualizar a Foto', class: "img-responsive") unless @inscription.contest.image.blank? %> 
+					</a>
+					
+					
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<center> <h4> <b> Detalhes de sua inscrição</b> </h4></center> <br>
+					<h4 class="list-group-item-heading"><%= @inscription.contest.title %></h4>
+					<p>Fotógrafo(a): <%= @inscription.user.name %> </p>
+					<p>Email: <%= @inscription.user.email %> </p>
+					<p>Título: <%= @inscription.title %>
+						<p>Status: <%= inscription_approved_label(@inscription) %>
+							<p><a href="#"> Enviar nova foto </a></p>
+							<p>Likes: 233 </p>
+							<p>Colocação: <%= @inscription.placing %>º </p>
+							<p>Descrição: <%= @inscription.description %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr class="style-hr">
+		</div>	
