@@ -37,44 +37,44 @@
 			<!-- </div> -->
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			
-		</div>
-	</div>
-	<hr class="style-hr">
-	<div class="show-pictures-contest">
-		<div class="row">
-			<div class="container">
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
+	<% if @contest.open? %>
+		<hr class="style-hr">
+		<div class="show-pictures-contest">
+			<div class="row">
+				<div class="container">
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container">
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="container">
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-			</div>
-		</div>
-	</div>
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-	  Modal teste
-	</button>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+	<% end %>
+	<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
