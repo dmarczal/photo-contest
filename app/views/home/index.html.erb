@@ -9,14 +9,16 @@
 		<div id="new-contest" class="row">
 			<div class="col-xs-12 col-sm-4">
 				<a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+			    	<%= image_tag(@current_contest.image(:original), alt: @current_contest.title, class: "img-responsive") unless @current_contest.image.blank? %> 
+		    		<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @current_contest.image.blank? == false %>
 			    </a>
 			</div>
 			<div class="col-xs-12 col-sm-8">
 				<div class="well well-md">
 				    <div class="row">
 				    	<div class="col-xs-12">
-				    		<p><%= @current_contest.title %></p>
+				    		<p><b><%= @current_contest.title %></b></p>
+				    		<p><%= contest_status_label(@current_contest) %></p>
 						    <br>
 						    <p><%= @current_contest.description %></p>
 				    	</div>
@@ -24,7 +26,7 @@
 				    		
 				    		<%= contest_link_register(@current_contest) %>
 							
-							<a href="#">Ler regulamento</a>
+							<%= link_to "Ler regulamento", @current_contest %>
 				    	</div>
 				    </div>
 				</div>
@@ -38,14 +40,15 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-3">
 						<a href="#" class="thumbnail">
-					    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+					    	<%= image_tag(contest.image(:original), alt: contest.title, class: "img-responsive") unless contest.image.blank? %>
+		    				<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless contest.image.blank? == false %>
 					    </a>
 					</div>
 					<div class="col-xs-12 col-sm-9">
 						<p><b><%= contest.title %></b></p>
 						<p><%= contest.closing %></p>
 						<br>
-						<p><a href="#">Ler mais</a></p>
+						<p><%= link_to "Visitar a página do concurso", contest %></p>
 					</div>
 				</div>
 			<% end %>
