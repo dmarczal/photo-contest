@@ -14,16 +14,20 @@
 	<div id="middle-footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-sm-6"></div>
-				<div class="col-md-6 col-sm-6">
-					<ul class="list-unstyled">
-						<li><a>Home</a></li>
-						<li><a>Area do Fotografo</a></li>
-						<li><a>Concuros</a></li>
-						<li><a>Hall da fama</a></li>
-						<li><a>Contato</a></li>
-						<li><a>Sobre</a></li>
+				<div class="col-md-4 col-sm-4">
+					<ul class="list-unstyled links-footer">
+						<li><%= link_to 'Home', root_url %></li>
+						<li><a href="<%= photographer_list_path %>">Area do Fotografo</a></li>
+						<li><a href="<%= contests_path %>">Concuros</a></li>
+						<li><a href="#">Hall da fama</a></li>
+						<li><a href="#">Contato</a></li>
+						<li><a href="#">Sobre</a></li>
 					</ul>
+				</div>
+				<div class="col-md-8 col-sm-8 list-icons">
+					<div class="col-md-4"><a href="http://www.facebook.com/"><%= image_tag("facebook.png", alt: "Placeholder-user", class: "img-responsive") %></a></div>
+					<div class="col-md-4"><a href="http://www.twitter.com/"><%= image_tag("twitter.png", alt: "Placeholder-user", class: "img-responsive") %></a></div>
+					<div class="col-md-4"><a href="mailto:admin@phootocontest.com"><%= image_tag("mail.png", alt: "Placeholder-user", class: "img-responsive") %></a></div>
 				</div>
 			</div>
 		</div>
