@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post '/contests/:id/participate'   => 'contests#register'
   get  '/contests/participants/:id/inscriptions' => 'contests#index_inscriptions', as: 'show_inscriptions'
   get  '/contests/:contest_id/participants/:participant_id/inscriptions/:inscription_id' => 'contests#show_inscription', as: 'show_inscription'
+  
+ 
+  resources :participants 
+  
   get 'contests/open'
   get 'contests/show'
   
@@ -22,7 +26,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   namespace :admin do
-    
+
     root to: 'home#index'
     get      'login'   => 'sessions#new'
     post     'login'   => 'sessions#create'

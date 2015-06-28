@@ -1,0 +1,44 @@
+<% provide(:title, "Inscriptions") %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<center><h4><center>Perfil do Fotógrafo</center></h4></h4></center>
+		</div>
+	</div>
+
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-sm-2">
+			<a href="#" class="thumbnail">
+				<%= image_tag("placeholder-user.png", alt: "Placeholder", class: "img-responsive") %>
+			</a>
+			<div class="well infobox">
+				<p> <a href="#"> Editar Conta </a></p>
+				<p> <a href="#"> Alterar Senha </a></p>
+				<p> <a href="#"> Alterar Foto </a></p>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<center><h4><b>Minhas Inscrições</b></h4></center>
+			<hr class="style-hr">	
+		</div> 
+		<div class="col-xs-12 col-sm-8">
+			<% @participants.each do |participant| %>
+			<div class="row">
+				<div class="col-sm-2"> 
+					<a href="#" class="thumbnail thumb-miniature">
+						<%= image_tag(participant.contest.image(:original), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %> 
+					</a>
+				</div>
+				<div class="col-xs-8">
+					<h4 class="list-group-item-heading"><%= participant.contest.title %></h4>
+					<%= participant_approved_label(participant) %>
+					<p></p>
+					<p><%= link_to_show_inscription(participant.id)  %></p>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<hr class="style-hr">
+</div>	
