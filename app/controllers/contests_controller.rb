@@ -1,51 +1,9 @@
 class ContestsController < ApplicationController
-  include ApplicationHelper
-  before_action :logged_in_user, only: [:new_participant, :register, :index_inscriptions]
-  before_action :can_not_admin, only: [:new_participant, :register, :index_inscriptions]
-  before_action :set_contest, only: [:new_participant, :register]
-  before_action :user_registered, only: [:new_participant, :register]
-  before_action :between_deadline, only: [:new_participant, :register]
 
-
-  def new_participant
-    @participant = Participant.new
-    render :register_photographer
-  end
-
-  def register
-    @participant = Participant.new
-    @participant = @contest.participants.build(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
-    respond_to do |format|
-      if @participant.save
-        flash[:success] = "Sua inscrição foi efetuada com sucesso! Aguarde pela aprovação." 
-        format.html { redirect_to show_inscriptions_path(current_user.id)}
-      else
-        format.html { render :register_photographer }
-        format.json { render json: @participant.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def index_inscriptions
-    @inscriptions = Participant.all.where("user_id = ?", current_user.id) 
-    if @inscriptions.count <= 0 
-      flash[:info] = "Você ainda não possui nenhuma inscrição! Inscreva-se já!"
-      redirect_to contests_path
-    else  
-      render :index_inscriptions  
-    end
-  end
-
-  def show_inscription
-    begin
-      @inscription = Participant.find params[:inscription_id]
-    rescue ActiveRecord::RecordNotFound => e
-      flash[:danger] = "Inscrição inexistente!"
-      redirect_to show_inscriptions_path(current_user.id)
-    end
-  end
+  #before_action :logged_in_user 
 
   def list
+    @current_user = current_user
     @contests = Contest.list#.paginate(page: params[:page], per_page: 10)
   end
 
@@ -58,6 +16,7 @@ class ContestsController < ApplicationController
   end
 
   private
+
 	# Check by user logged
 	def logged_in_user
     store_location
@@ -67,57 +26,5 @@ class ContestsController < ApplicationController
    end
  end
 
-  # Check if user is admin
-  def can_not_admin
-    unless !current_user.admin?
-     flash[:danger] = "Sua conta não permite executar esta ação!"
-     redirect_to root_url
-   end
- end
-
-  # Set Contest
-  def set_contest
-  	@contest = Contest.find_by(id:params[:id]) 
-  	if @contest.nil?
-  		flash[:danger] = "Concurso inexistente!"
-  		redirect_to root_url
-  	end
-  end
-  
-  #Check by  enrollment contest deadline
-  def between_deadline
-    if Time.now < @contest.opening_enrollment
-      flash[:info] = "As incriçõs ainda não foram abertas!! Data de abertura: #{@contest.opening_enrollment.strftime("%d/%m/%Y")}"
-      redirect_to root_url
-    elsif Time.now > @contest.closing_enrollment
-      flash[:info] = "As inscrições já foram encerradas!! Data de encerramento: #{@contest.closing_enrollment.strftime("%d/%m/%Y")}"
-      redirect_to root_url
-    end    
-  	# if (@contest.opening_enrollment..@contest.closing_enrollment+50.days).cover?(Time.now)
-  	# 	flash[:success] = "Inscrição efetuada com sucesso!"
-  	# else
-  	# 	flash[:danger] = "As inscrições já foram encerradas!!"
-  	# 	redirect_to root_url
-  	# end
-  end
-
-  # Check if user is registered in selected contest current  
-  def user_registered
-  	@user_found = @contest.users.find_by(id:current_user.id)
-  	if @user_found.nil?
-  		return true
-    else
-      flash[:danger] = "Você já está inscrito neste concurso!"
-      redirect_to root_url #Redirecionar para o concurso q ele está inscrito
-    end
-  end
-
-  def contest_params
-    params.require(:contest).permit(:id)
-  end
-
-  def participant_params
-    params.require(:participant).permit(:picture, :title, :description, :accepted_term)
-  end
 end
 

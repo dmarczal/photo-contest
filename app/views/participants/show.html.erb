@@ -1,0 +1,58 @@
+<% provide(:title, "Show Inscription") %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<center><h4><center>Perfil do Fotógrafo</center></h4></h4></center>
+		</div>
+	</div>
+
+	<br>
+	<div class="row">
+		<%= render partial: "profile" %>
+		<div class="col-xs-12 col-sm-8">
+			<div class="row">
+				<div class="col-xs-10 col-md-4	">
+					<a href="#"  class="thumbnail" >
+						<%= image_tag(@participant.contest.image(:original), alt: @participant.contest.title, class: "img-responsive") unless @participant.contest.image.blank? %> 
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-8">
+					<h4 class="list-group-item-heading"><b><%= @participant.contest.title %></b></h4>
+					<p></p>
+					<p>Período de Inscrições: <%= format_date @participant.contest.opening_enrollment %> Até
+					 <%= format_date @participant.contest.closing_enrollment %></p>
+					<p>Período de Votação: <%= format_date @participant.contest.opening %> Até <%= format_date @participant.contest.closing %></p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-xs-12 col-sm-10">
+			<hr class="style-hr">	
+			
+			<div class="row">
+				<div class="col-xs-10 col-md-6">
+					<center> <h4> <b> Foto enviada para o concurso </b> </h4></center> <br>
+					<a data-toggle="modal" data-target="#myModal" title="Visualizar Foto" class="thumbnail">
+						<%= image_tag(@participant.picture.url(:medium), alt: @participant.contest.title, class: "img-responsive") unless @participant.contest.image.blank? %> 
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<center> <h4> <b> Detalhes de sua inscrição</b> </h4></center> <br>
+					<h4 class="list-group-item-heading"><%= @participant.contest.title %></h4>
+					<p>Fotógrafo(a): <%= @participant.user.name %> </p>
+					<p>Email: <%= @participant.user.email %> </p>
+					<p>Título: <%= @participant.title %>
+						<p>Status: <%= participant_approved_label(@participant) %>
+							<p><%= link_to_edit_inscription(@participant.id) %></p>
+							<p>Likes: 233 </p>
+							<p>Colocação: <%= @participant.placing %>3º Lugar </p>
+							<p>Descrição: <%= @participant.description %></p>
+							<p><a href="#" data-toggle="modal" data-target="#myModal" title="Visualizar Foto" >Visualizar Foto</a> </p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr class="style-hr">
+</div>	
+
+<%= render partial: "modal", locals: { participant: @participant } %>
+
