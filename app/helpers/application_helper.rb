@@ -26,26 +26,30 @@ end
    distance_of_time_in_words(from_time, date) 
  end
 
-  def format_date (date)
-    date.strftime("%d/%m/%Y %H:%M")
- end
+ def format_date (date)
+  date.strftime("%d/%m/%Y %H:%M")
+end
 
 
- def link_to_login()
-   user_signed_in? ? link_to('Logout', destroy_user_session_path, :method => :delete) : link_to('Login', new_user_session_path)
- end
+def link_to_login()
+ user_signed_in? ? link_to('Logout', destroy_user_session_path, :method => :delete) : link_to('Login', new_user_session_path)
+end
 
- def link_to_sign_up()
-   link_to('Register', new_user_registration_path) unless user_signed_in? 
- end
+def link_to_sign_up()
+ link_to('Register', new_user_registration_path) unless user_signed_in? 
+end
 
- def link_to_show_inscriptions()
-  link_to('Minhas Inscrições', show_inscriptions_path(current_user.id)) if user_signed_in? && !current_user.admin?
- end
+def link_to_show_inscriptions()
+  link_to('Minhas Inscrições', participants_path) if user_signed_in? && !current_user.admin?
+end
 
- def link_to_show_inscription(contest_id, inscription_id, user_id)
-  link_to('Veja mais detalhes sobre sua inscrição', show_inscription_path(contest_id, inscription_id, user_id))
- end
+def link_to_show_inscription(participant_id)
+  link_to('Veja mais detalhes sobre sua inscrição', participant_path(participant_id))
+end
+
+def link_to_edit_inscription(participant_id)
+  link_to('Enviar nova foto', edit_participant_path(participant_id))
+end
 
   # Returns the Gravatar for the given user.
   def contest_status_label(contest)
@@ -64,13 +68,18 @@ end
 
 # show link to register in any contest if it is enrollment open
 def contest_link_register(contest)
-  (contest.open_enrollment?) ? link_to('Inscrever-me', new_inscription_path(contest.id)) : ''
+  (contest.open_enrollment?) ? link_to('Inscrever-me', new_participant_path(:contest_id => contest.id)) : ''
 end
 
 # show approved label status 
-def inscription_approved_label(inscription)
-  (inscription.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
+def participant_approved_label(participant)
+  (participant.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
 end
 
+# check if user is registered in a contest
+def label_check_inscription(contest) 
+  user_found = contest.users.find_by(id:current_user.id)
+  (!user_found.nil?) ? '<span class="label label-primary">Inscrito</span>'.html_safe : ''
+end
 
 end
