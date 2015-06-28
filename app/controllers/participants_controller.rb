@@ -40,10 +40,17 @@ class ParticipantsController < ApplicationController
 	end
 
 	def update
+
 		@participant = Participant.find_by(id: params[:id], user_id: current_user.id)
+		if (!@participant.between_deadline?) 
+			flash[:info] = "Prazo expirado para atualização da inscrição!" 
+			return redirect_to @participant
+		end
+		#Pra que a inscrição seja enviada para aprovação novamente.
+		@participant.approved = false unless !participant_params.has_key?(:picture) 
 		respond_to do |format|
 			if @participant.update(participant_params)
-				flash[:success] = "Sua inscrição foi atualizada com sucesso! Aguarde pela aprovação." 
+				flash[:success] = "Sua inscrição foi atualizada com sucesso!" 
 				format.html { redirect_to @participant, notice: 'User was successfully updated.' }
 				format.json { render :show, status: :ok, location: @participant }
 			else
@@ -104,8 +111,8 @@ class ParticipantsController < ApplicationController
   	@user_found = @contest.users.find_by(id:current_user.id)
   	if !@user_found.nil?
   		flash[:info] = "Você já está inscrito neste concurso!"
-      	redirect_to contests_path 
-      end
+  		redirect_to contests_path 
+  	end
   end
 
   #Check by  enrollment contest deadline

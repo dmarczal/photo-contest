@@ -47,8 +47,8 @@ def link_to_show_inscription(participant_id)
   link_to('Veja mais detalhes sobre sua inscrição', participant_path(participant_id))
 end
 
-def link_to_edit_inscription(participant_id)
-  link_to('Enviar nova foto', edit_participant_path(participant_id))
+def link_to_edit_inscription(participant)
+  (participant.between_deadline?) ? link_to('Enviar nova foto/Atualizar Inscrição', edit_participant_path(participant.id)) : ''
 end
 
   # Returns the Gravatar for the given user.

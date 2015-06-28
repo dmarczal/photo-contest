@@ -21,8 +21,8 @@ class Participant < ActiveRecord::Base
 	  validates_attachment :picture, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }, :size => { :in => 0..20.megabytes }
 	
 	#:message => '%{value} Você já está inscrito neste concurso!',
-
-    def registered?
-      self.validates_uniqueness_of?
-    end
+  #Check if inscription is between deadline
+  def between_deadline?
+    (self.contest.opening_enrollment..self.contest.closing_enrollment).cover?(Time.now) ? true : false
+  end
 end
