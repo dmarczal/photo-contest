@@ -45,7 +45,7 @@ class ParticipantsController < ApplicationController
 		@participant = Participant.find_by(id: params[:id], user_id: current_user.id)
 		respond_to do |format|
 			if @participant.update(participant_params)
-				flash[:success] = "Sua inscrição foi efetuada com sucesso! Aguarde pela aprovação." 
+				flash[:success] = "Sua inscrição foi atualizada com sucesso! Aguarde pela aprovação." 
 				format.html { redirect_to @participant, notice: 'User was successfully updated.' }
 				format.json { render :show, status: :ok, location: @participant }
 			else

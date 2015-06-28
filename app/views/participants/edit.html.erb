@@ -8,7 +8,6 @@
 				</center>
 				<br>
 				<%= simple_form_for(@participant) do |f| %>
-				<%= f.input :title, :as => :hidden, :input_html => { :value => "patch" } %>
 				<div class="form-inputs">
 					<%= f.input :picture, as: :file, label: 'Upload da Foto:' %>
 					<p class="font-info-image-px">Foto (formato .jpg, .png e .gif). Deve possuir definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 20MB).</p> <br>
