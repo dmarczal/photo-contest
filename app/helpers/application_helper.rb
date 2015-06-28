@@ -72,5 +72,12 @@ def inscription_approved_label(inscription)
   (inscription.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
 end
 
+def gravatar_for(user, options = { size: 80 , _class: ""})
+  gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+  size = options[:size]
+  _class = options[:_class]
+  gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+  image_tag(gravatar_url, alt: user.name, class: "gravatar #{_class}")
+end
 
 end

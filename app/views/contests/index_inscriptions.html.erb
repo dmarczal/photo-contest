@@ -10,12 +10,13 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-2">
 			<a href="#" class="thumbnail">
-				<%= image_tag("placeholder-user.png", alt: "Placeholder", class: "img-responsive") %>
+				<% @photographer = User.find_by_id(@inscriptions[0].user_id)%>
+				<%= gravatar_for @photographer, { size: 140 } %>
 			</a>
 			<div class="well infobox">
 				<p> <a href="#"> Editar Conta </a></p>
 				<p> <a href="#"> Alterar Senha </a></p>
-				<p> <a href="#"> Alterar Foto </a></p>
+				<p> <a href="http://gravatar.com/emails" target=_blank>Alterar Foto</a></p>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-8">

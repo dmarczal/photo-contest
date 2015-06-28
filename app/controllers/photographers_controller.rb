@@ -1,6 +1,7 @@
 class PhotographersController < ApplicationController
 	
 	def list
+		@photographers = User.all
 	end
 
 	def show
