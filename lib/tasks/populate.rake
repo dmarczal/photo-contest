@@ -81,30 +81,9 @@ namespace :db do
       contest.closing              =   Time.zone.now + 8.days
     end
 
-    users = User.all.ids
-
     Contest.all.each do |contest|
       contest.image =  File.open(Dir["#{Rails.root}/lib/images/*"].sample)
       contest.save(validate: false)
-
-      i = 0
-      Participant.populate(5) do |participant|
-        participant.user_id = users[i]
-        participant.contest_id = contest.id
-        participant.approved = false
-        participant.description = Faker::Lorem.paragraph
-        participant.title = Faker::Lorem.sentence(3, true)
-        i = i + 1
-      end
-
-      Participant.populate(2) do |participant|
-        participant.user_id = users[i]
-        participant.contest_id = contest.id
-        participant.approved = true
-        participant.description = Faker::Lorem.paragraph
-        participant.title = Faker::Lorem.sentence(3, true)
-        i = i + 1
-      end
     end
 
     # Some users
@@ -137,5 +116,28 @@ namespace :db do
     user.username = 'admin'
     user.admin = true
     user.save!
+
+    # Some participants
+    users = User.all.ids
+    Contest.all.each do |contest|
+      i = 0
+      Participant.populate(5) do |participant|
+        participant.user_id = users[i]
+        participant.contest_id = contest.id
+        participant.approved = false
+        participant.description = Faker::Lorem.paragraph
+        participant.title = Faker::Lorem.sentence(3, true)
+        i = i + 1
+      end
+
+      Participant.populate(2) do |participant|
+        participant.user_id = users[i]
+        participant.contest_id = contest.id
+        participant.approved = true
+        participant.description = Faker::Lorem.paragraph
+        participant.title = Faker::Lorem.sentence(3, true)
+        i = i + 1
+      end
+    end
   end
 end

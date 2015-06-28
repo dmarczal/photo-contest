@@ -66,4 +66,8 @@ class Admin::ContestsController < Admin::ApplicationController
     def contest_params
       params.require(:contest).permit(:title, :description, :image, :opening_enrollment, :closing_enrollment, :opening, :closing)
     end
+
+    def participant_params
+      params.require(:participant).permit(:id, :approved)
+    end
 end
