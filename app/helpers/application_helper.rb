@@ -76,10 +76,18 @@ def participant_approved_label(participant)
   (participant.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
 end
 
+def gravatar_for(user, options = { size: 80 , _class: ""})
+  gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+  size = options[:size]
+  _class = options[:_class]
+  gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+  image_tag(gravatar_url, alt: user.name, class: "gravatar #{_class}")
+
 # check if user is registered in a contest
 def label_check_inscription(contest) 
   user_found = contest.users.find_by(id:current_user.id)
   (!user_found.nil?) ? '<span class="label label-primary">Inscrito</span>'.html_safe : ''
+
 end
 
 end
