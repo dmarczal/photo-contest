@@ -1,7 +1,6 @@
 class ContestsController < ApplicationController
 
-  before_action :logged_in_user
-  before_action :can_not_admin
+  #before_action :logged_in_user 
 
   def list
     @current_user = current_user
@@ -27,12 +26,5 @@ class ContestsController < ApplicationController
    end
  end
 
-  # Check if user is admin
-  def can_not_admin
-    unless !current_user.admin?
-     flash[:danger] = "Sua conta não permite executar esta ação!"
-     redirect_to root_url
-   end
- end
 end
 
