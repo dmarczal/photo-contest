@@ -1,9 +1,14 @@
 <div class="col-xs-12 col-sm-2">
 	<a href="#" class="thumbnail">
-		<%= image_tag("placeholder-user.png", alt: "Placeholder", class: "img-responsive") %>
+		<% if @participants != nil %>
+			<% @photographer = User.find_by_id(@participants[0].user_id) %>
+		<% else %>
+			<% @photographer = User.find_by_id(@participant.user_id) %>
+		<% end %>
+		<%= gravatar_for @photographer, { size: 140 , _class: "img-responsive"} %>
 	</a>
 	<div class="well infobox">
 		<p> <%= link_to "Editar Conta", edit_user_registration_path %></p>
-		<p> <a href="#"> Alterar Foto </a></p>
+		<p> <a href="http://gravatar.com/emails" target=_blank>Alterar Foto</a> </p>
 	</div>
 </div>
