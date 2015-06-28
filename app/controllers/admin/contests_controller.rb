@@ -1,6 +1,8 @@
 class Admin::ContestsController < Admin::ApplicationController
   before_action :logged_in_user
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
+  before_action :approved_participants, only: [:show, :edit, :update, :destroy]
+  before_action :not_approved_participants, only: [:show, :edit, :update, :destroy]
 
   def index
     @contests = Contest.all
@@ -44,9 +46,19 @@ class Admin::ContestsController < Admin::ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contest
       @contest = Contest.find(params[:id])
-      @participants = Participant.all.where("contest_id = ?", Contest.find(params[:id])).paginate(page: params[:page], per_page: 9)
-      if @participants.count == 0 
-        flash[:info] = "Ainda não existem inscrições para este concurso"  
+    end
+
+    def approved_participants
+      @approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
+       if @approved_participants.count > 0 
+        flash[:info] = "Ainda não existem inscrições aprovadas para este concurso."
+      end
+    end
+
+    def not_approved_participants
+      @not_approved_participants = Participant.all.where(contest_id: @contest.id).where.not(approved: true)
+      if @not_approved_participants.count > 0 
+        flash[:info] = "Existem #{@not_approved_participants.count} inscrições com aprovação pendende."
       end
     end
 
