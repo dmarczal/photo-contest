@@ -68,7 +68,7 @@ end
 
 # show link to register in any contest if it is enrollment open
 def contest_link_register(contest)
-  (contest.open_enrollment?) ? link_to('Inscrever-me', new_participant_path(:contest_id => contest.id)) : ''
+  (contest.open_enrollment?) ? link_to('Inscrever-me', new_participant_path(:contest_id => contest.id), :method => :get) : ''
 end
 
 # show approved label status 

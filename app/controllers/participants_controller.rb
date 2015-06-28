@@ -15,8 +15,8 @@ class ParticipantsController < ApplicationController
 	end
 
 	def new
+		@contest
 		@participant = Participant.new
-		redirect_to contests_path unless !@contest.nil?
 	end
 
 	def create
@@ -36,9 +36,7 @@ class ParticipantsController < ApplicationController
 	
 	def edit
 		@participant = Participant.find_by(id: params[:id], user_id: current_user.id)
-		if @participant.nil? 
-			redirect_to root_url
-		end 
+		redirect_to root_url unless !@participant.nil? 
 	end
 
 	def update
@@ -89,8 +87,12 @@ class ParticipantsController < ApplicationController
  def set_contest
  	if params.has_key?(:contest_id) && !params[:contest_id].blank?
  		@contest = Contest.find_by(id:params[:contest_id]) 
+ 		if @contest.nil?
+ 			flash[:danger] = "Concurso inexistente!"
+ 			redirect_to contests_path
+ 		end
  	else
- 		flash[:danger] = "Concurso inexistente!"
+ 		flash[:danger] = "Parâmetro não aceito!"
  		redirect_to root_url
  	end
  end
@@ -101,10 +103,10 @@ class ParticipantsController < ApplicationController
   	redirect_to contests_path unless !@contest.nil?
   	@user_found = @contest.users.find_by(id:current_user.id)
   	if !@user_found.nil?
-  		flash[:danger] = "Você já está inscrito neste concurso!"
-      	redirect_to root_url #Redirecionar para o concurso q ele está inscrito
+  		flash[:info] = "Você já está inscrito neste concurso!"
+      	redirect_to contests_path 
       end
-    end
+  end
 
   #Check by  enrollment contest deadline
   def between_deadline
@@ -112,7 +114,7 @@ class ParticipantsController < ApplicationController
   		flash[:info] = "As incriçõs ainda não foram abertas!! Data de abertura: #{@contest.opening_enrollment.strftime("%d/%m/%Y")}"
   		redirect_to root_url
   	elsif Time.now > @contest.closing_enrollment
-  		flash[:info] = "As inscrições já foram encerradas!! Data de encerramento: #{@contest.closing_enrollment.strftime("%d/%m/%Y")}"
+  		flash[:info] = "As inscrições deste concurso já foram encerradas!! Data de encerramento: #{@contest.closing_enrollment.strftime("%d/%m/%Y")}"
   		redirect_to root_url
   	end    
   	# if (@contest.opening_enrollment..@contest.closing_enrollment+50.days).cover?(Time.now)
