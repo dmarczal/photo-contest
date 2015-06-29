@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609230644) do
+ActiveRecord::Schema.define(version: 20150625065446) do
 
   create_table "contests", force: :cascade do |t|
     t.string   "title"
@@ -39,6 +39,22 @@ ActiveRecord::Schema.define(version: 20150609230644) do
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink"
 
+  create_table "participants", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "contest_id"
+    t.integer  "placing"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "approved",             default: false
+    t.boolean  "accepted_term",        default: false
+    t.text     "description"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.text     "title"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -57,6 +73,10 @@ ActiveRecord::Schema.define(version: 20150609230644) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
+    t.string   "short_description"
+    t.integer  "first"
+    t.integer  "second"
+    t.integer  "third"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

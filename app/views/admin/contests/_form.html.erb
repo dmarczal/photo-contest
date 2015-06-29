@@ -1,10 +1,14 @@
-<%= simple_form_for([:admin, @contest], html: { multipart: true }) do |f| %>
-  <%= f.input :title %>  
-  <%= f.input :description, as: :text %>  
+<%= simple_form_for([:admin, @contest], html: { multipart: true, class: 'form-horizontal' }) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :text %>
+  <div class="row">
+    <div class="col-md-5"><%= f.input :opening_enrollment, :as => :datetime_picker %></div>
+    <div class="col-md-5  col-md-offset-2"><%= f.input :closing_enrollment, :as => :datetime_picker %></div>
+  </div>
+  <div class="row">
+    <div class="col-md-5"><%= f.input :opening, :as => :datetime_picker %></div>
+    <div class="col-md-5 col-md-offset-2"><%= f.input :closing, :as => :datetime_picker %></div>
+  </div>
   <%= f.input :image, as: :file %>
-  <%= f.input :opening_enrollment, as: :datetime %> 
-  <%= f.input :closing_enrollment, as: :datetime %>
-  <%= f.input :opening, as: :datetime %> 
-  <%= f.input :closing, as: :datetime %>
-  <%= f.button :submit %> 
+  <%= f.button :submit %>
 <% end %>

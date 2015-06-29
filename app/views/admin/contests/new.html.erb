@@ -1,5 +1,10 @@
-<h1>New Admin Contest</h1>
+<header class="without-background clearfix">
+  <h1 class="text-left pull-left">Novo Concurso</h1>
+  <div class="pull-right">
+    <%= link_to '', admin_contests_path, class: 'btn btn-primary btn-fab btn-raised mdi-navigation-arrow-back' %>
+  </div>
+</header>
+
+<br/>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', admin_contests_path %>

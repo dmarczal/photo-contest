@@ -1,70 +1,107 @@
-<div id="show" class="container">
+<% provide(:title, "Contests Show") %>
+<div id="contest" class="container">
 	<div id="description" class="row">
 		<div class="col-xs-12">
-			Todos os meses a UTFPR escolhe a melhor foto enviada pelos alunos. Você também tem uma bacana? Então envie pra gente. O vencedor do mês ganha atividades complementares.
+			<h2><%= @contest.title %></h2>
 		</div>
 	</div>
 	<div id="new-contest" class="row">
 		<div class="col-xs-12 col-sm-4">
 			<a href="#" class="thumbnail">
-		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %> 
+		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @contest.image.blank? == false %>
 		    </a>
+		    <ul class="list-group">
+				<li class="list-group-item">Início das Inscrições: <%= @contest.opening_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
+				<li class="list-group-item">Término das Inscrições: <%= @contest.closing_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
+				<li class="list-group-item">Início da Votação: <%= @contest.opening.strftime("%d/%m/%Y - %H:%M") %></li>
+				<li class="list-group-item">Término da Votação: <%= @contest.opening.utc.strftime("%d/%m/%Y - %H:%M") %></li>
+			</ul>
 		</div>
 		<div class="col-xs-12 col-sm-8">
-			<div class="well well-md">
+			<!-- <div class="well well-md"> -->
 			    <div class="row">
 			    	<div class="col-xs-12">
-			    		<p>Concurso de Fotografia 2015: "A Foto Mais Curtida do Câmpus"</p>
-					    <br>
-					    <p>Visando incentivar a comunidade acadêmica e externa à fotografia temática, bem como agregar valor aos objetos advindos da prática fotográfica interna, promover e divulgar a universidade, a UTFPR promove este concurso</p>
+			    		<%= @contest.description %>
+			    		<p><%= contest_status_label(@contest) %></p>
 			    	</div>
-			    	<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-sm-8 col-sm-offset-4 col-lg-7 col-lg-offset-5">
-			    		<a href="javascript:void(0)" class="btn btn-default btn-raised">Envie sua foto</a>
-						<a href="#">Ler regulamento</a>
-			    	</div>
+			    	
+					
+					<div class="col-xs-12">
+						<% if(@contest.open_enrollment?) %>
+							<p>As inscrições estarão abertas por mais <%= format_date_old(@contest.closing_enrollment) %></p>
+						<% end %>
+						<p><%= contest_link_register(@contest) %></p>
+					</div>
+
 			    </div>
-			</div>
+			<!-- </div> -->
 		</div>
 	</div>
-	<hr class="style-hr">
-	<div class="show-pictures-contest">
-		<div class="row">
-			<div class="container">
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
+	<% if @contest.open? %>
+		<hr class="style-hr">
+		<div class="show-pictures-contest">
+			<div class="row">
+				<div class="container">
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container">
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
+				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+				    	<h4>Título da Foto</h4>
+				    </a></div>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="container">
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="container">
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
-				<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail">
-			    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-			    </a></div>
+	<% end %>
+	<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Título da foto</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row image">
+						<div class="col-xs-12">
+							<%= image_tag("placeholder.png", alt: "Placeholder") %>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-xs-3 col-sm-2">
+							<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
+						</div>
+						<div class="col-xs-9 col-sm-10">
+							<p>Autor: Juca da Silva</p>
+							<p>Descrição: Breve descrição da imagem</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary">Votar</button>
+				</div>
 			</div>
 		</div>
 	</div>
