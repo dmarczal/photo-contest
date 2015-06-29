@@ -55,8 +55,9 @@ class Admin::ContestsController < Admin::ApplicationController
 
     def not_approved_participants
       @not_approved_participants = Participant.all.where(contest_id: @contest.id).where('approved = ? OR approved = ?', nil, false)
-      flash[:info] = "Existem #{@not_approved_participants.count} inscrições com aprovação pendende." if @not_approved_participants.count > 0
-        
+       if @not_approved_participants.count > 0
+        flash[:info] = "Existem #{@not_approved_participants.count} inscrições com aprovação pendende."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
