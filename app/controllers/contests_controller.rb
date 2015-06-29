@@ -15,6 +15,11 @@ class ContestsController < ApplicationController
   	@contests = Contest.old.paginate(page: params[:page], per_page: 10)
   end
 
+  def hall_of_fame
+    @photographers_first = User.order(first: :desc, second: :desc, third: :desc).limit(3)
+    @photographers_last = User.order(first: :desc, second: :desc, third: :desc).limit(7).offset(3)
+  end
+
   private
 
 	# Check by user logged
