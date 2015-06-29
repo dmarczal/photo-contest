@@ -20,19 +20,42 @@
           <p><%= @contest.description %></p>
 
           <p><strong><%= Contest.human_attribute_name :opening_enrollment %>:</strong>
-          <%= l(@contest.opening_enrollment, format: :short) %></p>
+            <%= l(@contest.opening_enrollment, format: :short) %></p>
 
           <p><strong><%= Contest.human_attribute_name :closing_enrollment %>:</strong>
-          <%= l(@contest.closing_enrollment, format: :short) %></p>
+            <%= l(@contest.closing_enrollment, format: :short) %></p>
 
           <p><strong><%= Contest.human_attribute_name :opening %>:</strong>
-          <%= l(@contest.opening, format: :short) %></p>
+            <%= l(@contest.opening, format: :short) %></p>
 
           <p><strong><%= Contest.human_attribute_name :closing %>:</strong>
-          <%= l(@contest.closing, format: :short) %></p>
+            <%= l(@contest.closing, format: :short) %></p>
+        </div>
+      </div>
+      <hr class="style-hr">
+
+      <h2>Inscrições com aprovação pendente</h2>
+      <div class="show-pictures-contest">
+        <div class="row">
+          <div class="container">
+            <% @not_approved_participants.each do |participant| %>
+              <%= render 'participant', :participant => participant %>
+            <% end %>
+          </div>
         </div>
       </div>
 
+      <h2>Inscrições aprovadas</h2>
+      <div class="show-pictures-contest">
+        <div class="row">
+          <div class="container">
+            <% @approved_participants.each do |participant| %>
+              <%= render 'participant', :participant => participant %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </article>
 </section>
