@@ -8,7 +8,7 @@
 	<% unless @current_contest.nil? %>
 		<div id="new-contest" class="row">
 			<div class="col-xs-12 col-sm-4">
-				<a href="#" class="thumbnail">
+				<a href="<%= contest_path @current_contest %>" class="thumbnail">
 			    	<%= image_tag(@current_contest.image(:original), alt: @current_contest.title, class: "img-responsive") unless @current_contest.image.blank? %> 
 		    		<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @current_contest.image.blank? == false %>
 			    </a>
@@ -23,7 +23,7 @@
 						    <p><%= @current_contest.description %></p>
 				    	</div>
 				    	<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-sm-8 col-sm-offset-4 col-lg-7 col-lg-offset-5">
-				    		<%= contest_link_register(@current_contest) %>
+				    		<%= contest_link_register(@current_contest) %>&nbsp;&nbsp;
 							
 							<%= link_to "Ler regulamento", @current_contest %>
 				    	</div>

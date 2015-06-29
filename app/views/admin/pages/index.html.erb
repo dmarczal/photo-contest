@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <header class="without-background clearfix">
+    <h1 class="text-left pull-left">Listagem de Páginas</h1>
+    <div class="pull-right">
+      <%= link_to '', new_admin_page_path , class: 'btn btn-primary btn-fab btn-raised mdi-content-add'%>
+    </div>
+  </header>
 
-<h1>Listing Pages</h1>
+  <br/>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Permalink</th>      
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+       <th><%= Page.human_attribute_name :name %></th>
+       <th><%= Page.human_attribute_name :permalink %></th>
+       <th colspan="2">Opções</th>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @pages.each do |page| %>
       <tr>
-        <td><%= page.name %></td>
-        <td><%= page.permalink %></td>        
-        <td><%= link_to 'Show', [:admin, page] %></td>
-        <td><%= link_to 'Edit', edit_admin_page_path(page) %></td>
-        <td><%= link_to 'Destroy', [:admin, page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to page.name, admin_page_path(page) %></td>
+        <td><%= page.permalink %></td>
+        <td><%= link_to raw('<i class="mdi-content-create"></i>'), edit_admin_page_path(page) %></td>
+        <td><%= link_to raw('<i class="mdi-content-clear"></i>'), admin_page_path(page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Page', new_admin_page_path %>
+    </tbody>
+  </table>
+</section>

@@ -4,10 +4,10 @@ class Admin::PagesController < ApplicationController
   def index
     @pages = Page.all
   end
-  
+
   def show
   end
-  
+
   def new
     @page = Page.new
   end
@@ -19,26 +19,26 @@ class Admin::PagesController < ApplicationController
     @page = Page.new(page_params)
 
     if @page.save
-      redirect_to [:admin, @page], notice: 'Page was successfully created.'        
+      redirect_to [:admin, @page], notice: 'Page was successfully created.'
     else
-      render :new        
-    end    
+      render :new
+    end
   end
-  
-  def update    
+
+  def update
     if @page.update(page_params)
-      redirect_to [:admin, @page], notice: 'Page was successfully updated.'        
+      redirect_to [:admin, @page], notice: 'Page was successfully updated.'
     else
-      render :edit      
-    end    
+      render :edit
+    end
   end
-  
+
   def destroy
-    @page.destroy    
+    @page.destroy
     redirect_to admin_pages_url, notice: 'Page was successfully destroyed.'
   end
 
-  def route    
+  def route
     @page = Page.find_by(permalink: params[:permalink])
 
     if @page
@@ -48,16 +48,16 @@ class Admin::PagesController < ApplicationController
     end
   end
 
-  private    
+  private
     def set_page
       @page = Page.find(params[:id])
     end
-    
-    def page_params      
+
+    def page_params
       params.require(:page).permit(:name, :permalink, :content)
     end
 
-    def page_not_found      
+    def page_not_found
       head :not_found
     end
 end
