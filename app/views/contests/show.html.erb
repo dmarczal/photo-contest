@@ -38,10 +38,6 @@
 			<!-- </div> -->
 		</div>
 	</div>
-<% @approved_participants.each do |participant| %>
-              <%#= render 'participant', :participant => participant %>
-              <%= participant.user.name %>
-            <% end %>
 	<% if @contest.open? %>
 		<hr class="style-hr">
 		<div class="show-pictures-contest">
