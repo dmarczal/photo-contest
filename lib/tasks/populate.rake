@@ -3,8 +3,8 @@ namespace :db do
   task :populate => :environment do
     require 'populator'
     require 'faker'
-    
-    [Contest, User, Participant].each(&:delete_all)
+
+    [Contest, User].each(&:delete_all)
 
     # Old contests
     Contest.populate(5) do |contest|
@@ -49,7 +49,7 @@ namespace :db do
     end
 
     # Current open enrollment contest
-    Contest.populate(1) do |contest|
+    Contest.populate(7) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -98,6 +98,9 @@ namespace :db do
       user.avatar = Faker::Avatar.image
       user.sign_in_count = 0
       user.username = Faker::Internet.user_name
+      user.first = Faker::Number.number(1)
+      user.second= Faker::Number.number(1)
+      user.third = Faker::Number.number(1)
     end
 
     user = User.new
@@ -109,14 +112,14 @@ namespace :db do
     user.admin = true
     user.save!
 
-    users = User.all.ids
-    contests = Contest.all.ids
+    # users = User.all.ids
+    # contests = Contest.all.ids
 
-    i = 0
-    Participant.populate(5) do |participant|
-      participant.user_id = users[i]
-      participant.contest_id = contests[i]
-      i = i + 1 
-    end
+    # i = 0
+    # Participant.populate(5) do |participant|
+    #   participant.user_id = users[i]
+    #   participant.contest_id = contests[i]
+    #   i = i + 1 
+    # end
   end
 end

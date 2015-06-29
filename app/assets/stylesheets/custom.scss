@@ -13,13 +13,14 @@ h1 {
 }
 
 
-/* forms */
+/* form sign in */
 .submit_sign_in {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
 }
 
+/* form inscription in contest */
 .text-right {
     float: right;
     width: 300px;
@@ -32,6 +33,7 @@ h1 {
 }
 
 .font-info-image-px {
+  margin-top: 0px;
   font-size: 10px;
 }
 
@@ -40,6 +42,47 @@ h1 {
   padding:20px;
   border-style: solid;
   border-radius: 10px;
+  border-color: #009688;
+}
+
+.align-check-term {
+  margin-left: 8px;
+  position: fixed;
+  top: 4px;
+  left: 20px;
+}
+
+/* Simple form style */
+
+.simple_form label {
+  float: left;
+  margin-right: 5px;
+}
+
+
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0;
+  width:100%;
+}
+
+
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic;
 }
 
 /* Flaired edges, by Tomas Theunissen */
@@ -77,13 +120,23 @@ hr.style-hr {
     border-bottom: 2px solid #3299BB;
 }
 
-body {
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 1.42857143;
-color: #fff;
-background-color: #F1F1F1;
+.thumb-miniature {
+  width:120px;
+  height:85px;
 }
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #fff;
+  background-color: #F1F1F1;
+}
+
+/* Contest show */
+#contest .modal .modal-header, #contest .modal .modal-footer{ text-align: center }
+#contest .modal .image { text-align: center }
+#contest .thumbnail { text-align: center }
 
 /* Photographer show */
 .bg_blur{height: 260px;background-size: cover;}
@@ -91,7 +144,36 @@ background-color: #F1F1F1;
 .photographer-infos{color : #808080;margin-left:10%;margin-top:70px;}
 .picture{height:150px;width:150px; position:absolute;top: 75px;left:-75px;}
 .picture_mob{position: absolute;width: 35%;left: 35%;bottom: 70%;}
+.position-user{position: absolute;top: 35px;left: 30px;}
+@media (max-width: 1199px){
+  .position-user{position: absolute;top: 18px;left: 23px;}
+}
+@media (max-width: 991px){
+  .position-user{position: absolute;top: 20px;left: 25px;}
+}
+@media (max-width: 890px){
+  .bg_blur img{margin: 0 auto;}
+  .picture {top: -93px;left: 14px;}
+}
 @media (max-width: 767px) {
+    .img-user-position{max-width: 30px!important;}
+    .position-user{position: initial!important;}
     .photographer-infos{text-align : center;}
     .nav{margin-top : 30px;}
 }
+
+@media (max-width: 600px){
+  .user-position-content{min-width: 240px;}
+}
+
+/* Admin Contests */
+header.without-background {
+  background-color: inherit;
+}
+
+.links-footer{
+  padding: 20px 0px;
+  ul a:hover{cursor: pointer;}
+}
+
+.list-icons{padding: 50px 0;}
