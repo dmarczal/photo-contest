@@ -124,18 +124,19 @@ namespace :db do
       Participant.populate(5) do |participant|
         participant.user_id = users[i]
         participant.contest_id = contest.id
-        participant.approved = false
+        participant.accepted_term = true
         participant.description = Faker::Lorem.paragraph
-        participant.title = Faker::Lorem.sentence(3, true)
+        participant.title = Faker::Lorem.words(3, true)
         i = i + 1
       end
 
       Participant.populate(2) do |participant|
         participant.user_id = users[i]
         participant.contest_id = contest.id
+        participant.accepted_term = true
         participant.approved = true
         participant.description = Faker::Lorem.paragraph
-        participant.title = Faker::Lorem.sentence(3, true)
+        participant.title = Faker::Lorem.words(3, true)
         i = i + 1
       end
     end

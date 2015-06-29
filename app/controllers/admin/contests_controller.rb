@@ -56,7 +56,7 @@ class Admin::ContestsController < Admin::ApplicationController
     end
 
     def not_approved_participants
-      @not_approved_participants = Participant.all.where(contest_id: @contest.id).where.not(approved: true)
+      @not_approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: nil)
       if @not_approved_participants.count > 0 
         flash[:info] = "Existem #{@not_approved_participants.count} inscrições com aprovação pendende."
       end
@@ -65,9 +65,5 @@ class Admin::ContestsController < Admin::ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contest_params
       params.require(:contest).permit(:title, :description, :image, :opening_enrollment, :closing_enrollment, :opening, :closing)
-    end
-
-    def participant_params
-      params.require(:participant).permit(:id, :approved)
     end
 end

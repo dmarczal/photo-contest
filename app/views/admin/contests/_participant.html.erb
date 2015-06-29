@@ -27,9 +27,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <%if !participant.approved %>
-          <button class="btn btn-primary">Aprovar Inscrição</button>
-        <%end%>
+        <%= link_to "aprovar", "/admin/participant/#{participant.id}/true", remote: true, class: "btn btn-primary"%>
+        <%= link_to "rejeitar", "/admin/participant/#{participant.id}/false", remote: true, class: "btn btn-primary"%>
       </div>
     </div>
   </div>
