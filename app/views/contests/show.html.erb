@@ -50,7 +50,7 @@
 					<% @approved_participants.each do |participant| %>
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							<a href="#" class="thumbnail" data-toggle="modal" data-target="#participant-<%= participant.id %>-photo">
-						    	<%= image_tag(participant.picture(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.blank? %>
+						    	<%= image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.url.blank? %>
 						    	<h4><%= participant.title %></h4>
 					   		</a>
 						</div>
@@ -70,7 +70,7 @@
 					<div class="modal-body">
 						<div class="row image">
 							<div class="col-xs-12">
-								<%= image_tag(participant.picture(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.blank? %>
+								<%= image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.url.blank? %>
 							</div>
 						</div>
 						<br>
