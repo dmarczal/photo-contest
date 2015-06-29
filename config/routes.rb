@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :pages
+  end
+
   devise_for :users
 
   root to:'home#index'
@@ -29,5 +33,6 @@ Rails.application.routes.draw do
 
     resources :contests
   end
-
+  
+  get ':permalink' => 'admin/pages#route'
 end

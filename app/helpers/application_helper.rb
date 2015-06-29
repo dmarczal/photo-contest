@@ -66,6 +66,12 @@ module ApplicationHelper
     end
   end
 
+
+  def markdown(text)
+    renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    renderer.render(text).html_safe
+  end
+
   # show link to register in any contest if it is enrollment open
   def contest_link_register(contest)
     (contest.open_enrollment?) ? link_to('Inscrever-me', new_participant_path(:contest_id => contest.id), :method => :get) : ''
@@ -89,5 +95,5 @@ module ApplicationHelper
     user_found = contest.users.find_by(id:current_user.id)
     (!user_found.nil?) ? '<span class="label label-primary">Inscrito</span>'.html_safe : ''
   end
-
+  
 end

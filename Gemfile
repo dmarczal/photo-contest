@@ -17,6 +17,7 @@ gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 
 gem 'sdoc',                      '0.4.0',   group: :doc
 gem 'populator',                 '1.0.0',   group: :development
+gem 'redcarpet',                 '3.3.1'
 
 group :development, :test do
   gem 'date_validator', '0.8.0'
