@@ -9,6 +9,7 @@ class ContestsController < ApplicationController
 
   def show
   	@contest = Contest.find_by_id(params[:id])
+    @approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
   end
   
   def archive
