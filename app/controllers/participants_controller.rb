@@ -21,7 +21,7 @@ class ParticipantsController < ApplicationController
 
 	def create
 		
-		@participant = @contest.participants.build(user: current_user,  description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
+		@participant = @contest.participants.build(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
 		respond_to do |format|
 			if @participant.save
 				flash[:success] = "Sua inscrição foi efetuada com sucesso! Aguarde pela aprovação." 
