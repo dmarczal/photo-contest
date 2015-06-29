@@ -82,7 +82,7 @@ namespace :db do
     end
 
     Contest.all.each do |contest|
-      contest.image =  File.open(Dir["#{Rails.root}/lib/images/*"].sample)
+      contest.image =  File.open(Dir["#{Rails.root}/lib/images/contest/*"].sample)
       contest.save(validate: false)
     end
 
@@ -120,6 +120,7 @@ namespace :db do
     users = User.all.where(admin:nil).ids
     Contest.all.each do |contest|
       i = 0
+      
       Participant.populate(5) do |participant|
         i = i + 1
         participant.user_id = users[i]
@@ -142,5 +143,11 @@ namespace :db do
         
       end
     end
+
+    Participant.all.each do |participant|
+      participant.picture =  File.open(Dir["#{Rails.root}/lib/images/participant/*"].sample)
+      participant.save(validate: false)
+    end
+
   end
 end
