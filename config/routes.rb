@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root to:'home#index'
 
+  get 'contests/hall_of_fame' => 'contests#hall_of_fame', as: 'hall_of_fame'
   get  'contests/archive'
   get  '/contests'   => 'contests#list'
   get  'contests/:id' => 'contests#show', as: 'contest'
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   get 'contests/show'
   
   get 'photographers/list', as: 'photographer_list'
-  get 'photographers/:id' => 'photographers#show', as: 'photographers'
+  get 'photographers/:id' => 'photographers#show', as: 'photographer'
 
   get '/admin' => 'admin/home#index'
 
