@@ -88,10 +88,12 @@ namespace :db do
     end
 
     # Some users
+    total = 20
     password = 'password'
-    User.populate(20) do |user|
+    range = (1..total).to_enum
+    User.populate(total) do |user|
       user.name = Faker::Name.name
-      user.email = Faker::Internet.email
+      user.email = #{Faker::Internet.email}_#{range.next}"
       user.encrypted_password = User.new(:password => password).encrypted_password
       user.short_description = Faker::Name.title
       user.biography = Faker::Lorem.paragraph(5)

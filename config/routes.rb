@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :pages
   end
 
+  get 'contests/archive'
+
   devise_for :users
 
   root to:'home#index'
