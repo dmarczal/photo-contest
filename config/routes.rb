@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :pages
   end
 
+  get 'contests/archive'
+
   devise_for :users
 
   root to:'home#index'
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
     delete   'logout'   => 'sessions#destroy'
 
     resources :contests
+
+    get      'participant/:id/:approved'   => 'participants#update'
   end
   
   get ':permalink' => 'admin/pages#route'

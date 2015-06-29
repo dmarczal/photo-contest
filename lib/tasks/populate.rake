@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [Contest, User].each(&:delete_all)
+    [Contest, User, Participant].each(&:delete_all)
 
     # Old contests
     Contest.populate(5) do |contest|
@@ -81,23 +81,27 @@ namespace :db do
       contest.closing              =   Time.zone.now + 8.days
     end
 
-
     Contest.all.each do |contest|
       contest.image =  File.open(Dir["#{Rails.root}/lib/images/*"].sample)
       contest.save(validate: false)
     end
 
     # Some users
+    total = 20
     password = 'password'
-    User.populate(20) do |user|
-      user.name = Faker::Name.name
-      user.email = Faker::Internet.email
+    range = (1..total).to_enum
+    User.populate(total) do |user|
+      name = Faker::Name.first_name
+      last_name = Faker::Name.last_name
+      user.name = "#{name} #{last_name}"
+      username = I18n.transliterate("#{name}_#{last_name}") # remove os acentos do username
+      user.username = "#{username}_#{range.next}".downcase
+      user.email = Faker::Internet.email(user.username)
       user.encrypted_password = User.new(:password => password).encrypted_password
       user.short_description = Faker::Name.title
       user.biography = Faker::Lorem.paragraph(5)
       user.avatar = Faker::Avatar.image
       user.sign_in_count = 0
-      user.username = Faker::Internet.user_name
       user.first = Faker::Number.number(1)
       user.second= Faker::Number.number(1)
       user.third = Faker::Number.number(1)
@@ -112,14 +116,28 @@ namespace :db do
     user.admin = true
     user.save!
 
-    # users = User.all.ids
-    # contests = Contest.all.ids
+    # Some participants
+    users = User.all.ids
+    Contest.all.each do |contest|
+      i = 0
+      Participant.populate(5) do |participant|
+        participant.user_id = users[i]
+        participant.contest_id = contest.id
+        participant.accepted_term = true
+        participant.description = Faker::Lorem.paragraph
+        participant.title = Faker::Lorem.words(3, true)
+        i = i + 1
+      end
 
-    # i = 0
-    # Participant.populate(5) do |participant|
-    #   participant.user_id = users[i]
-    #   participant.contest_id = contests[i]
-    #   i = i + 1 
-    # end
+      Participant.populate(2) do |participant|
+        participant.user_id = users[i]
+        participant.contest_id = contest.id
+        participant.accepted_term = true
+        participant.approved = true
+        participant.description = Faker::Lorem.paragraph
+        participant.title = Faker::Lorem.words(3, true)
+        i = i + 1
+      end
+    end
   end
 end
