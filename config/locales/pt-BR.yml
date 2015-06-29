@@ -14,6 +14,7 @@ pt-BR:
   activerecord:
     models:
       contest: Concurso
+      page: Página
     attributes:
       contest:
         title: Título
@@ -23,6 +24,10 @@ pt-BR:
         closing_enrollment: Encerramento das Inscrições
         opening: Abertura
         closing: Encerramento
+      page:
+        name: Nome
+        permalink: URL
+        content: Conteúdo
   date:
     abbr_day_names:
     - Dom
