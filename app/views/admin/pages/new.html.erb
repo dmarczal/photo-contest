@@ -1,5 +1,10 @@
-<h1>New Page</h1>
+<header class="without-background clearfix">
+  <h1 class="text-left pull-left">Nova Página</h1>
+  <div class="pull-right">
+    <%= link_to '', admin_pages_path, class: 'btn btn-primary btn-fab btn-raised mdi-navigation-arrow-back' %>
+  </div>
+</header>
+
+<br/>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', admin_pages_path %>
