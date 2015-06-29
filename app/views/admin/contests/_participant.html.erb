@@ -21,7 +21,7 @@
             <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %>
           </div>
           <div class="col-xs-9 col-sm-10">
-            <p>Autor: <%=participant.user_id%></p>
+            <p>Fotógrafo(a): <%= participant.user.name %> </p>
             <p>Descrição: <%=participant.description%></p>
           </div>
         </div>
