@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20150625065446) do
     t.datetime "image_updated_at"
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "permalink"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pages", ["permalink"], name: "index_pages_on_permalink"
+
   create_table "participants", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "contest_id"
