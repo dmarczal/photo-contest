@@ -50,16 +50,13 @@ class Admin::ContestsController < Admin::ApplicationController
 
     def approved_participants
       @approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
-       if @approved_participants.count > 0 
-        flash[:info] = "Ainda não existem inscrições aprovadas para este concurso."
-      end
+      flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." if @approved_participants.count > 0 
     end
 
     def not_approved_participants
-      @not_approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: nil)
-      if @not_approved_participants.count > 0 
-        flash[:info] = "Existem #{@not_approved_participants.count} inscrições com aprovação pendende."
-      end
+      @not_approved_participants = Participant.all.where(contest_id: @contest.id).where('approved = ? OR approved = ?', nil, false)
+      flash[:info] = "Existem #{@not_approved_participants.count} inscrições com aprovação pendende." if @not_approved_participants.count > 0
+        
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

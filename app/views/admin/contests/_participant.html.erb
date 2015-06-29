@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <%= link_to "aprovar", "/admin/participant/#{participant.id}/true", remote: true, class: "btn btn-primary"%>
-        <%= link_to "rejeitar", "/admin/participant/#{participant.id}/false", remote: true, class: "btn btn-primary"%>
+        <%= link_to "aprovar", "/admin/participant/#{participant.id}/true", remote: true, class: "btn btn-primary", "data-dismiss": "modal"%>
+        <%= link_to "rejeitar", "/admin/participant/#{participant.id}/false", remote: true, class: "btn btn-primary", "data-dismiss": "modal"%>
       </div>
     </div>
   </div>
