@@ -9,9 +9,9 @@
 		<div class="col-xs-12 col-sm-4">
 			<a href="#" class="thumbnail">
 				<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %> 
-		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @contest.image.blank? == false %>
-		    </a>
-		    <ul class="list-group">
+				<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @contest.image.blank? == false %>
+			</a>
+			<ul class="list-group">
 				<li class="list-group-item">Início das Inscrições: <%= @contest.opening_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
 				<li class="list-group-item">Término das Inscrições: <%= @contest.closing_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
 				<li class="list-group-item">Início da Votação: <%= @contest.opening.strftime("%d/%m/%Y - %H:%M") %></li>
@@ -20,35 +20,34 @@
 		</div>
 		<div class="col-xs-12 col-sm-8">
 			<!-- <div class="well well-md"> -->
-			    <div class="row">
-			    	<div class="col-xs-12">
-			    		<%= @contest.description %>
-			    		<p><%= contest_status_label(@contest) %></p>
-			    	</div>
-			    	
-					
-					<div class="col-xs-12">
-						<% if(@contest.open_enrollment?) %>
-							<p>As inscrições estarão abertas por mais <%= format_date_old(@contest.closing_enrollment) %></p>
-						<% end %>
-						<p><%= contest_link_register(@contest) %></p>
-					</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<%= @contest.description %>
+					<p><%= contest_status_label(@contest) %></p>
+				</div>
+				
+				
+				<div class="col-xs-12">
+					<% if(@contest.open_enrollment?) %>
+					<p>As inscrições estarão abertas por mais <%= format_date_old(@contest.closing_enrollment) %></p>
+					<% end %>
+					<p><%= contest_link_register(@contest) %></p>
+				</div>
 
-			    </div>
+			</div>
 			<!-- </div> -->
 		</div>
 	</div>
 	<% if @contest.open? %>
 		<hr class="style-hr">
 		<div class="show-pictures-contest">
-
-      <div class="row">
-        <div class="container">
-          <% @participants.each do |participant| %>
-            <%= render 'participant', :participant => participant %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+			<div class="row">
+				<div class="container">
+					<% @participants.each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	<% end %>
 </div>
