@@ -54,13 +54,13 @@
 		</div>
 		<div class="col-md-6 col-xs-12">
 			<h2>Ultimas fotos cadastradas</h2>
-			<div id="owl-new-images" class="owl-carousel owl-theme">
+			<ul class="bxslider">
 				<% @participants.each do |participant|%>
-					<div class="item">
+					<li>
 						<%= image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.url.blank? %>
-					</div>
+					</li>
 				<% end %>
-			</div>
+			</ul>
 		</div>
 	</div>
 </div>

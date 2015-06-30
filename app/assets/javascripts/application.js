@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
@@ -18,24 +17,13 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require moment/pt-br.js
-//= require owl.carousel
+//= require jquery.bxslider.min
+//= require_tree .
+//= require_self
 
 $(document).ready(function() {
   $.material.init();
-      var carousel = $("#owl-new-images");
-      carousel.owlCarousel({
-        slideSpeed : 50,
-        paginationSpeed : 400,
-        items : 1,
-        autoPlay : true,
-        itemsDesktop : false,
-        itemsDesktopSmall : false,
-        itemsTablet: false,
-        itemsMobile : false,
-        navigation:true,
-        navigationText: [
-          "<i class='icon-chevron-left icon-white'><</i>",
-          "<i class='icon-chevron-right icon-white'>></i>"
-        ],
-    });
+  $('.bxslider').bxSlider({
+  	auto: true,
+  });
 });
