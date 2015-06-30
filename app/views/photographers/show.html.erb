@@ -1,7 +1,7 @@
 <div id="photographer" class="container">
 	<div class="row panel">
 		<div class="col-md-4 bg_blur ">
-			<%= image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive") %>
+			<%= picture_featured(@featured) %>
 		</div>
         <div class="col-md-8  col-xs-12">
            <%= gravatar_for @photographer, { size: 140 , _class: "img-thumbnail picture"} %>

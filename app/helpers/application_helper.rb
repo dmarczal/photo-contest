@@ -119,5 +119,13 @@ end
 
     return link_to label, "/vote/#{participant.id}", remote: true, class: button_class, "data-dismiss": "modal"
   end
+
+  def picture_featured (participant)
+      if participant.nil?
+          image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive") 
+      else
+          image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive img-featured") 
+      end
+  end
   
 end
