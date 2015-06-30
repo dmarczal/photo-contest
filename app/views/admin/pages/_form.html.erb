@@ -1,9 +1,41 @@
+<script type="text/javascript">
+	$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
 <%= simple_form_for @page, url: [:admin, @page] do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :permalink %>
+    <%= content_tag :button, 'Ajuda', class: 'btn btn-primary help-markdown', 
+      type: 'button', 
+      data: 
+        { html: 'true', toggle: 'popover', 
+          content: "<dl>
+                      <dt>Negrito</dt>
+                      <dd>**Exemplo de Negrito**</dd>
+                      <dd><b>Exemplo de Negrito</b></dd>
+
+                      <dt>Itálico</dt>
+                      <dd>*Exemplo em Itálico*</dd>
+                      <dd><i>Exemplo em Itálico</i></dd>
+
+                      <dt>Itálico e Negrito</dt>
+                      <dd>***Exemplo em Itálico e Negrito***</dd>
+                      <dd><b><i>Exemplo em Itálico e Negrito</i></b></dd>
+
+                      <dt>Links</dt>
+                      <dd>[UTFPR](http://www.utfpr.edu.br/)</dd>
+                      <dd><a href='http://www.utfpr.edu.br/'>UTFPR</a></dd>
+                    </dl>
+
+                    <p>Para mais informações exemplos acesse esse <a href='http://forum.techtudo.com.br/ajuda_markdown/' target='_blank'>tutorial</a></p>", 
+
+          placement: 'left'}, 
+      title: '<h4>Editor Markdown</h4>' %>
+
     <%= f.input :content, as: :text, input_html: { cols: 10, rows: 10 } %>
   </div>
 
