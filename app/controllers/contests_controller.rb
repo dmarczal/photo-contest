@@ -1,5 +1,4 @@
 class ContestsController < ApplicationController
-
   #before_action :logged_in_user 
 
   def list
@@ -9,7 +8,8 @@ class ContestsController < ApplicationController
 
   def show
   	@contest = Contest.find_by_id(params[:id])
-    @approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
+    @participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
+    flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." if @participants.count > 0
   end
   
   def archive
@@ -30,7 +30,7 @@ class ContestsController < ApplicationController
      flash[:danger] = "Efetue seu login para se inscrever no concurso!"
      redirect_to new_user_session_path
    end
- end
+  end 
 
 end
 

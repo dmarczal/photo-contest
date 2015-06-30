@@ -105,5 +105,19 @@ end
     end  
     return link_to label, "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary", "data-dismiss": "modal"
   end
+
+  def user_vote_pannel(participant)
+    label = "faça login para votar"
+    button_class = "btn btn-primary disabled"
+
+    if current_user
+      label = "Votar"
+      if !Vote.find_by(user_id: current_user.id, participant_id: participant.id)
+        button_class = "btn btn-primary"
+      end
+    end
+
+    return link_to label, "/vote/#{participant.id}", remote: true, class: button_class, "data-dismiss": "modal"
+  end
   
 end

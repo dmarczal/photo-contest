@@ -2,6 +2,7 @@ class Participant < ActiveRecord::Base
 	include Paperclip::Glue
 	belongs_to :user
 	belongs_to :contest
+  has_many :votes
 
 	has_attached_file :picture, :styles => { :medium => "600x800>", :thumb => "100x100>", :large => '1200x800>' }, :default_url => "placeholder.png"
   	
