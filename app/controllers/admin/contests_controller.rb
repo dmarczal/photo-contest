@@ -52,7 +52,7 @@ class Admin::ContestsController < Admin::ApplicationController
     end
 
     def approved_participants
-      @approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
+      @approved_participants = Participant.approved.where(contest_id: @contest.id)
       flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." unless @approved_participants.count > 0
     end
 
