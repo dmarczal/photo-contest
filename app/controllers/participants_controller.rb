@@ -7,7 +7,7 @@ class ParticipantsController < ApplicationController
 	before_action :between_deadline, only: [:new, :create]
 
 	def index
-		@participants = Participant.all.where("user_id = ?", current_user.id) 
+		@participants = Participant.where("user_id = ?", current_user.id) 
 		if @participants.count <= 0 
 			flash[:info] = "Você ainda não possui nenhuma inscrição! Inscreva-se já!"
 			redirect_to contests_path
