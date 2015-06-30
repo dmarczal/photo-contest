@@ -15,12 +15,13 @@ class ParticipantsController < ApplicationController
 	end
 
 	def new
+		@user = current_user
 		@contest
 		@participant = Participant.new
 	end
 
 	def create
-		
+		@user = current_user
 		@participant = @contest.participants.build(user: current_user, picture: params[:participant][:picture], description: params[:participant][:description], accepted_term: params[:participant][:accepted_term], title: params[:participant][:title])
 		respond_to do |format|
 			if @participant.save

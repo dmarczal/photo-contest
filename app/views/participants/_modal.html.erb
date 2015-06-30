@@ -17,8 +17,8 @@
 				<div class="row">
 					<div class="col-xs-9 col-sm-10">
 						<p><%= participant.contest.title %></p>
-						<p>Votos: 233 </p>
-						<p>Colocação: 3º Lugar</p>
+						<p>Votos: <%= @participant.votes.count %> </p>
+						<p>Colocação: <%= (@participant.placing.nil?) ? '' :  @participant.placing.nil? %></p>
 					</div>
 				</div>
 			</div>

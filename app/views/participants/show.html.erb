@@ -43,8 +43,8 @@
 					<p>Título: <%= @participant.title %>
 						<p>Status: <%= label_status_inscription(@participant) %>
 							<p><%= link_to_edit_inscription(@participant) %></p>
-							<p>Likes: 233 </p>
-							<p>Colocação: <%= @participant.placing %>3º Lugar </p>
+							<p> Número de votos: <%= @participant.votes.count %>  </p>
+							<p>Colocação: <%= (@participant.placing.nil?) ? '' :  @participant.placing.nil? %> </p>
 							<p>Descrição: <%= @participant.description %></p>
 							<p><a href="#" data-toggle="modal" data-target="#myModal" title="Visualizar Foto" >Visualizar Foto</a> </p>
 				</div>
