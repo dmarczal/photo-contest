@@ -102,8 +102,8 @@ end
     else
       label = 'Aprovar Inscrição'
       action = 'true'
-    end  
-    return link_to label, "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary", "data-dismiss": "modal"
+    end
+    return link_to label, "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary", "data-dismiss" => "modal"
   end
 
   def user_vote_pannel(participant)
@@ -117,7 +117,7 @@ end
       end
     end
 
-    return link_to label, "/vote/#{participant.id}", remote: true, class: button_class, "data-dismiss": "modal"
+    return link_to label, "/vote/#{participant.id}", remote: true, class: button_class, "data-dismiss" => "modal"
   end
 
   def picture_featured (participant)
