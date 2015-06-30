@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   end
   
   get ':permalink' => 'admin/pages#route'
+  get 'vote/:id' => 'votes#create'
 end

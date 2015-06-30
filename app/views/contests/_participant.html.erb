@@ -1,0 +1,34 @@
+<!-- Thumbnail -->
+<div class="col-md-2 col-sm-2 col-xs-12"><a href="#" data-toggle="modal" data-target=#<%="modal-#{participant.id}"%> class="thumbnail"> <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %> </a></div>
+
+<!-- Modal -->
+<div class="modal fade" id=<%="modal-#{participant.id}"%> tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%=participant.title%></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row image">
+          <div class="col-xs-12">
+           <%= image_tag(participant.picture.url(:medium), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %> 
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-3 col-sm-2">
+            <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %>
+          </div>
+          <div class="col-xs-9 col-sm-10">
+            <p>Fotógrafo(a): <%= participant.user.name %> </p>
+            <p>Descrição: <%=participant.description%></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= user_vote_pannel(participant) %>
+      </div>
+    </div>
+  </div>
+</div>
