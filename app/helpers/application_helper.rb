@@ -102,8 +102,8 @@ module ApplicationHelper
   end
 
   def link_to_approve_inscription(participant)
-     label = 'Aprovar Inscrição'
-      action = 'approved'
+    label = 'Aprovar Inscrição'
+    action = 'approved'
     return link_to 'Aprovar Inscrição', "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary ", "data-dismiss" => "modal" if participant.pending? || participant.failed?
   end
 
@@ -113,7 +113,7 @@ module ApplicationHelper
 
     if current_user
       label = "Votar"
-      if not_voted_in_this_contest(participant.contest_id)
+      if did_not_voted_in_this_contest?(participant.contest_id)
         button_class = "btn btn-primary"
       end
     end
@@ -129,7 +129,7 @@ module ApplicationHelper
     end
   end
 
-  def not_voted_in_this_contest(contest_id)
+  def did_not_voted_in_this_contest?(contest_id)
     #Erro se não houver participants
     contest_participants = Participant.where(contest_id: contest_id).pluck(:id)
     Vote.where(participant_id: contest_participants, user_id: current_user.id).empty?

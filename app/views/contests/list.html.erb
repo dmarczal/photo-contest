@@ -6,7 +6,7 @@
 			<% @contests.each do |contest| %>
 				<div class="row">
 					<div class="col-xs-12 col-sm-3">
-						<a href="#" class="thumbnail">
+						<a href="<%= contest_path(contest) %>" class="thumbnail">
 							<%= image_tag(contest.image(:original), alt: contest.title, class: "img-responsive") unless contest.image.blank? %>
 		    				<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless contest.image.blank? == false %>
 					    </a>
