@@ -104,7 +104,7 @@ module ApplicationHelper
   def link_to_approve_inscription(participant)
      label = 'Aprovar Inscrição'
       action = 'approved'
-    return link_to 'Aprovar Inscrição', "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary ", "data-dismiss" => "modal" if participant.pending?
+    return link_to 'Aprovar Inscrição', "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary ", "data-dismiss" => "modal" if participant.pending? || participant.failed?
   end
 
   def user_vote_pannel(participant)
@@ -135,10 +135,32 @@ module ApplicationHelper
     Vote.where(participant_id: contest_participants, user_id: current_user.id).empty?
   end
   
+
   def link_to_reject_inscription(participant)
    label = 'Recusar Inscrição'
    action = 'failed'
    return link_to label, "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary", "data-dismiss" => "modal"
  end
+
+
+  # Generate the dropdown menu with static pages
+  def dropdown_static_pages pages = ''
+    
+    content_tag :li, class: 'dropdown' do    
+      link_to '#', data: { target: '#', toggle: 'dropdown' }, class: 'dropdown-toggle', 'aria-expanded': 'false' do
+        "Dropdown"
+        content_tag(:b, '', class: 'caret')
+        content_tag(:div, '', class: 'ripple-wrapper')
+
+        content_tag :ul, class: 'dropdown-menu' do
+          content_tag :li do
+            link_to 'Mazaa', '#'
+          end
+        end
+      end
+    end
+        
+  end
+  
 
 end
