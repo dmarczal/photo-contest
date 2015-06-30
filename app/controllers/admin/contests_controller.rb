@@ -32,11 +32,14 @@ class Admin::ContestsController < Admin::ApplicationController
   end
 
   def update
-    if @contest.update(contest_params)
-      redirect_to admin_contest_path(@contest), notice: 'Contest was successfully updated.'
-    else
-      render :edit
-      render json: @contest.errors, status: :unprocessable_entity
+    respond_to do |format|
+      if @contest.update(contest_params)
+        format.html { redirect_to @contest, notice: 'Contest was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @contest.errors, status: :unprocessable_entity }
+      end
     end
   end
 
