@@ -6,7 +6,7 @@ class PhotographersController < ApplicationController
 
 	def show
   		@photographer = User.find_by_id(params[:id])
-  		@participants = Participant.where(user: @photographer).where(approved: true)
+  		@participants = Participant.approved.where(user: @photographer)
   		@featured = @participants.sample()
   	end
 
