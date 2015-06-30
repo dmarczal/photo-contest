@@ -9,8 +9,8 @@ class ContestsController < ApplicationController
   def show
   	@contest = Contest.find_by_id(params[:id])
 
-    @participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
-    flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." if @participants.count > 0
+    @participants = Participant.approved.where(contest_id: @contest.id)
+    flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." unless @participants.count > 0
 
   end
   
