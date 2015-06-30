@@ -127,7 +127,7 @@ namespace :db do
         participant.contest_id = contest.id
         participant.accepted_term = true
         participant.status = 2
-        participant.description = Faker::Lorem.paragraph
+        participant.description = Faker::Lorem.paragraph(1)
         participant.title = Faker::Lorem.words(3, true)
         i = i + 1
       end
@@ -138,7 +138,7 @@ namespace :db do
         participant.contest_id = contest.id
         participant.accepted_term = true
         participant.status = 0
-        participant.description = Faker::Lorem.paragraph
+        participant.description = Faker::Lorem.paragraph(1)
         participant.title = Faker::Lorem.words(3, true)
         
       end

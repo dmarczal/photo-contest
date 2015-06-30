@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
     resources :contests
 
-    get      'participant/:id/:approved'   => 'participants#update'
+    get      'participant/:id/:status'   => 'participants#update'
   end
   
   get ':permalink' => 'admin/pages#route'

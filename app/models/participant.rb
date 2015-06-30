@@ -21,7 +21,7 @@ class Participant < ActiveRecord::Base
   validates :title, length: { minimum: 3 }
   validates :title, length: { maximum: 50 }
   validates :description, length: { minimum: 10 }
-  validates :description, length: { maximum: 200 }
+  validates :description, length: { maximum: 500 }
 
   #Validation to picture properties
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
