@@ -97,6 +97,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    dropbox-sdk (1.6.4)
+      json
     erubis (2.7.0)
     execjs (2.5.2)
     faker (1.3.0)
@@ -161,6 +163,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-dropbox (1.3.2)
+      dropbox-sdk (~> 1.3)
+      paperclip (>= 3.1, < 5)
     pg (0.17.1)
     populator (1.0.0)
     pry (0.10.1)
@@ -279,6 +284,7 @@ DEPENDENCIES
   minitest-reporters (= 1.0.5)
   momentjs-rails (~> 2.9)!
   paperclip (~> 4.2)
+  paperclip-dropbox (>= 1.1.7)
   pg (= 0.17.1)
   populator (= 1.0.0)
   pry-byebug (= 3.1.0)
