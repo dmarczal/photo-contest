@@ -8,10 +8,11 @@ class ContestsController < ApplicationController
 
   def show
   	@contest = Contest.find_by_id(params[:id])
-
     @participants = Participant.approved.where(contest_id: @contest.id)
     flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." unless @participants.count > 0
-
+    if @contest.closed?
+      @podium = Participant.podium(@contest.id)
+    end
   end
   
   def archive

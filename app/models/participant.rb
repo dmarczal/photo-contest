@@ -34,4 +34,27 @@ class Participant < ActiveRecord::Base
   def between_deadline?
     (self.contest.opening_enrollment..self.contest.closing_enrollment).cover?(Time.now) ? true : false
   end
+
+  def self.podium contest_id
+    participants = Participant.approved.where(contest_id: contest_id)
+    votes = []
+    
+    participants.each do |participant|
+
+      if !votes[participant.votes.count].nil?
+        aux = votes[participant.votes.count]
+        
+        votes[participant.votes.count] = []
+        votes[participant.votes.count].push(aux)
+        votes[participant.votes.count].push(participant)
+      else
+        votes[participant.votes.count] = participant    
+      end
+      
+    end
+    #votes.sort 
+    #binding.pry
+
+  end
+
 end

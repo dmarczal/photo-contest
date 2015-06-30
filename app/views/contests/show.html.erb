@@ -38,7 +38,7 @@
 			<!-- </div> -->
 		</div>
 	</div>
-	<% if @contest.open? || @contest.closed? %>
+	<% if @contest.open? %>
 		<hr class="style-hr">
 		<div class="show-pictures-contest">
 
@@ -50,5 +50,37 @@
         </div>
       </div>
     </div>
+	<% end %>
+	<% if @contest.closed? %>
+		<div class="row">
+			<p>Primeiro lugar</p>
+			<% if @podium[0].kind_of?(Array) %>
+				<% @podium[0].each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+		        <% end %>
+		    <% else %>
+				<%= render 'participant', :participant => @podium[0] %>
+		    <% end %>
+		</div>
+		<div class="row">
+			<p>Segundo lugar</p>
+			<% if @podium[1].kind_of?(Array) %>
+				<% @podium[1].each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+		        <% end %>
+		    <% else %>
+				<%= render 'participant', :participant => @podium[1] %>
+		    <% end %>
+		</div>
+		<div class="row">
+			<p>Terceiro lugar</p>
+			<% if @podium[2].kind_of?(Array) %>
+				<% @podium[2].each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+		        <% end %>
+		    <% else %>
+				<%= render 'participant', :participant => @podium[2] %>
+		    <% end %>
+		</div>
 	<% end %>
 </div>
