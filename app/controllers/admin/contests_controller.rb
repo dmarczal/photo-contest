@@ -1,5 +1,5 @@
 class Admin::ContestsController < Admin::ApplicationController
-  before_action :logged_in_user
+  #before_action :logged_in_user
   before_action :admin_user
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
   before_action :approved_participants, only: [:show, :edit, :update, :destroy]
@@ -52,8 +52,8 @@ class Admin::ContestsController < Admin::ApplicationController
     end
 
     def approved_participants
-      @approved_participants = Participant.approved.where(contest_id: @contest.id)
-      flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." if @approved_participants.count > 0
+      @approved_participants = Participant.all.where(contest_id: @contest.id).where(approved: true)
+      flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." unless @approved_participants.count > 0
     end
 
     def not_approved_participants
