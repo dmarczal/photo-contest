@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-xs-8">
 					<h4 class="list-group-item-heading"><%= participant.contest.title %></h4>
-					<%= participant_approved_label(participant) %>
+					<%= label_status_inscription(participant) %>
 					<p></p>
 					<p><%= link_to_show_inscription(participant.id)  %></p>
 				</div>

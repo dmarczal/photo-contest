@@ -121,23 +121,23 @@ namespace :db do
     Contest.all.each do |contest|
       i = 0
       
-      Participant.populate(5) do |participant|
+      Participant.populate(2) do |participant|
         i = i + 1
         participant.user_id = users[i]
         participant.contest_id = contest.id
         participant.accepted_term = true
-        participant.approved = false
+        participant.status = 2
         participant.description = Faker::Lorem.paragraph
         participant.title = Faker::Lorem.words(3, true)
         i = i + 1
       end
 
-      Participant.populate(5) do |participant|
+      Participant.populate(2) do |participant|
         i = i + 1
         participant.user_id = users[i]
         participant.contest_id = contest.id
         participant.accepted_term = true
-        participant.approved = true
+        participant.status = 0
         participant.description = Faker::Lorem.paragraph
         participant.title = Faker::Lorem.words(3, true)
         

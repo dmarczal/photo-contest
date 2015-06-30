@@ -41,7 +41,7 @@
 					<p>Fotógrafo(a): <%= @participant.user.name %> </p>
 					<p>Email: <%= @participant.user.email %> </p>
 					<p>Título: <%= @participant.title %>
-						<p>Status: <%= participant_approved_label(@participant) %>
+						<p>Status: <%= label_status_inscription(@participant) %>
 							<p><%= link_to_edit_inscription(@participant) %></p>
 							<p>Likes: 233 </p>
 							<p>Colocação: <%= @participant.placing %>3º Lugar </p>

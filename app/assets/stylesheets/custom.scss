@@ -93,6 +93,10 @@ hr.style-hr {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
+.align-button-approve-status {
+  float: right;
+}
+
 /* photographers */
 .photographers-rating .rating-full-star{ background: url(../images/full-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}
 .photographers-rating .rating-no-star{ background: url(../images/no-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}

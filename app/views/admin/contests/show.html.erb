@@ -55,6 +55,17 @@
           </div>
         </div>
       </div>
+
+        <h2>Inscrições recusadas</h2>
+      <div class="show-pictures-contest">
+        <div class="row">
+          <div class="container">
+            <% @rejected_participants.each do |participant| %>
+              <%= render 'participant', :participant => participant %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       
     </div>
   </article>
