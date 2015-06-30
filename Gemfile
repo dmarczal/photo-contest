@@ -15,7 +15,7 @@ gem 'devise',                    '3.5.1'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 gem "paperclip-dropbox", ">= 1.1.7"
-
+gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'OwlCarousel2'
 gem 'sdoc',                      '0.4.0',   group: :doc
 gem 'populator',                 '1.0.0',   group: :development
 gem 'redcarpet',                 '3.3.1'
