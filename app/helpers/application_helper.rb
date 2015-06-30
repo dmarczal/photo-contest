@@ -111,7 +111,7 @@ end
 
     if current_user
       label = "Votar"
-      if !Vote.find_by(user_id: current_user.id, participant_id: participant.id)
+      if not_voted_in_this_contest(participant.contest_id)
         button_class = "btn btn-primary"
       end
     end
@@ -120,11 +120,17 @@ end
   end
 
   def picture_featured (participant)
-      if participant.nil?
-          image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive") 
-      else
-          image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive img-featured") 
-      end
+    if participant.nil?
+        image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive") 
+    else
+        image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive img-featured") 
+    end
+  end
+
+  def not_voted_in_this_contest(contest_id)
+    #Erro se não houver participants
+    contest_participants = Participant.where(contest_id: contest_id).pluck(:id)
+    Vote.where(participant_id: contest_participants, user_id: current_user.id).empty?
   end
   
   def link_to_reject_inscription(participant)
