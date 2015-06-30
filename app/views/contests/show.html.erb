@@ -38,7 +38,7 @@
 			<!-- </div> -->
 		</div>
 	</div>
-	<% if @contest.open? %>
+	<% if @contest.open? || @contest.closed? %>
 		<hr class="style-hr">
 		<div class="show-pictures-contest">
 
