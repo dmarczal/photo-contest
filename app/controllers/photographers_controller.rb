@@ -1,7 +1,7 @@
 class PhotographersController < ApplicationController
 	
 	def list
-		@photographers = User.all
+		@photographers = User.all.paginate(page: params[:page], per_page: 10)
 	end
 
 	def show

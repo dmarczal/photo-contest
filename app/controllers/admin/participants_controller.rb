@@ -2,7 +2,7 @@ class Admin::ParticipantsController < ApplicationController
 
   def update
     @participant = Participant.find(params[:id])
-    @participant.approved = params[:approved]
+    @participant.status = params[:approved]
     respond_to do |format| 
         if @participant.save 
           format.js {render inline: "location.reload();" }

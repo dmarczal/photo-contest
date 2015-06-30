@@ -77,8 +77,14 @@ end
   end
 
   # show approved label status 
-  def participant_approved_label(participant)
-    (participant.approved?) ? '<span class="label label-success">Inscrição Aprovada</span>'.html_safe : '<span class="label label-warning">Aguardando aprovação da inscrição</span>'.html_safe 
+  def label_status_inscription(participant)
+    if participant.pending? 
+      '<span class="label label-warning">Inscrição enviada para aprovação</span>'.html_safe
+    elsif participant.failed?
+      '<span class="label label-danger">Sua inscrição foi recusada</span>'.html_safe 
+    elsif participant.approved?
+      '<span class="label label-success">Inscrição aprovada</span>'.html_safe 
+    end
   end
 
   def gravatar_for(user, options = { size: 80 , _class: ""})
@@ -95,15 +101,8 @@ end
     (!user_found.nil?) ? '<span class="label label-primary">Inscrito</span>'.html_safe : ''
   end
 
-  def change_approved_status(participant)
-    if participant.approved? 
-      label = 'Rejeitar Inscrição'
-      action = 'false'
-    else
-      label = 'Aprovar Inscrição'
-      action = 'true'
-    end  
-    return link_to label, "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary", "data-dismiss": "modal"
+  def link_to_approve_inscription(participant)
+    return link_to 'Aprovar Inscrição', "/admin/participant/#{participant.id}/approved", remote: true, class: "btn btn-primary ", "data-dismiss": "modal" if participant.pending?
   end
 
   def user_vote_pannel(participant)
@@ -128,4 +127,10 @@ end
       end
   end
   
+  def link_to_reject_inscription(participant)
+   label = 'Recusar Inscrição'
+   action = 'failed'
+   return link_to label, "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary", "data-dismiss": "modal"
+ end
+
 end

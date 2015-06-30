@@ -13,8 +13,14 @@
         <div class="row image">
           <div class="col-xs-12">
            <%= image_tag(participant.picture.url(:medium), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %> 
-          </div>
+         </div>
+       </div>
+       <br>
+       <div class="row">
+        <div class="col-xs-3 col-sm-2">
+          <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %>
         </div>
+
         <br>
         <div class="row">
           <div class="col-xs-3 col-sm-2">
@@ -24,11 +30,14 @@
             <p>Fotógrafo(a): <%= participant.user.name %> </p>
             <p>Descrição: <%=participant.description%></p>
           </div>
-        </div>
       </div>
-      <div class="modal-footer">
-        <%= change_approved_status(participant) %>
+    </div>
+    <div class="modal-footer">
+      <div class="row align-button-approve-status">
+        <div class="col-md-6"><%= link_to_reject_inscription(participant) %></div>
+        <div class="col-md-6"> <%= link_to_approve_inscription(participant) %></div>
       </div>
     </div>
   </div>
+</div>
 </div>

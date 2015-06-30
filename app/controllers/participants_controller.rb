@@ -47,7 +47,7 @@ class ParticipantsController < ApplicationController
 			return redirect_to @participant
 		end
 		#Pra que a inscrição seja enviada para aprovação novamente.
-		@participant.approved = false unless !participant_params.has_key?(:picture) 
+		@participant.status = "pending" unless !participant_params.has_key?(:picture) 
 		respond_to do |format|
 			if @participant.update(participant_params)
 				flash[:success] = "Sua inscrição foi atualizada com sucesso!" 
