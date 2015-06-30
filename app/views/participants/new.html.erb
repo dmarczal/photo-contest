@@ -13,7 +13,7 @@
 				<div class="form-inputs">
 					<%= f.input :contest_id, :as => :hidden, :input_html => { :value => @contest.id } %>
 					<%= f.input :picture, as: :file, label: 'Upload da Foto:' %>
-					<p class="font-info-image-px">Foto (formato .jpg, ter definição mínima de 300 DPI, dimensão mínima de 800px por 600px e peso máximo de 1.5MB).</p> <br>
+					<p class="font-info-image-px">Foto (formato .jpg, dimensão mínima de 800px por 600px e peso máximo de 20MB).</p> <br>
 
 					<%= f.input :title, label: 'Título da Foto: ', placeholder: 'Informe o título da foto' %>
 					<%= f.input :description, label: 'Descrição da Foto: ', placeholder: 'Informe uma descrição sobre a foto' %>
