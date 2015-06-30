@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: Sobre
-  permalink: sobre
-  content: Uma página sobre
 
 contact:
   name: Contato

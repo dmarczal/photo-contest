@@ -21,12 +21,29 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
 								<li><%= link_to 'Principal', root_url %></li>
+								<li class="dropdown">
+								  <%= link_to '#', data: { target: '#', toggle: 'dropdown' }, class: 'dropdown-toggle', 'aria-expanded': 'false' do %>
+								  
+								    <%= 'Páginas' %>
+								    <%= content_tag(:b, '', class: 'caret') %>
+								    <%= content_tag(:div, '', class: 'ripple-wrapper') %>
+
+								    <%= content_tag :ul, class: 'dropdown-menu' do %>
+								      <% @static_pages.each do |static_page|%>      
+								        <%= content_tag :li do %>
+								          <%= link_to static_page.name, "/#{static_page.permalink}" %>
+								        <% end %>
+								      <% end %>
+
+								    <% end %>
+								  <% end %>
+								</li>
 								<li><%= link_to_show_inscriptions() %></li>
 								<li><a href="<%= contests_path %>">Concursos</a></li>
 								<li><%= link_to 'Participantes', photographer_list_url %></li>
 								<li><a href="<%= contests_archive_path %>">Arquivo</a></li>
 								<li><%= link_to_login() %></li>
-								<li><%= link_to_sign_up() %></li>
+								<li><%= link_to_sign_up() %></li>								
 							</ul>
 						</div>
 					</div>

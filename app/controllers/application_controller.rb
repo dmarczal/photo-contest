@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_static_pages
 
   protected
 
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
   #redirect user to storage location after sign in
   def after_sign_in_path_for(resource)
     session[:forwarding_url] || root_path
+  end
+
+  def set_static_pages
+    @static_pages = Page.order :name
   end
 end
