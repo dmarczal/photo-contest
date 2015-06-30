@@ -27,7 +27,7 @@ namespace :db do
       contest.closing              =   Time.zone.now - 20.days
     end
 
-    Contest.populate(10) do |contest|
+    Contest.populate(4) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -38,7 +38,7 @@ namespace :db do
     end
     
     # Future contests
-    Contest.populate(5) do |contest|
+    Contest.populate(3) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -49,7 +49,7 @@ namespace :db do
     end
 
     # Current open enrollment contest
-    Contest.populate(7) do |contest|
+    Contest.populate(2) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -121,24 +121,24 @@ namespace :db do
     Contest.all.each do |contest|
       i = 0
       
-      Participant.populate(2) do |participant|
+      Participant.populate(4) do |participant|
         i = i + 1
         participant.user_id = users[i]
         participant.contest_id = contest.id
         participant.accepted_term = true
         participant.status = 2
-        participant.description = Faker::Lorem.paragraph(1)
+        participant.description = Faker::Lorem.paragraph
         participant.title = Faker::Lorem.words(3, true)
         i = i + 1
       end
 
-      Participant.populate(2) do |participant|
+      Participant.populate(4) do |participant|
         i = i + 1
         participant.user_id = users[i]
         participant.contest_id = contest.id
         participant.accepted_term = true
         participant.status = 0
-        participant.description = Faker::Lorem.paragraph(1)
+        participant.description = Faker::Lorem.paragraph
         participant.title = Faker::Lorem.words(3, true)
         
       end
@@ -147,6 +147,48 @@ namespace :db do
     Participant.all.each do |participant|
       participant.picture =  File.open(Dir["#{Rails.root}/lib/images/participant/*"].sample)
       participant.save(validate: false)
+    end
+
+    i = 0
+    participants = Participant.approved.where(contest_id: Contest.old.first.id)
+    users = User.all
+    Vote.populate(4) do |vote|
+      i = i + 1
+      vote.participant_id = participants.first.id
+      vote.user_id = users[i];
+    end
+    Vote.populate(2) do |vote|
+      i = i + 1
+      vote.participant_id = participants.second.id
+      vote.user_id = users[i];
+    end
+    Vote.populate(1) do |vote|
+      i = i + 1
+      vote.participant_id = participants.third.id
+      vote.user_id = users[i];
+    end
+
+    i = 0
+    participants = Participant.approved.where(contest_id: Contest.old.second.id)
+    Vote.populate(3) do |vote|
+      i = i + 1
+      vote.participant_id = participants.first.id
+      vote.user_id = users[i];
+    end
+    Vote.populate(3) do |vote|
+      i = i + 1
+      vote.participant_id = participants.second.id
+      vote.user_id = users[i];
+    end
+    Vote.populate(2) do |vote|
+      i = i + 1
+      vote.participant_id = participants.third.id
+      vote.user_id = users[i];
+    end
+    Vote.populate(1) do |vote|
+      i = i + 1
+      vote.participant_id = participants.fourth.id
+      vote.user_id = users[i];
     end
 
   end
