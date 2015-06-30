@@ -104,7 +104,7 @@ module ApplicationHelper
   def link_to_approve_inscription(participant)
      label = 'Aprovar Inscrição'
       action = 'approved'
-    return link_to 'Aprovar Inscrição', "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary ", "data-dismiss" => "modal" if participant.pending?
+    return link_to 'Aprovar Inscrição', "/admin/participant/#{participant.id}/#{action}", remote: true, class: "btn btn-primary ", "data-dismiss" => "modal" if participant.pending? || participant.failed?
   end
 
   def user_vote_pannel(participant)
