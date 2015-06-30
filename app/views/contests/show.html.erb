@@ -43,66 +43,48 @@
 		<div class="show-pictures-contest">
 			<div class="row">
 				<div class="container">
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    	<h4>Título da Foto</h4>
-				    </a></div>
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    	<h4>Título da Foto</h4>
-				    </a></div>
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    	<h4>Título da Foto</h4>
-				    </a></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="container">
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    	<h4>Título da Foto</h4>
-				    </a></div>
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    	<h4>Título da Foto</h4>
-				    </a></div>
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="#" class="thumbnail" data-toggle="modal" data-target="#photo-modal">
-				    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-				    	<h4>Título da Foto</h4>
-				    </a></div>
+					<% @approved_participants.each do |participant| %>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<a href="#" class="thumbnail" data-toggle="modal" data-target="#participant-<%= participant.id %>-photo">
+						    	<%= image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.url.blank? %>
+						    	<h4><%= participant.title %></h4>
+					   		</a>
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
 	<% end %>
-	<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Título da foto</h4>
-				</div>
-				<div class="modal-body">
-					<div class="row image">
-						<div class="col-xs-12">
-							<%= image_tag("placeholder.png", alt: "Placeholder") %>
+	<% @approved_participants.each do |participant| %>
+		<div class="modal fade" id="participant-<%= participant.id %>-photo" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title"><%= participant.title %></h4>
+					</div>
+					<div class="modal-body">
+						<div class="row image">
+							<div class="col-xs-12">
+								<%= image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.url.blank? %>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-3 col-sm-2">
+								<%= gravatar_for participant.user, { size: 70 } %>
+							</div>
+							<div class="col-xs-9 col-sm-10">
+								<p>Autor: <%= participant.user.name %></p>
+								<p>Descrição: <%= participant.description %></p>
+							</div>
 						</div>
 					</div>
-					<br>
-					<div class="row">
-						<div class="col-xs-3 col-sm-2">
-							<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") %>
-						</div>
-						<div class="col-xs-9 col-sm-10">
-							<p>Autor: Juca da Silva</p>
-							<p>Descrição: Breve descrição da imagem</p>
-						</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary">Votar</button>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-primary">Votar</button>
 				</div>
 			</div>
 		</div>
-	</div>
+	<% end %>
 </div>
