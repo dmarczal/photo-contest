@@ -141,7 +141,7 @@ hr.style-hr {
 .photographers .list-info .titles i span.position-user{ position: absolute; top: 24px; right: 12px; left: 0px;}
 
 .pagination li a{ color: #009688 !important; }
-.pagination li.active span{ background: #009688; border: none; color: #fff;}
+.pagination li.active span, .pagination li.active span:hover, .pagination li.active span:focus{ background: #009688; border: none; color: #fff;}
 
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
