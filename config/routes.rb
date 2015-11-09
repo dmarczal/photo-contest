@@ -16,10 +16,13 @@ Rails.application.routes.draw do
   get  'contests/:id' => 'contests#show', as: 'contest'
  
   resources :participants, except: [:destroy]
-  
+
+  #route for a contacts page
+  get '/contacts' => 'contacts#index'
+
   get 'contests/open'
   get 'contests/show'
-  
+
   get 'photographers/list', as: 'photographer_list'
   get 'photographers/:id' => 'photographers#show', as: 'photographer'
 

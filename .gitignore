@@ -19,3 +19,5 @@ public/system
 
 # Ignore Spring files.
 /spring/*.pid
+
+/.idea/*
