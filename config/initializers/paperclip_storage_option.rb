@@ -1,7 +1,6 @@
 module PaperclipStorageOption
   module ClassMethods
     def options
-      #Rails.env.production? ? default_options : production_options
       Rails.env.production? ? production_options : default_options
     end
 

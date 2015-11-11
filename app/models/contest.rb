@@ -15,7 +15,11 @@ class Contest < ActiveRecord::Base
   validates :closing,              date: { after_or_equal_to: Time.now }
   validates :closing_enrollment,   date: { after_or_equal_to: Time.now }
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>", large: "500x500>" }
+  has_attached_file(:image, {styles: { medium: "300x300>", thumb: "100x100>",
+                                      large: "500x500>" }}.merge(PaperclipStorageOption.options))
+
+
+
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def closed?

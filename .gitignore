@@ -19,3 +19,6 @@ public/system
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Ignore ruby version and gem set config.
+/.ruby-*
