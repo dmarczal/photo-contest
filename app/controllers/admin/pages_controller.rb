@@ -48,6 +48,9 @@ class Admin::PagesController < Admin::ApplicationController
     end
   end
 
+  def about
+  end
+
   private
     def set_page
       @page = Page.find(params[:id])
