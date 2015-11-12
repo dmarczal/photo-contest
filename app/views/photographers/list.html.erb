@@ -1,38 +1,34 @@
 <div class="container photographers">
 	<div class="row">
 		<h2>Lista Fotografos</h2>
-		<% @photographers.each_slice(4) do |photographers_list| %>
-			<div class="row">
-				<% photographers_list.each do |photographer|%>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="col-xs-12">
-							<a class="thumbnail">
-						    	<%= gravatar_for photographer %>
-						    </a>
-						</div>
-						<div class="col-xs-12 list-info">
-							<h3><%= link_to photographer.name, "#{photographer.id}" %></h3>
-							<article class="small-description">
-								<div class="col-xs-12 titles text-right">
-			          	<i><%= image_tag("first.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
-			          		<span class="position-user"><%= photographer.first %></span>
-			          	</i>
-			          	<i><%= image_tag("second.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
-			          		<span class="position-user"><%= photographer.second %></span>
-			          	</i>
-			          	<i><%= image_tag("third.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
-			          		<span class="position-user"><%= photographer.third %></span>
-			          	</i>
-        				</div>
-        				<%= photographer.short_description%>
-							</article>
-						</div>
+			<% @photographers.each do |photographer|%>
+				<div class="col-md-3 col-sm-6 col-xs-12 photographer">
+					<div class="col-xs-12">
+						<a class="thumbnail">
+					    	<%= gravatar_for photographer %>
+					    </a>
 					</div>
-				<% end; %>
-			</div>
-		<% end %>
+					<div class="col-xs-12 list-info">
+						<h3><%= link_to photographer.name, "#{photographer.id}" %></h3>
+						<article class="small-description">
+							<div class="col-xs-12 titles text-right">
+		          	<i><%= image_tag("first.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+		          		<span class="position-user"><%= photographer.first || 0 %></span>
+		          	</i>
+		          	<i><%= image_tag("second.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+		          		<span class="position-user"><%= photographer.second || 0 %></span>
+		          	</i>
+		          	<i><%= image_tag("third.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+		          		<span class="position-user"><%= photographer.third || 0 %></span>
+		          	</i>
+	    				</div>
+	    				<%= photographer.short_description%>
+						</article>
+					</div>
+				</div>
+			<% end; %>
 		<div class="row">
-			<div class="col-md-12 text-center">
+			<div class="col-md-12 text-right">
 				<%= will_paginate @photographers, renderer: BootstrapPagination::Rails %>
 			</div>
 		</div>
