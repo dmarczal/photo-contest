@@ -17,9 +17,6 @@ Rails.application.routes.draw do
  
   resources :participants, except: [:destroy]
 
-  #route for a contacts page
-  get '/contacts' => 'contacts#index'
-
   get 'contests/open'
   get 'contests/show'
 
