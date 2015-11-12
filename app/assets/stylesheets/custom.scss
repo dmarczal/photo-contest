@@ -186,7 +186,17 @@ header.without-background {
   ul a:hover{cursor: pointer;}
 }
 
+#top-footer .how-to-contest{
+  padding: 0;
+}
+
+#top-footer .how-to-contest h3{
+  margin-top: inherit;
+  margin-bottom: 10px;
+}
+
 .list-icons{padding: 50px 0;}
+.list-icons img{ width: 35px; float: right; margin-top: 10px; }
 .img-hall-position{max-height: 80px}
 
 .img-featured{height: 250px!important;}
