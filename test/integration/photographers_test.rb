@@ -37,7 +37,7 @@ class PhotographersTest < ActionDispatch::IntegrationTest
       assert_select "img[alt=?]", photographers.first.name
     end
     assert_select "article.small-description", text: /#{photographers.first.short_description}/
-    assert_select "span.position-user", text: "0"
+    assert_select "span.position-user", text: photographers.first.first.to_s
     assert_select "span.position-user", text: photographers.first.second.to_s
     assert_select "span.position-user", text: photographers.first.third.to_s
     assert_equal assigns(:photographers), @photographers.paginate(page: 2, per_page: 16)
