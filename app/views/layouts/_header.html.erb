@@ -28,9 +28,12 @@
 								    <%= content_tag(:div, '', class: 'ripple-wrapper') %>
 
 								    <%= content_tag :ul, class: 'dropdown-menu' do %>
-								      <% @static_pages.each do |static_page|%>      
+                                      <li><%= link_to "Contatos", "/#contatos" %></li>
+								      <li><% @static_pages.each do |static_page|%>
 								        <%= content_tag :li do %>
+
 								          <%= link_to static_page.name, "/#{static_page.permalink}" %>
+
 								        <% end %>
 								      <% end %>
 
@@ -41,8 +44,25 @@
 								<li><a href="<%= contests_path %>">Concursos</a></li>
 								<li><%= link_to 'Participantes', photographer_list_url %></li>
 								<li><a href="<%= contests_archive_path %>">Arquivo</a></li>
-								<li><%= link_to_login() %></li>
-								<li><%= link_to_sign_up() %></li>								
+                                <li><%= link_to 'Sobre', '/about' %></li>
+                                  <% if logged_in? %>
+                                      <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                          <%= current_user.name %> <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                          <li><%= link_to "Profile", '#' %></li>
+                                          <li><%= link_to "Settings", '#' %></li>
+                                          <li class="divider"></li>
+                                          <li>
+                                            <%= link_to "Log out", destroy_user_session_path, method: "delete" %>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                  <% else %>
+                                      <li><%= link_to "Log in",  new_user_session_path %></li>
+                                      <li><%= link_to_sign_up() %></li>
+                                  <% end %>
 							</ul>
 						</div>
 					</div>

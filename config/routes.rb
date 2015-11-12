@@ -16,15 +16,16 @@ Rails.application.routes.draw do
   get  'contests/:id' => 'contests#show', as: 'contest'
  
   resources :participants, except: [:destroy]
-  
+
   get 'contests/open'
   get 'contests/show'
-  
+
   get 'photographers/list', as: 'photographer_list'
   get 'photographers/:id' => 'photographers#show', as: 'photographer'
 
   get '/admin' => 'admin/home#index'
 
+  get '/about' => 'static_pages#about'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   namespace :admin do

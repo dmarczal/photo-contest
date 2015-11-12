@@ -1,23 +1,24 @@
 <% provide(:title, "Sign up") %>
+<div class="register_form">
+    <h2>Registro</h2>
 
-<h2>Sign up</h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :username, required: true, autofocus: true %>
+        <%= f.input :name, required: true%>
+        <%= f.input :short_description, :as => :text, required: true %>
+        <%= f.input :biography, :as => :text,required: true %>
+        <%= f.input :email, required: true %>
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caracteres mínimo" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
+      </div>
 
-  <div class="form-inputs">
-    <%= f.input :username, required: true, autofocus: true %>
-    <%= f.input :name, required: true%>
-    <%= f.input :short_description, required: true %>
-    <%= f.input :biography, :as => :text,required: true %>
-    <%= f.input :email, required: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+      <div class="form-actions">
+        <%= f.button :submit, "Finalizar" %>
+      </div>
+    <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
