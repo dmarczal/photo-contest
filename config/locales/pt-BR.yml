@@ -42,6 +42,7 @@ pt-BR:
           email: "Email"
           password: "Senha"
           password_confirmation: "Confirmação da senha"
+          remember_me: "Lembrar me"
   date:
     abbr_day_names:
     - Dom

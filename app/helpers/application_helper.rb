@@ -36,7 +36,7 @@ module ApplicationHelper
   # end
 
   def link_to_sign_up()
-    link_to('Register', new_user_registration_path) unless user_signed_in? 
+    link_to('Cadastrar-se', new_user_registration_path) unless user_signed_in?
   end
 
   def link_to_show_inscriptions()

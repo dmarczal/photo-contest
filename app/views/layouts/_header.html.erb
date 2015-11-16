@@ -20,15 +20,19 @@
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-								<li><%= link_to 'Principal', root_url %></li>
-								<li class="dropdown">
+                                <li><%= link_to 'Principal', root_url %></li>
+                                <li><a href="<%= contests_path %>">Concursos</a></li>
+                                <li><%= link_to 'Participantes', photographer_list_url %></li>
+                                <li><a href="<%= contests_archive_path %>">Arquivo</a></li>
+                                <li><%= link_to 'Sobre', '/about' %></li>
+                                <li><%= link_to 'Contato', '/contact' %></li>
+                                <li class="dropdown">
 								  <%= link_to '#', data: { target: '#', toggle: 'dropdown' }, class: 'dropdown-toggle', 'aria-expanded': 'false' do %>
-								    <%= 'Páginas' %>
+								    <%= 'Outras Páginas' %>
 								    <%= content_tag(:b, '', class: 'caret') %>
 								    <%= content_tag(:div, '', class: 'ripple-wrapper') %>
 
 								    <%= content_tag :ul, class: 'dropdown-menu' do %>
-                                      <li><%= link_to "Contatos", "/#contatos" %></li>
 								      <li><% @static_pages.each do |static_page|%>
 								        <%= content_tag :li do %>
 
@@ -41,10 +45,6 @@
 								  <% end %>
 								</li>
 								<li><%= link_to_show_inscriptions() %></li>
-								<li><a href="<%= contests_path %>">Concursos</a></li>
-								<li><%= link_to 'Participantes', photographer_list_url %></li>
-								<li><a href="<%= contests_archive_path %>">Arquivo</a></li>
-                                <li><%= link_to 'Sobre', '/about' %></li>
                                   <% if logged_in? %>
                                       <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -55,12 +55,12 @@
                                           <li><%= link_to "Settings", '#' %></li>
                                           <li class="divider"></li>
                                           <li>
-                                            <%= link_to "Log out", destroy_user_session_path, method: "delete" %>
+                                            <%= link_to "Sair", destroy_user_session_path, method: "delete" %>
                                           </li>
                                         </ul>
                                       </li>
                                   <% else %>
-                                      <li><%= link_to "Log in",  new_user_session_path %></li>
+                                      <li><%= link_to "Entrar",  new_user_session_path %></li>
                                       <li><%= link_to_sign_up() %></li>
                                   <% end %>
 							</ul>

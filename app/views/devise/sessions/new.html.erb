@@ -1,7 +1,7 @@
-<% provide(:title, "Log in") %>
+<% provide(:title, "Entrar") %>
 
 <div class="login_form">
-    <h2>Log in</h2>
+    <h2>Entrar</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-actions">
-            <%= f.button :submit, "Log in", :class => 'submit_sign_in' %>
+            <%= f.button :submit, "Entrar", :class => 'submit_sign_in' %>
         </div>
     <% end %>
 

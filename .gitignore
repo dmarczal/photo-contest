@@ -20,11 +20,8 @@ public/system
 # Ignore Spring files.
 /spring/*.pid
 
-<<<<<<< HEAD
 # Ignore ruby version and gem set config.
 /.ruby-*
 
 .idea/*
-=======
-/.idea/*
->>>>>>> public-helbert
+

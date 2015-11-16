@@ -137,5 +137,4 @@ class ParticipantsController < ApplicationController
   	params.require(:participant).permit(:picture, :title, :description, :accepted_term, :contest_id)
   end
 
-
 end
