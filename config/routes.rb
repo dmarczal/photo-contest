@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   root to:'home#index'
 
+  get  'contests/archive'
   get  '/contests'   => 'contests#list'
   get  'contests/:id' => 'contests#show', as: 'contest'
-  get  'contests/archive'
   get 'contests/hall_of_fame' => 'contests#hall_of_fame', as: 'hall_of_fame'
 
   resources :participants, except: [:destroy]
