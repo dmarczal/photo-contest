@@ -134,6 +134,16 @@ hr.style-hr {
   height:85px;
 }
 
+.photographers .thumbnail{ margin-bottom: 0px; }
+.photographers .list-info{ margin-bottom: 20px; }
+.photographers .list-info .titles i{ width: 30px; height: 50px; display: inline-block; position: relative;}
+.photographers .list-info .titles i{ width: 30px; height: 50px; display: inline-block; position: relative;}
+.photographers .list-info .titles i span.position-user{ position: absolute; top: 24px; right: 12px; left: 0px;}
+.photographers .photographer { border: 1px solid rgba(210, 210, 210, 0.56); height: 280px; padding: 30px 0;}
+
+.pagination li a{ color: #009688 !important; }
+.pagination li.active span, .pagination li.active span:hover, .pagination li.active span:focus{ background: #009688; border: none; color: #fff;}
+
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -145,7 +155,7 @@ body {
 /* Contest show */
 #contest .modal .modal-header, #contest .modal .modal-footer{ text-align: center }
 #contest .modal .image { text-align: center }
-#contest .thumbnail { text-align: center }
+#contest .thumbnail { text-align: center; }
 
 /* Photographer show */
 .bg_blur{height: 260px;background-size: cover;}
