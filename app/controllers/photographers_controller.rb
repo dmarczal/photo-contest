@@ -1,13 +1,13 @@
 class PhotographersController < ApplicationController
 	
 	def list
-		@photographers = User.all.paginate(page: params[:page], per_page: 10)
+		@photographers = User.all.paginate(page: params[:page], per_page: 16)
 	end
 
 	def show
-  		@photographer = User.find_by_id(params[:id])
-  		@participants = Participant.approved.where(user: @photographer)
-  		@featured = @participants.sample()
-  	end
+		@photographer = User.find_by_id(params[:id])
+		@participants = Participant.approved.where(user: @photographer)
+		@featured = @participants.sample()
+	end
 
 end
