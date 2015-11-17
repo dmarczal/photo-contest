@@ -35,12 +35,11 @@
 								    <%= content_tag :ul, class: 'dropdown-menu' do %>
 								      <li><% @static_pages.each do |static_page|%>
 								        <%= content_tag :li do %>
-
-								          <%= link_to static_page.name, "/#{static_page.permalink}" %>
-
+                                            <% if static_page.name != "about" or static_page.name != "contact" %>
+                                                <%= link_to static_page.name, "/#{static_page.permalink}" %>
+                                            <% end %>
 								        <% end %>
 								      <% end %>
-
 								    <% end %>
 								  <% end %>
 								</li>

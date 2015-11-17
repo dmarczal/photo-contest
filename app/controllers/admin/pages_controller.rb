@@ -1,5 +1,6 @@
 class Admin::PagesController < Admin::ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :default_pages, only: [:destroy]
 
   def index
     @pages = Page.all
@@ -60,4 +61,12 @@ class Admin::PagesController < Admin::ApplicationController
     def page_not_found
       head :not_found
     end
+
+    def default_pages
+      ids = Page.where("permalink = ? OR permalink = ?",  'about', 'contact').pluck(:id)
+      if @page.id == ids[0] or @page.id == ids[1]
+        redirect_to admin_pages_url, notice: 'Esta página não pode ser excluida.'
+      end
+    end
+
 end
