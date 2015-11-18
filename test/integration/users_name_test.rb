@@ -22,6 +22,15 @@ class UsersNameTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "login with invalid information" do
+    get '/user/sign_in'
+    assert_template '/users/sign_in'
+    post '/users/sign_in', {user: { login: @user.username,
+                                    password: "12345678910"} }
+    assert_not flash.empty?
+    get root_path
+  end
+
   test "user name on dropdown" do
     get '/users/sign_in'
     assert_response :success
