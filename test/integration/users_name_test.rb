@@ -1,38 +1,43 @@
 require 'test_helper'
+include Warden::Test::Helpers
 
 class UsersNameTest < ActionDispatch::IntegrationTest
 
   def setup
-
+    @user = FactoryGirl.build(:user)
+    @user.name = "Helbert"
+    @user.username = "helbert"
+    @user.password = "12345678"
+    @user.password_confirmation = "12345678"
+    @user.save!
   end
 
   test "login with valid information" do
-    @user = User.create!(name: "Helbert", email: "helbert@gmail.com",
-                        username: "helbert", password: "12345678")
+    get '/users/sign_in'
+    post '/users/sign_in', {user: { login: @user.username,
+                                    password: "12345678"} }
 
-
-    post '/users/sign_in', user: { login: @user.username, password: 'password' }
-
-    p body
-    assert_redirected_to root_url
     follow_redirect!
-
-    # assert_template 'home/index'
-    # assert_select "a[href=?]", login_path, count: 0
-    assert_select "a[href=?]", destroy_user_session_path
-    # assert_select "a[href=?]", user_path(@user)
+    assert_template root_path
+    assert_response :success
   end
 
-  test "user name" do
-    @user = User.create(name: "Helbert", email: "helbert@gmail.com",
-                        login: "helbert", password: "12345678")
+  test "user name on dropdown" do
+    get '/users/sign_in'
+    assert_response :success
+    post '/users/sign_in', {user: { login: @user.username,
+                                    password: "12345678"} }
 
-    get participants_path(@user)
-    assert_template 'home/index'
-    assert_select "ol" do
-      assert_select 'ol>li>a[href=?]', text:@user.name
-    end
-
+    follow_redirect!
+    assert_template root_path
+    assert_select "ul>li>a.dropdown-toggle.user-name", @user.name
   end
+
+  test "is not logged in" do
+    get root_path
+    assert_template root_path
+    assert_select "ul>li.register>a", "Cadastrar-se"
+  end
+
 
 end

@@ -65,7 +65,7 @@ class Admin::PagesController < Admin::ApplicationController
     def default_pages
       ids = Page.where("permalink = ? OR permalink = ?",  'about', 'contact').pluck(:id)
       if @page.id == ids[0] or @page.id == ids[1]
-        redirect_to admin_pages_url, notice: 'Esta página não pode ser excluida.'
+        redirect_to admin_pages_url, notice: 'Esta página não pode ser excluída.'
       end
     end
 

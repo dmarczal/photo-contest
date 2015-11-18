@@ -10,6 +10,7 @@ include FactoryGirl::Syntax::Methods
 require 'factory_girl'
 FactoryGirl.find_definitions
 
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
