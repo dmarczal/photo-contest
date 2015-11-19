@@ -1,18 +1,19 @@
 <% provide(:title, "Contests List") %>
 <div class="container">
-	<div class="row">
+	<div class="row row-contests">
 		<h2>Lista de Concursos</h2>
 		<div class="col-xs-12">
 			<% @contests.each do |contest| %>
-				<div class="row">
-					<div class="col-xs-12 col-sm-3">
+				<div class="col-xs-12 col-sm-4">
+					<br/>
+					<div class="col-xs-12 image">
 						<a href="<%= contest_path(contest) %>" class="thumbnail">
 							<%= image_tag(contest.image(:original), alt: contest.title, class: "img-responsive") unless contest.image.blank? %>
 		    				<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless contest.image.blank? == false %>
 					    </a>
 					</div>
-					<div class="col-xs-12 col-sm-9">
-						<p><b><%= contest.title %></b></p>
+					<div class="col-xs-12">
+						<p class="title"><b><%= contest.title %></b></p>
 						<p><%= contest_status_label(contest) %></p>
 						<p>Início das Inscrições: <b> <%= contest.opening_enrollment.strftime("%d/%m/%Y - %H:%M") %></b></p>
 						<p>Término das Inscrições: <b> <%= contest.closing_enrollment.strftime("%d/%m/%Y - %H:%M") %></b></p>

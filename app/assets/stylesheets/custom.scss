@@ -157,6 +157,22 @@ body {
 #contest .modal .image { text-align: center }
 #contest .thumbnail { text-align: center; }
 
+/* Contest list */
+.row-contests .col-sm-4{
+  width: 32%;
+  border: 2px solid gray;
+  border-radius: 15px;
+  margin: 5px;
+  img{
+    height: 100px;
+  }
+  .title{
+    height: 20px;
+    overflow: hidden;
+  }
+}
+
+
 /* Photographer show */
 .bg_blur{height: 260px;background-size: cover;}
 .bg_blur img.img-responsive{padding-top: 15px;}
