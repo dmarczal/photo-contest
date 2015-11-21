@@ -119,6 +119,7 @@ module ApplicationHelper
     end
 
     return link_to label, "/vote/#{participant.id}", remote: true, class: button_class, "data-dismiss" => "modal"
+
   end
 
   def picture_featured (participant)

@@ -39,6 +39,6 @@ Rails.application.routes.draw do
     get      'participant/:id/:status'   => 'participants#update'
   end
   
-  get ':permalink' => 'admin/pages#route'
+  get ':permalink' => 'pages#route'
   get 'vote/:id' => 'votes#create'
 end
