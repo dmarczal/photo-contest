@@ -41,7 +41,7 @@ class UsersNameTest < ActionDispatch::IntegrationTest
     assert_select "ul>li>a.dropdown-toggle.user-name", @user.name
     delete '/users/sign_out'
     follow_redirect!
-   assert_template root_path
+    assert_template root_path
   end
 
   test "user name on dropdown" do
