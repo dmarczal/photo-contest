@@ -14,4 +14,8 @@ FactoryGirl.define do
     second                { Faker::Number.number(1) }
     third                 { Faker::Number.number(1) }
   end
+
+  factory :admin_user, parent: :user do
+    admin true
+  end
 end
