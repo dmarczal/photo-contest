@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class Admin::PagesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
-    @page = pages(:one)
+    @page = FactoryGirl.create :page
+
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    sign_in FactoryGirl.create(:admin_user)
   end
 
   test "should get index" do

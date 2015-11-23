@@ -1,4 +1,5 @@
 class Admin::PagesController < Admin::ApplicationController
+  before_action :admin_user, except: [:index, :show, :route]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   def index
