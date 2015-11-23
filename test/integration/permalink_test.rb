@@ -12,30 +12,34 @@ class PermalinkTest < ActionDispatch::IntegrationTest
     @admin_user.password = "12345678"
     @admin_user.password_confirmation = "12345678"
     @admin_user.save!
-    @about_page = FactoryGirl.create(:about_page)
-    @contact_page = FactoryGirl.create(:contact_page)
+
+    Page.delete_all
   end
 
   test "should do not remove about page" do
-    get '/admin/login'
+    about_page = FactoryGirl.create(:about_page)
+
     post '/admin/login', {session: { login: @admin_user.email,
-                                    password: "12345678"} }
-    get admin_page_path
-    assert_response :success
-    #@about_page = FactoryGirl.create(:about_page)
-    #delete '/admin/pages/1' #id: @about_page.id
-    delete admin_page_path(@about_page.id)
+                                     password: "12345678"}}
+
+    assert_no_difference 'Page.count' do
+      delete admin_page_path(about_page.id)
+    end
+
     follow_redirect!
     assert_equal 'Esta página não pode ser excluída.', flash[:notice]
   end
 
   test "should do not remove contact page" do
-    get '/admin/login'
+    contact_page = FactoryGirl.create(:contact_page)
+
     post '/admin/login', {session: { login: @admin_user.email,
                                      password: "12345678"} }
-    get admin_page_path
-    assert_response :success
-    delete admin_page_path(@contact_page.id)
+
+    assert_no_difference 'Page.count' do
+      delete admin_page_path(contact_page.id)
+    end
+
     follow_redirect!
     assert_equal 'Esta página não pode ser excluída.', flash[:notice]
   end
