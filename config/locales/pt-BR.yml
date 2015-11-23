@@ -28,6 +28,21 @@ pt-BR:
         name: Nome
         permalink: URL
         content: Conteúdo
+  activerecord:
+      models:
+        user:
+          one: "Usuário"
+          other: "Usuários"
+      attributes:
+        user:
+          username: "Usuário"
+          name: "Nome"
+          short_description: "Descrição curta"
+          biography: "Biografia"
+          email: "Email"
+          password: "Senha"
+          password_confirmation: "Confirmação da senha"
+          remember_me: "Lembrar me"
   date:
     abbr_day_names:
     - Dom

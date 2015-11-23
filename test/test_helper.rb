@@ -10,11 +10,9 @@ include FactoryGirl::Syntax::Methods
 
 Minitest::Reporters.use!
 SimpleCov.start
-
-
 FactoryGirl.find_definitions
-
 DatabaseCleaner.strategy = :transaction
+
 class ActiveSupport::TestCase
 	def setup
     DatabaseCleaner.start

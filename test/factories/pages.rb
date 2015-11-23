@@ -2,14 +2,14 @@
 FactoryGirl.define do
   factory :page do
   	name Faker::Name.title
-  	permalink Faker::Internet.slug 
+  	permalink Faker::Internet.slug
   	content Faker::Lorem.paragraph(2)
   end
 
   factory :contact_page, parent: :page do
-  	name "Contato"
-  	permalink "contato"
-  	content "### Contato \n\n Essa é uma página de *contato*"
+  	name "Contact"
+  	permalink "contact"
+  	content "### Contact \n\n Essa é uma página de *contato*"
   end
 
   factory :about_page, parent: :page do
@@ -17,4 +17,5 @@ FactoryGirl.define do
     permalink "about"
     content "Page About US"
   end
+
 end

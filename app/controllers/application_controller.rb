@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_static_pages
-    @static_pages = Page.order :name
+    ids = Page.where("permalink = ? OR permalink = ?",  'about', 'contact').pluck(:id)
+    @static_pages = Page.where('id NOT IN (:ids)', ids: ids).order(:name)
   end
 end
