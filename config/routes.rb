@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   get  'contests/:id' => 'contests#show', as: 'contest'
  
   resources :participants, except: [:destroy]
-  
+
   get 'contests/open'
   get 'contests/show'
-  
+
   get 'photographers/list', as: 'photographer_list'
   get 'photographers/:id' => 'photographers#show', as: 'photographer'
 
@@ -39,6 +39,6 @@ Rails.application.routes.draw do
     get      'participant/:id/:status'   => 'participants#update'
   end
   
-  get ':permalink' => 'admin/pages#route'
+  get ':permalink' => 'pages#route'
   get 'vote/:id' => 'votes#create'
 end

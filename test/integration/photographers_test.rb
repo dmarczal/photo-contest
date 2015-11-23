@@ -12,13 +12,16 @@ class PhotographersTest < ActionDispatch::IntegrationTest
     get '/photographers/list'
     assert_response :success
     assert assigns(:photographers)
+
     assert_select "h3" do
       assert_select "a", photographers.first.name
     end
+
     assert_select "a.thumbnail[href=?]", photographers.first.id
     assert_select "a.thumbnail" do
       assert_select "img[alt=?]", photographers.first.name
     end
+
     assert_select "article.small-description", text: /#{photographers.first.short_description}/
     assert_select "span.position-user", text: "0"
     assert_select "span.position-user", text: photographers.first.second.to_s
@@ -28,14 +31,17 @@ class PhotographersTest < ActionDispatch::IntegrationTest
 
     photographers = @photographers.paginate(page: 2, per_page: 16)
     get '/photographers/list?page=2'
+
     assert_response :success
     assert assigns(:photographers)
     assert_select "h3" do
       assert_select "a", photographers.first.name
     end
+
     assert_select "a.thumbnail" do
       assert_select "img[alt=?]", photographers.first.name
     end
+
     assert_select "article.small-description", text: /#{photographers.first.short_description}/
     assert_select "span.position-user", text: photographers.first.first.to_s
     assert_select "span.position-user", text: photographers.first.second.to_s
