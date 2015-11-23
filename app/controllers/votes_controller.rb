@@ -7,11 +7,13 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if vote.save
-        format.html { redirect_to @contest, notice: 'Voto registrado. Você pode votar uma única vez em cada concurso.' }
+        #format.html { redirect_to @contest, notice: 'Voto registrado. Você pode votar uma única vez em cada concurso.' }
         format.json { head :no_content }
         format.js {render inline: "location.reload();" }
+        flash[:success] = 'Voto registrado. Você pode votar uma única vez em cada concurso.'
       else
-        format.html { redirect_to @contest, notice: 'Problemas no registro do voto.' }
+        flash[:danger] = 'Problemas no registro do voto.'
+        #format.html { redirect_to @contest, notice: 'Problemas no registro do voto.' }
         format.json { render json: vote.errors, status: :unprocessable_entity }
         format.js { render json: vote.errors, status: :unprocessable_entity }
       end
