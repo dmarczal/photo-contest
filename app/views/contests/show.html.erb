@@ -24,6 +24,22 @@
 			    	<div class="col-xs-12">
 			    		<%= @contest.description %>
 			    		<p><%= contest_status_label(@contest) %></p>
+			    		<% if(@contest.open?) %>
+								<table class="table partial-podium">
+									<tr>
+										<th class="col-md-2">Posição</th>
+										<th>Foto</th>
+										<th class="col-md-2">Voto(s)</th>
+									</tr>
+									<% @partial_podium.each_with_index do |participant, position| %>
+										<tr>
+											<td><%= "#{position+1}º" %></td>
+											<td><%= participant.title %></td>
+											<td><%= pluralize(participant.votes.count, "voto") %></td>
+										</tr>
+									<% end %>
+								</table>
+			    		<% end %>
 			    	</div>
 			    	
 					
