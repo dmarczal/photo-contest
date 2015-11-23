@@ -1,9 +1,13 @@
 require 'test_helper'
 
 class Admin::ContestsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   
   setup do
-    @contest = contests(:one)
+    @contest = FactoryGirl.create :contest
+
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    sign_in FactoryGirl.create(:admin_user)
   end
 
   test "should get index" do
@@ -38,7 +42,7 @@ class Admin::ContestsControllerTest < ActionController::TestCase
 
   test "should update contest" do
     patch :update, id: @contest, contest: { closing: @contest.closing, closing_enrollment: @contest.closing_enrollment, description: @contest.description, opening: @contest.opening, opening_enrollment: @contest.opening_enrollment, title: @contest.title }
-    assert_redirected_to admin_contest_path(assigns(:contest))
+    assert_redirected_to assigns(:contest)
   end
 
   test "should destroy contest" do
