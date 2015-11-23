@@ -39,6 +39,8 @@ group :test do
   gem 'guard-minitest',     '2.3.1'
   gem 'simplecov'
   gem 'factory_girl'
+  gem 'minitest-around'
+  gem 'database_cleaner'
 end
 
 group :production do

@@ -16,5 +16,4 @@ class StaticPagesTest < ActionDispatch::IntegrationTest
     get '/nothing'    
     assert_response :not_found    
   end
-
 end

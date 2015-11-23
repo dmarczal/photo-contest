@@ -1,20 +1,28 @@
 ENV['RAILS_ENV'] ||= 'test'
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require "minitest/reporters"
-Minitest::Reporters.use!
-
+require "database_cleaner"
 require 'simplecov'
-SimpleCov.start
-include FactoryGirl::Syntax::Methods
 require 'factory_girl'
+include FactoryGirl::Syntax::Methods
+
+Minitest::Reporters.use!
+SimpleCov.start
+
+
 FactoryGirl.find_definitions
 
+DatabaseCleaner.strategy = :transaction
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+	def setup
+    DatabaseCleaner.start
+  end
 
-  # Add more helper methods to be used by all tests here...
+  def teardown
+    DatabaseCleaner.clean
+  end
 end
 
 class ActionController::TestCase
