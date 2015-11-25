@@ -1,7 +1,6 @@
 # Photo Contest
 
-{<img alt='Stories in Ready' src='https://badge.waffle.io/dmarczal/photo-contest.png?label=ready&title=Ready' />}[https://waffle.io/dmarczal/photo-contest]
-== README
+[<img alt='Stories in Ready' src='https://badge.waffle.io/dmarczal/photo-contest.png?label=ready&title=Ready' />](https://waffle.io/dmarczal/photo-contest)
 
 O Photo Contest é um sistema para gerenciar concursos de fotografias 
 
