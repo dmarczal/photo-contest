@@ -21,8 +21,8 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
     * Acessa o Hall da Fama do sistema;
     * Compartilha a página do sistema nas redes sociais (Facebook, twitter) ou por email.
 * FOTOGRÁFO 
-    * Cadastrar-se e inscrever-se nos concursos disponíveis.
-    * Tem acesso ao mesmo conteúdo que o usuário pode acessa
+    * Cadastrar-se e inscrever-se nos concursos disponíveis;
+    * Tem acesso ao mesmo conteúdo que o usuário pode acessar.
 
 ##Instalação
 1. Faça o download no repositório do [Projeto](https://github.com/dmarczal/photo-contest) ou clone o repositório do projeto utilizando o comando 
@@ -43,7 +43,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 3. Inicializar o servidor e acessar a página do projeto
     * Executar `rails s`
     * Acesse o [site](http://localhost:3000) 
-4. Acessar o formulário de login do Administrador
+4. Acesse o formulário de login do Administrador
     * [/admin](http://localhost:3000/admin)
      
 ##Demo e Teste
@@ -52,6 +52,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 2. Inicializar o servidor e acessar a página do projeto
     * Executar `rails s`
     * Acesse o [site](http://localhost:3000) 
+
 ##Documentação
 https://github.com/dmarczal/photo-contest/wiki
 
