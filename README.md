@@ -7,30 +7,48 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 ##Funcionalidades
 * ADMINISTRADOR 
     * Cria e gerenciar concursos fotográficos;
-    * Cria e gerencia págnias dentro do sisteama;
+    * Cria e gerencia págnias dentro do sistema;
     * Altera a página Sobre de acordo com as informações sobre o concurso;
     * Altera a página Contato de acordo com as informações sobre os contatos do concurso.
 * FOTOGRÁFO 
     * Cadastrar-se e inscrever-se nos concursos disponíveis.
 * PÚBLICO
-    * Votam apenas um vez em cada concurso;
-    * Acompanhamento do ranking em tempo real;
+    * Cadastra-se para votar em um concurso;
+    * Vota apenas um vez em cada concurso;
+    * Acompanha o ranking em tempo real;
     * Acessa a concursos antigos;
-    * Acessa a lista de fotográfos (participantes) com sua respectiva posição no rank geral e número de medalhas;
-    * Acessa o perfil do fotógrafo e suas respectivas quantidades de medalhas.
+    * Acessa a lista de fotográfos (participantes) e acompanha a sua posição no ranking geral;
+    * Acessa o perfil do fotógrafo e suas respectivas quantidades de medalhas;
+    * Compartilha a página do sistema nas redes sociais (Facebook, twiiter) ou por email.
 
 ##Instalação
-
 1. Faça o download no repositório do [Projeto](https://github.com/dmarczal/photo-contest) ou clone o repositório do projeto utilizando o comando 
     * `git clone git@github.com:dmarczal/photo-contest.git`
+2. Instalar as gems necessárias
+    * Executar  `bunlde install
 2. Crie as tabelas do banco de dados
-    * `rake db:migrate`
-3. Start o servidor e acesse a página do projeto
-    * `rails s`
-    * Acesse o [site](http://localhost:3000)
+    * Executar `rake db:migrate`
+3. Criar as páginas Sobre e Contato 
+    * Executar o comando `rake db:seed`   
+
 
 ##Configuração
-
+1. Criar um Administrador e cadastros default (e.g. concursos, usuários) para o sistema 
+    * Alterar o arquivo `lib/tasks/populate.rake`
+2. Popular o banco com os dados definidos no arquivo `lib/tasks/populate.rake`
+    * Executar o comando `rake db:populate`
+3. Inicializar o servidor e acessar a página do projeto
+    * Executar `rails s`
+    * Acesse o [site](http://localhost:3000) 
+4. Acessar o formulário de login do Administrador
+    * [/admin](http://localhost:3000/admin)
+     
+##Demo e Teste
+1. Pode-se testar o sistema populando o banco com de usuários e concursos `fakes`
+    * Após instalar o sistema executar o comando `rake db:populate`
+2. Inicializar o servidor e acessar a página do projeto
+    * Executar `rails s`
+    * Acesse o [site](http://localhost:3000) 
 ##Documentação
 https://github.com/dmarczal/photo-contest/wiki
 
