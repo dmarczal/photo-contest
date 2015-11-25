@@ -10,7 +10,7 @@ class ContestTest < ActiveSupport::TestCase
   should validate_presence_of(:closing)
 
   def setup
-  	@contest = contests(:one)
+  	@contest = FactoryGirl.create :contest
   end
 
   test 'dates opening should be minor or equals yours closings' do

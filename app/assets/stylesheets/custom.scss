@@ -107,7 +107,7 @@ hr.style-hr {
 .photographers-rating .rating-no-star{ background: url(../images/no-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}
 
 #photographer .well {
-    margin-top:-20px;
+    margin-top:0px;
     background-color: #E9E9E9;
     border: 2px solid #BCBCBC;
     text-align:center;
@@ -150,6 +150,10 @@ body {
   line-height: 1.42857143;
   color: #fff;
   background-color: #F1F1F1;
+}
+
+#photographer .panel{
+    margin-top: 10px;
 }
 
 /* Contest show */
@@ -226,3 +230,11 @@ header.without-background {
 .img-hall-position{max-height: 80px}
 
 .img-featured{height: 250px!important;}
+
+.login_form{max-width: 330px; min-width: 300px; padding: 15px; margin: 0 auto; position: relative!important;  height: auto;  -webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  font-size: 16px;}
+
+.register_form{max-width: 700px; min-width: 300px; padding: 15px; margin: 0 auto; position: relative!important;  height: auto;  -webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;}
+
+textarea {
+  min-height: 60px;
+}

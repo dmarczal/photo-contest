@@ -22,3 +22,6 @@ public/system
 
 # Ignore ruby version and gem set config.
 /.ruby-*
+
+/coverage/*
+.idea/*
