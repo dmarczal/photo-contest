@@ -1,5 +1,5 @@
 <!-- Thumbnail -->
-<div class="col-md-2 col-sm-2 col-xs-12"><a href="#" data-toggle="modal" data-target=#<%="modal-#{participant.id}"%> class="thumbnail"> <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %> </a>
+<div class="col-md-2 col-sm-2 col-xs-12"><a href="#" data-toggle="modal" data-target=#<%="modal-#{participant.id}"%> class=""> <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %> </a>
   <% if(participant.contest.closed?) %>
     <p>Votos: <%= participant.votes.count unless !participant.contest.closed? %></p>
   <% end %>

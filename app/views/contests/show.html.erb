@@ -1,41 +1,40 @@
 <% provide(:title, "Contests Show") %>
-<div id="contest" class="container">
-	<div id="description" class="row">
-		<div class="col-xs-12">
-			<h2><%= @contest.title %></h2>
+<div class="contest">	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h2><%= @contest.title %></h2>
+			</div>
 		</div>
 	</div>
-	<div id="new-contest" class="row">
-		<div class="col-xs-12 col-sm-4">
-			<a href="#" class="thumbnail">
-				<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %> 
-		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @contest.image.blank? == false %>
-		    </a>
-		    <ul class="list-group">
-				<li class="list-group-item">Início das Inscrições: <%= @contest.opening_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
-				<li class="list-group-item">Término das Inscrições: <%= @contest.closing_enrollment.strftime("%d/%m/%Y - %H:%M") %></li>
-				<li class="list-group-item">Início da Votação: <%= @contest.opening.strftime("%d/%m/%Y - %H:%M") %></li>
-				<li class="list-group-item">Término da Votação: <%= @contest.opening.utc.strftime("%d/%m/%Y - %H:%M") %></li>
-			</ul>
-		</div>
-		<div class="col-xs-12 col-sm-8">
-			<!-- <div class="well well-md"> -->
-			    <div class="row">
-			    	<div class="col-xs-12">
-			    		<%= @contest.description %>
-			    		<p><%= contest_status_label(@contest) %></p>
-			    	</div>
-			    	
-					
-					<div class="col-xs-12">
-						<% if(@contest.open_enrollment?) %>
-							<p>As inscrições estarão abertas por mais <%= format_date_old(@contest.closing_enrollment) %></p>
-						<% end %>
-						<p><%= contest_link_register(@contest) %></p>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="contest-description">
+				<div class="col-xs-6">
+					<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %> 			
+				</div>
+				<div class="col-xs-6">
+					<p><%= @contest.description %></p>
+				    <p><strong><%= contest_status_label(@contest) %></strong></p>
+				</div>
+				<div class="clearfix"></div>
+				<hr>
+				<div class="contest-date">
+					<div class="inscriptions">
+						<p>Início das Inscrições: <%= @contest.opening_enrollment.strftime("%d/%m/%Y") %></p>
+						<p>Término das Inscrições: <%= @contest.closing_enrollment.strftime("%d/%m/%Y") %></p>					
 					</div>
-
-			    </div>
-			<!-- </div> -->
+					<div class="voting">
+						<p>Início da Votação: <%= @contest.opening.strftime("%d/%m/%Y") %></p>
+						<% if(!@contest.open_enrollment?) %>
+							<span class="label label-info open-more">As inscrições estarão abertas por mais <%= format_date_old(@contest.closing_enrollment) %></span>
+							<p><%= contest_link_register(@contest) %></p>						
+						<% else %>
+							<p>Término da Votação: <%= @contest.opening.utc.strftime("%d/%m/%Y") %></p>
+						<% end %>
+					</div>
+				</div>
+			</div>		
 		</div>
 	</div>
 	<% if @contest.open? %>
@@ -83,4 +82,5 @@
 		    <% end %>
 		</div>
 	<% end %>
+</div>
 </div>

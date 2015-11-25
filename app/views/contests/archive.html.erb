@@ -1,23 +1,28 @@
-<% provide(:title, "Contests Archive") %>
+<% #provide(:title, "Contests Archive") %>
 <div class="container">
 	<div class="row">
 		<h2>Concursos antigos</h2>
-		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 			<% @contests.each do |contest| %>
-				<div class="row">
-					<div class="col-xs-4 col-sm-3 col-md-2">
-						<a href="#" class="thumbnail">
-					    	<%= image_tag(contest.image(:thumb) , alt: contest.title, class: "img-responsive") %>
-					    </a>
+				<%= link_to contest do %>
+					<div class="col-md-4 col-md-4 col-xs-12">
+						<div class="row">
+							<div class="archive">
+								<div class="col-xs-12">
+									<%= image_tag(contest.image(:thumb) , alt: contest.title) %>
+								</div>
+								<div class="col-xs-12">
+									<p><b><%= contest.title %></b></p>
+									<p>Concurso encerrado há <%= format_date_old(contest.closing) %></p>
+								</div>
+							</div>					
+						</div>				
 					</div>
-					<div class="col-xs-8 col-sm-9 col-md-10">
-						<p><b><%= contest.title %></b></p>
-						<p>Concurso encerrado há <%= format_date_old(contest.closing) %></p>
-						<p><%= link_to "Visitar a página do concurso", contest %></p>
-					</div>
-				</div>
+				<% end %>
 			<% end %>
-			<%= will_paginate @contests %>
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<%= will_paginate @contests, renderer: BootstrapPagination::Rails %>
+				</div>
 		</div>
 	</div>
 </div>
