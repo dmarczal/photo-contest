@@ -6,8 +6,8 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 
 ##Funcionalidades
 * ADMINISTRADOR 
-    * Cria e gerencia concursos fotográficos;
-    * Cria e gerencia págnias dentro do sistema;
+    * Cria e gerência concursos fotográficos;
+    * Cria e gerência págnias dentro do sistema;
     * Altera a página Sobre de acordo com as informações sobre o concurso;
     * Altera a página Contato de acordo com as informações sobre os contatos do concurso.
 * PÚBLICO
@@ -22,7 +22,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
     * Compartilha a página do sistema nas redes sociais (Facebook, twitter) ou por email.
 * FOTOGRÁFO 
     * Cadastrar-se e inscrever-se nos concursos disponíveis;
-    * Tem acesso ao mesmo conteúdo que o usuário pode acessar.
+    * Tem acesso ao mesmo conteúdo que o usuário tem acesso.
 
 ##Instalação
 1. Faça o download no repositório do [Projeto](https://github.com/dmarczal/photo-contest) ou clone o repositório do projeto utilizando o comando 
