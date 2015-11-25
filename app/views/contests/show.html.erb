@@ -28,12 +28,17 @@
 								<table class="table partial-podium">
 									<tr>
 										<th class="col-md-2">Posição</th>
-										<th>Foto</th>
+										<th class="col-md-2">Foto</th>
+										<th>Título</th>
 										<th class="col-md-2">Voto(s)</th>
 									</tr>
 									<% @partial_podium.each_with_index do |participant, position| %>
 										<tr>
 											<td><%= "#{position+1}º" %></td>
+											<td><%= link_to "#", data: {toggle: "modal", target: "#modal-#{participant.id}"}, class: "thumbnail" do %>
+														<%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %>
+													<% end %>
+											</td>
 											<td><%= participant.title %></td>
 											<td><%= pluralize(participant.votes.count, "voto") %></td>
 										</tr>
@@ -41,8 +46,6 @@
 								</table>
 			    		<% end %>
 			    	</div>
-			    	
-					
 					<div class="col-xs-12">
 						<% if(@contest.open_enrollment?) %>
 							<p>As inscrições estarão abertas por mais <%= format_date_old(@contest.closing_enrollment) %></p>
