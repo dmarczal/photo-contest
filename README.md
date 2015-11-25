@@ -28,7 +28,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 1. Faça o download no repositório do [Projeto](https://github.com/dmarczal/photo-contest) ou clone o repositório do projeto utilizando o comando 
     * `git clone git@github.com:dmarczal/photo-contest.git`
 2. Instalar as gems necessárias
-    * Executar  `bunlde install
+    * Executar  `bunlde install`  
 2. Crie as tabelas do banco de dados
     * Executar `rake db:migrate`
 3. Criar as páginas Sobre e Contato 
