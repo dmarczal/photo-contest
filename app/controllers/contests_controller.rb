@@ -1,9 +1,9 @@
 class ContestsController < ApplicationController
-  #before_action :logged_in_user 
+  #before_action :logged_in_user
 
   def list
     @current_user = current_user
-    @contests = Contest.list#.paginate(page: params[:page], per_page: 10)
+    @contests = Contest.list.paginate(page: params[:page], per_page: 9)
   end
 
   def show
@@ -17,7 +17,7 @@ class ContestsController < ApplicationController
       @podium = Participant.podium(@contest.id)
     end
   end
-  
+
   def archive
   	@contests = Contest.old.paginate(page: params[:page], per_page: 10)
   end
@@ -36,7 +36,6 @@ class ContestsController < ApplicationController
      flash[:danger] = "Efetue seu login para se inscrever no concurso!"
      redirect_to new_user_session_path
    end
-  end 
+  end
 
 end
-
