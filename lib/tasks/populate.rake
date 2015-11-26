@@ -36,9 +36,9 @@ namespace :db do
       contest.opening              =   Time.zone.now - 4.month
       contest.closing              =   Time.zone.now - 2.month
     end
-    
+
     # Future contests
-    Contest.populate(3) do |contest|
+    Contest.populate(10) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -49,7 +49,7 @@ namespace :db do
     end
 
     # Current open enrollment contest
-    Contest.populate(2) do |contest|
+    Contest.populate(5) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -60,7 +60,7 @@ namespace :db do
     end
 
     # Current idle contest
-    Contest.populate(1) do |contest|
+    Contest.populate(4) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -71,7 +71,7 @@ namespace :db do
     end
 
     # Current contest
-    Contest.populate(1) do |contest|
+    Contest.populate(4) do |contest|
       contest.title                =   "Concurso #{Faker::Name.title}"
       contest.description          =   Faker::Lorem.paragraphs(8)
 
@@ -108,7 +108,7 @@ namespace :db do
     end
 
     user = User.new
-    user.name = 'Admin' 
+    user.name = 'Admin'
     user.email = 'admin@admin.com'
     user.password = '12345678'
     user.password_confirmation = '12345678'
@@ -120,7 +120,7 @@ namespace :db do
     users = User.all.where(admin:nil).ids
     Contest.all.each do |contest|
       i = 0
-      
+
       Participant.populate(4) do |participant|
         i = i + 1
         participant.user_id = users[i]
@@ -140,7 +140,7 @@ namespace :db do
         participant.status = 0
         participant.description = Faker::Lorem.paragraph
         participant.title = Faker::Lorem.words(3, true)
-        
+
       end
     end
 
