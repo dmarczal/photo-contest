@@ -36,7 +36,7 @@ class Participant < ActiveRecord::Base
   end
 
   def self.podium contest_id
-    participants = Participant.approved.where(contest_id: contest_id)
+    participants = Participant.approved.where(contest_id: contest_id).limit(3)
     votes = []
     
     participants.each do |participant|

@@ -71,43 +71,35 @@
     </div>
 	<% end %>
 	<% if @contest.closed? %>
-		<div class="podium">
-			<div class="item">
-				<h4>Primeiro lugar</h4>
-				<div  class="link">
-					<% if @podium[0].kind_of?(Array) %>
-						<% @podium[0].each do |participant| %>
-							<%= render 'participant', :participant => participant %>
-				        <% end %>
-				    <% else %>
-						<%= render 'participant', :participant => @podium[0] %>
-				    <% end %>				
-				</div>			
-			</div>
-			<div class="item">
-				<h4>Segundo lugar</h4>
-				<div  class="link">
-					<% if @podium[1].kind_of?(Array) %>
-						<% @podium[1].each do |participant| %>
-							<%= render 'participant', :participant => participant %>
-				        <% end %>
-				    <% else %>
-						<%= render 'participant', :participant => @podium[1] %>
-				    <% end %>				
-				</div>
-			</div>
-			<div class="item">
-				<h4>Terceiro lugar</h4>
-				<div class="link">
-					<% if @podium[2].kind_of?(Array) %>
-						<% @podium[2].each do |participant| %>
-							<%= render 'participant', :participant => participant %>
-				        <% end %>
-				    <% else %>
-						<%= render 'participant', :participant => @podium[2] %>
-				    <% end %>				
-				</div>
-			</div>
+		<div class="row">
+			<p>Primeiro lugar</p>
+			<% if @podium[0].kind_of?(Array) %>
+				<% @podium[0].each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+		        <% end %>
+		    <% else %>
+				<%= render 'participant', :participant => @podium[0] %>
+		    <% end %>
+		</div>
+		<div class="row">
+			<p>Segundo lugar</p>
+			<% if @podium[1].kind_of?(Array) %>
+				<% @podium[1].each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+		        <% end %>
+		    <% else %>
+				<%= render 'participant', :participant => @podium[1] %>
+		    <% end %>
+		</div>
+		<div class="row">
+			<p>Terceiro lugar</p>
+			<% if @podium[2].kind_of?(Array) %>
+				<% @podium[2].each do |participant| %>
+					<%= render 'participant', :participant => participant %>
+		        <% end %>
+		    <% else %>
+				<%= render 'participant', :participant => @podium[2] %>
+		    <% end %>
 		</div>
 	<% end %>
 </div>

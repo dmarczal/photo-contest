@@ -61,5 +61,4 @@ class Contest < ActiveRecord::Base
   def self.old
     contest = where("closing <= ?", Time.zone.now)
   end
-
 end
