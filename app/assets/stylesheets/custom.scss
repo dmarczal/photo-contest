@@ -172,13 +172,15 @@ body {
 #contest .thumbnail { text-align: center; }
 
 /* Contest archive*/
-.archive {height: 200px; background-color: white; text-align: center; border-radius: 10px; margin:5px}
+.archive {height: 200px; background-color: white; text-align: center; border-radius: 10px; margin:5px; min-height: 300px;}
+.archive .image {min-height: 100px;}
 .archive:hover{
   -webkit-box-shadow: 0px 0px 20px 5px rgba(0,150,136,1);
   -moz-box-shadow: 0px 0px 20px 5px rgba(0,150,136,1);
   box-shadow: 0px 0px 20px 5px rgba(0,150,136,1);
 }
 .archive img {margin: 15px 0 15px 0;}
+.archive .winners {text-align: start;}
 
 /* Photographer show */
 .bg_blur{height: 260px;background-size: cover;}
