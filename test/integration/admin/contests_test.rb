@@ -20,9 +20,9 @@ class Admin::ContestsTest < ActionDispatch::IntegrationTest
     get '/admin/contests'
     assert_response :success
     assert assigns(:contests)
-    assert_select "th", text: Contest.human_attribute_name :title
-    assert_select "th", Contest.human_attribute_name :opening
-    assert_select "th", Contest.human_attribute_name :closing
+    assert_select "th", text: Contest.human_attribute_name(:title)
+    assert_select "th", Contest.human_attribute_name(:opening)
+    assert_select "th", Contest.human_attribute_name(:closing)
     assert_select "th", "Opções"
     assert_equal assigns(:contests), @contests
     assert_template 'admin/contests/index'
