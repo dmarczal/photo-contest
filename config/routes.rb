@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get  'contests/archive'
   get  '/contests'   => 'contests#list'
   get  'contests/:id' => 'contests#show', as: 'contest'
- 
+
   resources :participants, except: [:destroy]
 
   get 'contests/open'
@@ -36,9 +36,11 @@ Rails.application.routes.draw do
 
     resources :contests
 
+    get 'users/index'
+
     get      'participant/:id/:status'   => 'participants#update'
   end
-  
+
   get ':permalink' => 'pages#route'
   get 'vote/:id' => 'votes#create'
 end

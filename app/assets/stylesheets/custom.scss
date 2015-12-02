@@ -17,6 +17,18 @@ h1 {
   text-align: center;
 }
 
+/* listagem de usuários admin */
+.table-users{
+  margin-top: 20px;
+}
+
+table.table-users > tbody > tr > td{
+  line-height: 25px;
+}
+
+.name-user{
+  font-weight: bold;
+}
 
 /* form sign in */
 .submit_sign_in {
