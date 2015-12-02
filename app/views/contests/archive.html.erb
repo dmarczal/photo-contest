@@ -11,8 +11,10 @@
 									<%= image_tag(contest.image(:thumb) , alt: contest.title) %>
 								</div>
 								<div class="col-xs-12">
-									<p><b><%= contest.title %></b></p>
-									<p>Concurso encerrado há <%= format_date_old(contest.closing) %></p>
+									<p class="title">
+										<b><%= contest.title %></b>
+									</p>
+									<p class="close-at">Concurso encerrado há <%= format_date_old(contest.closing) %></p>
 									<hr>
 									<div class="winners">
 									<% Participant.podium(contest.id).each_with_index do |participant, key|%>
