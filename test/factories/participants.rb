@@ -7,5 +7,6 @@ FactoryGirl.define do
     status 2
     description Faker::Lorem.paragraph
     title Faker::Lorem.words(3, true)
+    picture  {File.open(Rails.root.join('test', 'factories', 'img', 'test.png'))}
   end
 end
