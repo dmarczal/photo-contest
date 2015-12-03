@@ -10,17 +10,13 @@ class HomeTest < ActionDispatch::IntegrationTest
     @contest = FactoryGirl.create :contest
     @old_contests = FactoryGirl.create_list :old_contests, 3
     @current_contest = FactoryGirl.create_list :current_contests, 1
-
     @user = FactoryGirl.build(:user)
 
-    @participant = Participant.create(user_id: @user.id, contest_id: @contest.id)
-    @participant.picture =  File.open(Dir["#{Rails.root}/lib/images/participant/*"].sample)
-    @participant.save(validate: false)
-
+    @participant = FactoryGirl.create :participant
   end
 
 
-  test "layout page"do
+  test "layout page" do
     get root_path
     assert :success
 
@@ -28,7 +24,6 @@ class HomeTest < ActionDispatch::IntegrationTest
         assert_select ".col-xs-12.col-sm-4.image" do
           assert_select "img", alt: current_contest.title
         end
-
         assert_select ".col-xs-12.col-sm-8.current-contest" do |elements|
           elements.each do |elem|
             assert_select "b", text: current_contest.title
@@ -50,16 +45,12 @@ class HomeTest < ActionDispatch::IntegrationTest
           end
         end
       end
-
-    assert_select ".bxslider" do
-      assert_select "a[href=?]", @participant.picture.url
+    assert_select ".bxslider" do |page|
+      assert_select "img[src=?]", @participant.picture.url(:medium)
     end
-
   end
 
-
   test "links page" do
-
     get root_path
     assert_select "a[href=?]", root_url, count: 3
     assert_select "a[href=?]", contests_path
@@ -67,8 +58,6 @@ class HomeTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", contests_archive_path
     assert_select "a[href=?]", "/#{@about_page.permalink}"
     assert_select "a[href=?]", "/#{@contact_page.permalink}"
-
-
   end
 
 
