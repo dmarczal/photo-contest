@@ -4,34 +4,57 @@ require 'minitest/autorun'
 class HomeTest < ActionDispatch::IntegrationTest
 
   def setup
-    @contests = FactoryGirl.create_list :old_contests, 3
     @about_page = FactoryGirl.create :about_page
     @contact_page = FactoryGirl.create :contact_page
+
+    @contest = FactoryGirl.create :contest
+    @old_contests = FactoryGirl.create_list :old_contests, 3
+    @current_contest = FactoryGirl.create_list :current_contests, 1
+
     @user = FactoryGirl.build(:user)
-    @user.name = "Helbert"
-    @user.username = "helbert"
-    @user.password = "12345678"
-    @user.password_confirmation = "12345678"
-    @user.save!
+
+    @participant = Participant.create(user_id: @user.id, contest_id: @contest.id)
+    @participant.picture =  File.open(Dir["#{Rails.root}/lib/images/participant/*"].sample)
+    @participant.save(validate: false)
+
   end
 
 
-  test "idex page"do
+  test "layout page"do
     get root_path
     assert :success
 
-      @contests.each do |contest|
+    @current_contest.each do |current_contest|
+        assert_select ".col-xs-12.col-sm-4.image" do
+          assert_select "img", alt: current_contest.title
+        end
+
+        assert_select ".col-xs-12.col-sm-8.current-contest" do |elements|
+          elements.each do |elem|
+            assert_select "b", text: current_contest.title
+            assert_select "p", 3
+            assert_select "a[href=?]", current_contest.id
+          end
+        end
+      end
+
+    @old_contests.each do |old_contest|
         assert_select ".row.contest_old" do
-          assert_select "img", alt: contest.title
-          assert_select ".col-xs-12.col-sm-9" do |elements|
-            elements.each do |elem|
-              assert_select "b", text: contest.title
-              assert_select "p", 9 #, text: /format_date_old(@contest.closing/
-              assert_select "a[href=?]", contest.id
+          assert_select "img", alt: old_contest.title
+            assert_select ".col-xs-12.col-sm-9" do |elements|
+              elements.each do |elem|
+                assert_select "b", text: old_contest.title
+                assert_select "p", 9
+                assert_select "a[href=?]", old_contest.id
             end
           end
         end
       end
+
+    assert_select ".bxslider" do
+      assert_select "a[href=?]", @participant.picture.url
+    end
+
   end
 
 
@@ -47,6 +70,8 @@ class HomeTest < ActionDispatch::IntegrationTest
 
 
   end
+
+
 
 
 

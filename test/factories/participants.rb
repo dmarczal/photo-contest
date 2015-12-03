@@ -6,6 +6,6 @@ FactoryGirl.define do
     accepted_term true
     status 2
     description Faker::Lorem.paragraph
-    title Faker::Lorem.words(3, true)
+    title								{ Faker::Name.title }
   end
 end
