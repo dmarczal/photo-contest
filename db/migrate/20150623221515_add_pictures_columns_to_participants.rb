@@ -4,6 +4,5 @@ class AddPicturesColumnsToParticipants < ActiveRecord::Migration
   	add_column :participants, :accepted_term, :boolean,  default: false
   	add_column :participants, :description, :text
   	add_column :participants, :picture, :text
-  	remove_column :participants, :status
   end
 end
