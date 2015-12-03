@@ -16,7 +16,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
     * Vota apenas um vez em cada concurso;
     * Acompanha o ranking em tempo real;
     * Acessa os concursos antigos;
-    * Acessa a lista de fotográfos (participantes) e ver a sua quantidade de medalhas ;
+    * Acessa a lista de fotográfos (participantes) e ver a sua quantidade de medalhas;
     * Acessa o perfil do fotógrafo e suas respectivas quantidades de medalhas;
     * Acessa o Hall da Fama do sistema;
     * Compartilha a página do sistema nas redes sociais (Facebook, twitter) ou por email.
@@ -28,7 +28,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 1. Faça o download no repositório do [Projeto](https://github.com/dmarczal/photo-contest) ou clone o repositório do projeto utilizando o comando 
     * `git clone git@github.com:dmarczal/photo-contest.git`
 2. Instalar as gems necessárias
-    * Executar  `bunlde install`  
+    * Executar  `bundle install`  
 2. Crie as tabelas do banco de dados
     * Executar `rake db:migrate`
 3. Criar as páginas Sobre e Contato 
@@ -46,12 +46,11 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 4. Acesse o formulário de login do Administrador
     * [/admin](http://localhost:3000/admin)
      
-##Demo e Teste
+##Demo
 1. Pode-se testar o sistema populando o banco com de usuários e concursos `fakes`
     * Após instalar o sistema executar o comando `rake db:populate`
-2. Inicializar o servidor e acessar a página do projeto
-    * Executar `rails s`
-    * Acesse o [site](http://localhost:3000) 
+2. Se preferir existe um `demo` no *Heroku*:
+    * Acesse o [site](https://photocontest-utfpr.herokuapp.com){:target="_blank"}
 
 ##Documentação
 https://github.com/dmarczal/photo-contest/wiki
