@@ -49,8 +49,8 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
 ##Demo
 1. Pode-se testar o sistema populando o banco com de usuários e concursos `fakes`
     * Após instalar o sistema executar o comando `rake db:populate`
-2. Se preferir existe um `demo` no *Heroku*:
-    * Acesse o [site](https://photocontest-utfpr.herokuapp.com){:target="_blank"}
+2. Se preferir existe um demo` no *Heroku*:
+* Acesse o [photocontest](https://photocontest-utfpr.herokuapp.com ) no Heroku.
 
 ##Documentação
 https://github.com/dmarczal/photo-contest/wiki
