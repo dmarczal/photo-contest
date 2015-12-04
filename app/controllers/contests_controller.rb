@@ -19,7 +19,7 @@ class ContestsController < ApplicationController
   end
   
   def archive
-  	@contests = Contest.old.paginate(page: params[:page], per_page: 10)
+  	@contests = Contest.old.paginate(page: params[:page], per_page: 9)
   end
 
   def hall_of_fame
