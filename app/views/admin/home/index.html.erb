@@ -1,54 +1,68 @@
-<div class="row">
-    <div id="items-list" class="col-xs-8">
 
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
+<% provide(:title, "Página Inicial") %>
+<div id="home" class="container">
+	<div id="description" class="row">
+		<div class="col-xs-12">
+			Todos os meses a UTFPR escolhe a melhor foto enviada pelos alunos. Você também tem uma bacana? Então envie pra gente. O vencedor do mês ganha atividades complementares.
+			<br>
+		</div>
+	</div>
+	<% unless @current_contest.nil? %>
+		<div id="new-contest" class="row">
+			<div class="col-xs-12 col-sm-4">
+				<a href="<%= contest_path @current_contest %>" class="thumbnail">
+			    	<%= image_tag(@current_contest.image(:original), alt: @current_contest.title, class: "img-responsive") unless @current_contest.image.blank? %>
+		    		<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @current_contest.image.blank? == false %>
+			    </a>
+			</div>
+			<div class="col-xs-12 col-sm-8">
+				<div class="well well-md">
+				    <div class="row">
+				    	<div class="col-xs-12">
+				    		<p><b><%= @current_contest.title %></b></p>
+				    		<p><%= contest_status_label(@current_contest) %></p>
+						    <br>
+						    <p><%= @current_contest.description %></p>
+				    	</div>
+				    	<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-sm-8 col-sm-offset-4 col-lg-7 col-lg-offset-5">
+				    		<%= contest_link_register(@current_contest) %>&nbsp;&nbsp;
 
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
-
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
-
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
-
-    </div>
+							<%= link_to "Ler regulamento", @current_contest %>
+				    	</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+			<h2>Edições Anteriores</h2>
+			<% @old_contests.each do |contest| %>
+				<div class="row">
+					<div class="col-xs-12 col-sm-3">
+						<a href="#" class="thumbnail">
+					    	<%= image_tag(contest.image(:original), alt: contest.title, class: "img-responsive") unless contest.image.blank? %>
+		    				<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless contest.image.blank? == false %>
+					    </a>
+					</div>
+					<div class="col-xs-12 col-sm-9">
+						<p><b><%= contest.title %></b></p>
+						<p>Concurso encerrado há <%= format_date_old(contest.closing) %></p>
+						<br>
+						<p><%= link_to "Visitar a página do concurso", contest %></p>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<h2>Ultimas fotos cadastradas</h2>
+			<ul class="bxslider">
+				<% @participants.each do |participant|%>
+					<li>
+						<%= image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive") unless participant.picture.url.blank? %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 </div>
-
