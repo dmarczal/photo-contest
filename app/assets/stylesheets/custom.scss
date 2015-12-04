@@ -169,6 +169,16 @@ body {
 }
 
 /* Contest show */
+.contest .contest-description {background-color: white; padding: 5px; overflow: hidden;}
+.contest .contest-description p {color: #009688;font-size: 17px;}
+.contest .contest-date .inscriptions {margin-bottom:30px;}
+.contest .contest-date .voting .open-more {font-size: 15px;}
+
+.contest .podium {text-align: center;}
+.contest .podium .item {display: inline-block; margin:20px;}
+.contest .podium .item .link .link-img {height: 75px; width: 125px;}
+
+
 #contest .modal .modal-header, #contest .modal .modal-footer{ text-align: center }
 #contest .modal .image { text-align: center }
 #contest .thumbnail { text-align: center; }
@@ -188,6 +198,16 @@ body {
   }
 }
 
+/* Contest archive*/
+.archive {height: 200px; background-color: white; text-align: center; border-radius: 10px; margin:5px; min-height: 300px;}
+.archive .image {min-height: 100px;}
+.archive:hover{
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(0,150,136,1);
+  -moz-box-shadow: 0px 0px 20px 5px rgba(0,150,136,1);
+  box-shadow: 0px 0px 20px 5px rgba(0,150,136,1);
+}
+.archive img {margin: 15px 0 15px 0;}
+.archive .winners {text-align: start;}
 
 /* Photographer show */
 .bg_blur{height: 260px;background-size: cover;}
