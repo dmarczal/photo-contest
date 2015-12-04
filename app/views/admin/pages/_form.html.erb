@@ -36,7 +36,7 @@
           placement: 'left'}, 
       title: '<h4>Editor Markdown</h4>' %>
 
-    <%= f.input :content, as: :text, input_html: { cols: 10, rows: 10 } %>
+    <%= f.input :content, as: :text, input_html: { "data-provide" => "markdown", cols: 10, rows: 10 } %>
   </div>
 
   <div class="form-actions">
