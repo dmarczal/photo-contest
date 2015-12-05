@@ -1,1 +1,68 @@
+<% provide(:title, "Admin - Página Inicial") %>
 
+<div class="row index-page-admin">
+  <div class="col-md-4">
+    <div class="panel panel-info">
+	     <div class="panel-heading">Concursos Abertos</div>
+	      <div class="panel-body">
+          <table class="table table-striped table-hover">
+            </thead>
+              <tbody>
+                <% @contests.each do |contest| %>
+                  <tr>
+                    <td><%= link_to contest.title, admin_contest_path(contest) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="panel panel-info">
+	     <div class="panel-heading">Fotos para Aprovação</div>
+	      <div class="panel-body">
+          <table class="table table-striped table-hover">
+              <tbody>
+
+                  <% @not_approved_participants.each do |participant| %>
+                  <tr>
+                    <td>
+                      <%= link_to participant.title, 'javascript:void(0)',
+                        data:{toggle: "modal", target: "#modal-#{participant.id}"}%>
+                    </td>
+                  </tr>
+    <!-- Modal -->
+
+                <%= render 'shared/approved_pictures', :participant => participant %>
+
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="panel panel-info">
+	     <div class="panel-heading">Ranking de Concursos</div>
+	      <div class="panel-body">
+          <table class="table table-striped table-hover">
+              <tbody>
+                <% @contests_opening.each do |contest| %>
+                  <tr>
+                    <td><%= link_to contest.title,  '#',
+											data:{toggle: "modal", target: "#modal-contest-#{contest.id}"} %>
+												<%= render 'shared/ranking_contests', :contest => contest, partial_podium => @partial_podium%>
+										</td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>

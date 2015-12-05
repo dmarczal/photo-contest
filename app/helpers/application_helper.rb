@@ -23,7 +23,7 @@ module ApplicationHelper
 
   def format_date_old (date)
     from_time = Time.zone.now
-    distance_of_time_in_words(from_time, date) 
+    distance_of_time_in_words(from_time, date)
   end
 
   def format_date (date)
@@ -73,17 +73,17 @@ module ApplicationHelper
 
   # show link to register in any contest if it is enrollment open
   def contest_link_register(contest)
-    (contest.open_enrollment?) ? link_to('Inscrever-me', new_participant_path(:contest_id => contest.id), :method => :get) : "" 
+    (contest.open_enrollment?) ? link_to('Inscrever-me', new_participant_path(:contest_id => contest.id), :method => :get) : ""
   end
 
-  # show approved label status 
+  # show approved label status
   def label_status_inscription(participant)
-    if participant.pending? 
+    if participant.pending?
       '<span class="label label-warning">Inscrição enviada para aprovação</span>'.html_safe
     elsif participant.failed?
-      '<span class="label label-danger">Sua inscrição foi recusada</span>'.html_safe 
+      '<span class="label label-danger">Sua inscrição foi recusada</span>'.html_safe
     elsif participant.approved?
-      '<span class="label label-success">Inscrição aprovada</span>'.html_safe 
+      '<span class="label label-success">Inscrição aprovada</span>'.html_safe
     end
   end
 
@@ -96,7 +96,7 @@ module ApplicationHelper
   end
 
   # check if user is registered in a contest
-  def label_check_inscription(contest) 
+  def label_check_inscription(contest)
     user_found = contest.users.find_by(id:current_user.id)
     (!user_found.nil?) ? '<span class="label label-primary">Inscrito</span>'.html_safe : ''
   end
@@ -124,9 +124,9 @@ module ApplicationHelper
 
   def picture_featured (participant)
     if participant.nil?
-      image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive") 
+      image_tag("placeholder.png", alt: "Placeholder-user", class: "img-responsive")
     else
-      image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive img-featured") 
+      image_tag(participant.picture.url(:medium), alt: participant.title, class: "img-responsive img-featured")
     end
   end
 
@@ -135,7 +135,7 @@ module ApplicationHelper
     contest_participants = Participant.where(contest_id: contest_id).pluck(:id)
     Vote.where(participant_id: contest_participants, user_id: current_user.id).empty?
   end
-  
+
 
   def link_to_reject_inscription(participant)
    label = 'Recusar Inscrição'
@@ -146,8 +146,8 @@ module ApplicationHelper
 
   # Generate the dropdown menu with static pages
   def dropdown_static_pages pages = ''
-    
-    content_tag :li, class: 'dropdown' do    
+
+    content_tag :li, class: 'dropdown' do
       link_to '#', data: { target: '#', toggle: 'dropdown' }, class: 'dropdown-toggle', 'aria-expanded': 'false' do
         "Dropdown"
         content_tag(:b, '', class: 'caret')
@@ -160,8 +160,8 @@ module ApplicationHelper
         end
       end
     end
-        
+
   end
-  
+
 
 end
