@@ -1,4 +1,4 @@
-ruby "2.2.3"
+ruby "2.2.0"
 source 'https://rubygems.org'
 
 gem 'rails',                     '4.2.0'
@@ -24,7 +24,7 @@ gem 'redcarpet',                 '3.3.1'
 gem 'date_validator',            '0.8.0'
 gem 'rails-bootstrap-markdown'
 
-group :development, :test do  
+group :development, :test do
   gem 'sqlite3',        '1.3.9'
   gem 'byebug',         '4.0.0'
   gem 'web-console',    '2.0.0.beta3'
