@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
     resources :contests
 
+    get 'users/index'
+
     get      'participant/:id/:status'   => 'participants#update'
   end
 

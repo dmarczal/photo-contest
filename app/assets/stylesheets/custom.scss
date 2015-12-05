@@ -17,6 +17,18 @@ h1 {
   text-align: center;
 }
 
+/* listagem de usuários admin */
+.table-users{
+  margin-top: 20px;
+}
+
+table.table-users > tbody > tr > td{
+  line-height: 25px;
+}
+
+.name-user{
+  font-weight: bold;
+}
 
 /* form sign in */
 .submit_sign_in {
@@ -159,7 +171,7 @@ body {
 /* Contest show */
 .contest .contest-description {background-color: white; padding: 5px; overflow: hidden;}
 .contest .contest-description p {color: #009688;font-size: 17px;}
-.contest .contest-date .inscriptions {margin-bottom:30px;}  
+.contest .contest-date .inscriptions {margin-bottom:30px;}
 .contest .contest-date .voting .open-more {font-size: 15px;}
 
 .contest .podium {text-align: center;}
@@ -170,6 +182,21 @@ body {
 #contest .modal .modal-header, #contest .modal .modal-footer{ text-align: center }
 #contest .modal .image { text-align: center }
 #contest .thumbnail { text-align: center; }
+
+/* Contest list */
+.row-contests .col-sm-4{
+  width: 32%;
+  border: 2px solid gray;
+  border-radius: 15px;
+  margin: 5px;
+  img{
+    height: 100px;
+  }
+  .title{
+    height: 20px;
+    overflow: hidden;
+  }
+}
 
 /* Contest archive*/
 .archive {height: 200px; background-color: white; text-align: center; border-radius: 10px; margin:5px; min-height: 300px;}
@@ -244,4 +271,4 @@ textarea {
   min-height: 60px;
 }
 
-.partial-podium{margin-top: 30px;}  
+.partial-podium{margin-top: 30px;}
