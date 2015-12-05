@@ -36,7 +36,7 @@
 								      <li><% @static_pages.each do |static_page|%>
 								        <%= content_tag :li do %>
                                             <% if static_page.name != "about" or static_page.name != "contact" %>
-                                                <%= link_to static_page.name, "/#{static_page.permalink}" %>
+                                                <%= link_to static_page.name.capitalize, "/#{static_page.permalink}" %>
                                             <% end %>
 								        <% end %>
 								      <% end %>

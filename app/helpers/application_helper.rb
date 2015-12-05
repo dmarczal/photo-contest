@@ -1,11 +1,13 @@
 module ApplicationHelper
 
   # Returns the full title on a per-page basis.
-  def full_title(page_title = '')
+  def full_title(page_title = '')    
+    is_admin = controller.class.name.split("::").first == "Admin"
+
     if page_title.empty?
-      "PhotoContest"
+      is_admin ? "Admin - PhotoContest" : "PhotoContest"
     else
-      page_title
+      is_admin ?  "Admin - " + page_title : page_title
     end
   end
 
