@@ -1,3 +1,4 @@
+<% provide(:title, @page.name.capitalize) %>
 <h2><%= @page.name %></h2>
 
 <%= simple_format markdown(@page.content) %>
