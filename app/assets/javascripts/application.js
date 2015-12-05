@@ -18,6 +18,7 @@
 //= require pickers
 //= require moment/pt-br.js
 //= require jquery.bxslider.min
+//= require bootstrap-markdown-bundle
 //= require_tree .
 //= require_self
 
