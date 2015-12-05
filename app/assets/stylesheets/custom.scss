@@ -272,3 +272,15 @@ textarea {
 }
 
 .partial-podium{margin-top: 30px;}
+
+
+
+
+
+.md-editor{margin-top: 30px; }
+
+label.text.optional.control-label{float: none;}
+
+.md-editor > .md-preview{background-color: #dddddd !important;}
+
+textarea.form-control:focus, .form-group-default .form-control:focus{background-image: linear-gradient(#fff,#fff) !important;}

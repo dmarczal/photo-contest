@@ -22,6 +22,7 @@ gem 'sdoc',                      '0.4.0',   group: :doc
 gem 'populator',                 '1.0.0',   group: :development
 gem 'redcarpet',                 '3.3.1'
 gem 'date_validator',            '0.8.0'
+gem 'rails-bootstrap-markdown'
 
 group :development, :test do  
   gem 'sqlite3',        '1.3.9'
