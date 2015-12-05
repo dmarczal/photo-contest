@@ -8,7 +8,7 @@
 	<div id="new-contest" class="row">
 		<div class="col-xs-12 col-sm-4">
 			<a href="#" class="thumbnail">
-				<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %> 
+				<%= image_tag(@contest.image(:original), alt: @contest.title, class: "img-responsive") unless @contest.image.blank? %>
 		    	<%= image_tag("placeholder.png", alt: "Placeholder", class: "img-responsive") unless @contest.image.blank? == false %>
 		    </a>
 		    <ul class="list-group">
@@ -25,6 +25,14 @@
 			    		<%= @contest.description %>
 			    		<p><%= contest_status_label(@contest) %></p>
 			    		<% if(@contest.open?) %>
+							<div
+							  class="fb-like"
+							  data-share="true"
+							  data-width="450"
+							  data-show-faces="true"
+								data-href="<%= root_url + "/contest/#{@contest.id}" %>"
+								>
+							</div>
 								<table class="table partial-podium">
 									<tr>
 										<th class="col-md-2">Posição</th>
