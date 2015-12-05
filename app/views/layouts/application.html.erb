@@ -3,6 +3,7 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <meta name="viewport" content="width=device-width, user-scalable=no">
+  <%= create_meta_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
