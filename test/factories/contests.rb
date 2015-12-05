@@ -9,7 +9,7 @@ FactoryGirl.define do
   	closing 						{ Time.now + 1.month }
   end
 
-  factory :old_contests, class: Contest do
+  factory :old_contest, class: Contest do
     title								{ Faker::Name.title }
   	description					{ Faker::Lorem.sentence }
   	opening_enrollment	{ Time.now - 3.weeks}
@@ -19,7 +19,7 @@ FactoryGirl.define do
   end
 
 
-  factory :current_contests, class: Contest do
+  factory :current_contest, class: Contest do
     title								{ Faker::Name.title }
     description					{ Faker::Lorem.sentence }
     opening_enrollment	{ Time.now - 3.weeks}

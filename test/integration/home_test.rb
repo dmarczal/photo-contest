@@ -7,44 +7,46 @@ class HomeTest < ActionDispatch::IntegrationTest
     @about_page = FactoryGirl.create :about_page
     @contact_page = FactoryGirl.create :contact_page
 
-    @contest = FactoryGirl.create :contest
-    @old_contests = FactoryGirl.create_list :old_contests, 3
-    @current_contest = FactoryGirl.create_list :current_contests, 1
-    @user = FactoryGirl.build(:user)
+    @contest = FactoryGirl.build :contest
+    @contest.save validate: false
 
+    @old_contest = FactoryGirl.build :old_contest
+    @old_contest.save validate: false
+
+    @current_contest = FactoryGirl.build :current_contest
+    @current_contest.save validate: false
+
+    @user = FactoryGirl.build(:user)
     @participant = FactoryGirl.create :participant
   end
 
 
   test "layout page" do
-    get root_path
-    assert :success
-    @current_contest.save validate: false
-    @current_contest.each do |current_contest|
+        get root_path
+        assert :success
         assert_select ".col-xs-12.col-sm-4.image" do
-          assert_select "img", alt: current_contest.title
+          assert_select "img", alt: @current_contest.title
         end
         assert_select ".col-xs-12.col-sm-8.current-contest" do |elements|
           elements.each do |elem|
-            assert_select "b", text: current_contest.title
+            assert_select "b", text: @current_contest.title
             assert_select "p", 3
-            assert_select "a[href=?]", current_contest.id
+            assert_select "a[href=?]", contest_path(@current_contest.id)
           end
         end
-      end
 
-    @old_contests.each do |old_contest|
+
         assert_select ".row.contest_old" do
-          assert_select "img", alt: old_contest.title
+          assert_select "img", alt: @old_contest.title
             assert_select ".col-xs-12.col-sm-9" do |elements|
               elements.each do |elem|
-                assert_select "b", text: old_contest.title
-                assert_select "p", 9
-                assert_select "a[href=?]", old_contest.id
+                assert_select "b", text: @old_contest.title
+                assert_select "p", 3
+                assert_select "a[href=?]", contest_path(@old_contest.id)
             end
           end
         end
-      end
+
     assert_select ".bxslider" do |page|
       assert_select "img[src=?]", @participant.picture.url(:medium)
     end
