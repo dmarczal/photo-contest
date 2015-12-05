@@ -2,7 +2,7 @@
 FactoryGirl.define do
   factory :user do
     name                  { "#{Faker::Name.first_name} #{Faker::Name.last_name}" }
-    username              { "#{Faker::Internet.user_name}_#{Random.new.rand(100)}" }
+    sequence(:username)    { |n| Faker::Internet.user_name + "-#{n}" }
     email                 { Faker::Internet.email }
     password              { 123123123 }
     password_confirmation { 123123123 }

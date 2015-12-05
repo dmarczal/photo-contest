@@ -17,7 +17,7 @@ class PhotographersTest < ActionDispatch::IntegrationTest
       assert_select "a", photographers.first.name
     end
 
-    assert_select "a.thumbnail[href=?]", photographers.first.id
+    assert_select "a[href=?]", photographer_path(photographers.first.id)
     assert_select "a.thumbnail" do
       assert_select "img[alt=?]", photographers.first.name
     end

@@ -18,7 +18,7 @@ class ContestsTest < ActionDispatch::IntegrationTest
         assert_select "b", text: contest.title
       end
 
-      assert_select "a.thumbnail[href=?]", contest.id
+      assert_select "a.thumbnail[href=?]", contest_path(contest.id)
 
       assert_select "a.thumbnail" do
         assert_select "img[alt=?]", contest.title
@@ -32,7 +32,7 @@ class ContestsTest < ActionDispatch::IntegrationTest
         assert_select "b", text: contest.closing_enrollment.strftime("%d/%m/%Y - %H:%M")
       end
 
-      assert_select "a.link_contest[href=?]", contest.id
+      assert_select ".link_contest a[href=?]", contest_path(contest.id)
     end
   end
 

@@ -10,7 +10,7 @@
 					    </a>
 					</div>
 					<div class="col-xs-12 list-info">
-						<h3><%= link_to photographer.name, "#{photographer.id}" %></h3>
+						<h3><%= link_to photographer.name, photographer_path(photographer) %></h3>
 						<article class="small-description">
 							<div class="col-xs-12 titles text-right">
 		          	<i><%= image_tag("first.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
