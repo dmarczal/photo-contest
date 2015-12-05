@@ -19,7 +19,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   test "layout page" do
     get root_path
     assert :success
-
+    @current_contest.save validate: false
     @current_contest.each do |current_contest|
         assert_select ".col-xs-12.col-sm-4.image" do
           assert_select "img", alt: current_contest.title
@@ -59,10 +59,4 @@ class HomeTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", "/#{@about_page.permalink}"
     assert_select "a[href=?]", "/#{@contact_page.permalink}"
   end
-
-
-
-
-
-
 end
