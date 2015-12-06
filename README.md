@@ -40,11 +40,11 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
     * Alterar o arquivo `lib/tasks/populate.rake`
 2. Popular o banco com os dados definidos no arquivo `lib/tasks/populate.rake`
     * Executar o comando `rake db:populate`
-3. Inicializar o servidor e acessar a página do projeto
+3. Inicializar o servidor e acessar a página do projeto:
     * Executar `rails s`
-    * Acesse o [site](http://localhost:3000) 
-4. Acesse o formulário de login do Administrador
-    * [/admin](http://localhost:3000/admin)
+    * Acesse o [photocontest](https://photocontest-utfpr.herokuapp.com)
+4. Acesse o formulário de login do Administrador do sistema:
+    * [admin](https://photocontest-utfpr.herokuapp.com/admin)
      
 ##Demo
 1. Pode-se testar o sistema populando o banco com de usuários e concursos `fakes`
