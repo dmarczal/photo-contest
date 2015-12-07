@@ -170,7 +170,7 @@ module ApplicationHelper
       %Q(<meta property="og:url"        content="#{contest_url(contest)}" />
       <meta property="og:type"          content="website" />
       <meta property="og:title"         content="#{contest.title}" />
-      <meta property="og:image"         content="#{contest.image.url(:thumb)}" />).html_safe
+      <meta property="og:image"         content="#{contest.image.url(:medium)}" />).html_safe
   end
 
 end
