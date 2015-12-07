@@ -23,6 +23,7 @@
                                 <li><%= link_to 'Principal', root_url %></li>
                                 <li><a href="<%= contests_path %>">Concursos</a></li>
                                 <li><%= link_to 'Participantes', photographer_list_url %></li>
+                                <li><%= link_to 'Ranking', ranking_index_url %></li>
                                 <li><a href="<%= contests_archive_path %>">Arquivo</a></li>
                                 <li><%= link_to 'Sobre', '/about' %></li>
                                 <li><%= link_to 'Contato', '/contact' %></li>
@@ -50,8 +51,8 @@
                                           <%= current_user.name %> <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu">
-                                          <li><%= link_to "Profile", '#' %></li>
-                                          <li><%= link_to "Settings", '#' %></li>
+                                          <li><%= link_to "Perfil", '#' %></li>
+                                          <li><%= link_to "Configurações", edit_user_registration_url %></li>
                                           <li class="divider"></li>
                                           <li>
                                             <%= link_to "Sair", destroy_user_session_path, method: "delete" %>

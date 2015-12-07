@@ -1,0 +1,46 @@
+<% provide(:title, "Ranking de Fotográfos") %>
+<div class="container photographers">
+	<div class="row">
+		<h2>Ranking de Fotógrafos</h2>
+			<table class="table table-striped table-hover table-participants">
+		    <thead>
+		      <tr>
+		       <th>Posição</th>
+		       <th></th>
+		       <th>Nome</th>
+		       <th>Descrição</th>
+		       <th class="col-md-2" colspan="3">Quadro de Medalhas</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    <% @participants.each do |participant|%>
+		      <tr>
+		        <td class="text position"><%= @users_ordened.index(participant) + 1 %></td>
+		        <td><%= gravatar_for participant %></td>
+		        <td class="text name-user"><%= link_to participant.name, photographer_path(participant) %></td>
+		        <td class="text"><%= participant.short_description %></td>
+		        <td>
+							<i><%= image_tag("first.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+								<span><%= participant.first || 0 %></span>
+							</i>
+						</td>
+		        <td>
+							<i><%= image_tag("second.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+								<span><%= participant.second || 0 %></span>
+							</i>
+						</td>
+		        <td>
+							<i><%= image_tag("third.png", alt: "Placeholder-user", class: "img-responsive img-user-position") %>
+								<span><%= participant.third || 0 %></span>
+						</td>
+		      </tr>
+		    <% end %>
+		    </tbody>
+		  </table>
+		  <div class="row">
+		    <div class="col-md-12 text-right">
+		      <%= will_paginate @participants, renderer: BootstrapPagination::Rails %>
+		    </div>
+		  </div>
+	</div>
+</div>

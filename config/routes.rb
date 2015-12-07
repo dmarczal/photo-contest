@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'ranking/index'
+
   namespace :admin do
     resources :pages
   end

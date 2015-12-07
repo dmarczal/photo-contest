@@ -17,6 +17,29 @@ h1 {
   text-align: center;
 }
 
+/* ranking de fotógrafos */
+.table-participants{
+  td.text{
+    line-height: 80px;
+  }
+  td.text.position{
+    text-align: center;
+    font-weight: bold;
+  }
+  td i{
+    width: 30px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    margin: 10px auto;
+    span{
+      position: absolute;
+      top: 24px;
+      left: 11px;
+    }
+  }
+}
+
 /* listagem de usuários admin */
 .table-users{
   margin-top: 20px;
@@ -115,6 +138,10 @@ hr.style-hr {
 }
 
 /* photographers */
+.row.opening{
+  margin-bottom: 20px;
+}
+
 .photographers-rating .rating-full-star{ background: url(../images/full-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}
 .photographers-rating .rating-no-star{ background: url(../images/no-star.png)no-repeat;display: inline-block;width: 24px;height: 24px;}
 
