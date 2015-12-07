@@ -166,13 +166,11 @@ module ApplicationHelper
 
 #Create Meta Tags Share Facebook
 
-  def create_meta_tag
-    @image = content_for(:page_img) || '  '
-
-    %Q(<meta property="og:url"        content="#{request.original_url}" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="#{content_for(:title)}" />
-    <meta property="og:image"         content="#{request.base_url + @image}" />).html_safe
+  def create_facebook_meta_tag(contest)
+      %Q(<meta property="og:url"        content="#{contest_url(contest)}" />
+      <meta property="og:type"          content="website" />
+      <meta property="og:title"         content="#{contest.title}" />
+      <meta property="og:image"         content="#{contest.image.url(:thumb)}" />).html_safe
   end
 
 end

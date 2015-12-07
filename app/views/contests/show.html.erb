@@ -1,5 +1,8 @@
-<% provide(:title, "Detalhes do concurso") %>
-<% content_for(:page_img, @contest.image(:original)) %>
+<%
+	provide(:title, "Detalhes do concurso")
+	provide(:facebook_tags, create_facebook_meta_tag(@contest))
+%>
+
 <div id="contest" class="container">
 	<div id="description" class="row">
 		<div class="col-xs-12">
