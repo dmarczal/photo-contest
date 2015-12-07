@@ -45,6 +45,7 @@ O Photo Contest é um sistema para gerenciar concursos de fotografias
     * Acesse o [photocontest](https://photocontest-utfpr.herokuapp.com)
 4. Acesse o formulário de login do Administrador do sistema:
     * [admin](https://photocontest-utfpr.herokuapp.com/admin)
+    * Login para acesso: admin@admin.com, senha: `12345678`
      
 ##Demo
 1. Pode-se testar o sistema populando o banco com de usuários e concursos `fakes`

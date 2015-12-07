@@ -13,3 +13,12 @@ Page.create!(name: "Sobre",
 Page.create!(name: "Contato",
              permalink: "contact",
              content: "Entrar em contato com o professor Dr. Diego Marczal pelo email: dmarczal@gmail.com")
+
+user = User.new
+user.name = 'Admin'
+user.email = 'admin@admin.com'
+user.password = '12345678'
+user.password_confirmation = '12345678'
+user.username = 'admin'
+user.admin = true
+user.save!
