@@ -5,13 +5,23 @@ class Admin::ContestsController < Admin::ApplicationController
   before_action :approved_participants, only: [:show, :edit, :update, :destroy]
   before_action :not_approved_participants, only: [:show, :edit, :update, :destroy]
   before_action :rejected_participants, only: [:show, :edit, :update, :destroy]
-  
+
 
   def index
     @contests = Contest.all
   end
 
   def show
+    @contest = Contest.find_by_id(params[:id])
+    @participants = Participant.approved.where(contest_id: @contest.id)
+    if @contest.open?
+      @partial_podium = @participants.joins("LEFT OUTER JOIN votes ON votes.participant_id = participants.id").group("participants.id").order("count(votes.participant_id) desc")
+    end
+    flash[:info] = "Ainda não existem inscrições aprovadas para este concurso." unless @participants.count > 0
+    if @contest.closed?
+      @podium = Participant.podium(@contest.id)
+    end
+
   end
 
   def new

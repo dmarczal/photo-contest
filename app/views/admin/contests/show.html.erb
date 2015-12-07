@@ -2,7 +2,7 @@
   <header class="without-background clearfix">
     <h1 class="text-left pull-left"><%= @contest.title %></h1>
     <div class="pull-right">
-      <%= link_to '', admin_contests_path, class: 'btn btn-primary btn-fab btn-raised mdi-navigation-arrow-back' %>
+      <%= link_to '', admin_path, class: 'btn btn-primary btn-fab btn-raised mdi-navigation-arrow-back' %>
       <%= link_to '', edit_admin_contest_path(@contest), class: 'btn btn-primary btn-fab btn-raised mdi-content-create' %>
     </div>
   </header>
@@ -34,6 +34,35 @@
       </div>
       <hr class="style-hr">
 
+      <p><%= contest_status_label(@contest) %></p>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= @contest.description %>
+
+          <% if(@contest.open?) %>
+            <table class="table partial-podium">
+              <tr>
+                <th class="col-md-2">Posição</th>
+                <th class="col-md-2">Foto</th>
+                <th>Título</th>
+                <th class="col-md-2">Voto(s)</th>
+              </tr>
+              <% @partial_podium.each_with_index do |participant, position| %>
+                <tr>
+                  <td><%= "#{position+1}º" %></td>
+                  <td><%= link_to "#", data: {toggle: "modal", target: "#modal-#{participant.id}"}, class: "thumbnail" do %>
+                        <%= image_tag(participant.picture.url(:thumb), alt: participant.contest.title, class: "img-responsive") unless participant.contest.image.blank? %>
+                      <% end %>
+                  </td>
+                  <td><%= participant.title %></td>
+                  <td><%= pluralize(participant.votes.count, "voto") %></td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %>
+        </div>
+
+      <% if(!@contest.open?) %>
       <h2>Inscrições com aprovação pendente</h2>
       <div class="show-pictures-contest">
         <div class="row">
@@ -66,7 +95,7 @@
           </div>
         </div>
       </div>
-
+    <% end %>
     </div>
   </article>
 </section>

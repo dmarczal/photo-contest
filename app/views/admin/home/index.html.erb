@@ -2,7 +2,7 @@
 
 <div class="row index-page-admin">
   <div class="col-md-4">
-    <div class="panel panel-info">
+    <div class="panel panel-info contest-open">
 	     <div class="panel-heading">Concursos Abertos</div>
 	      <div class="panel-body">
           <table class="table table-striped table-hover">
@@ -21,7 +21,7 @@
 
   <div class="col-md-4">
 
-    <div class="panel panel-info">
+    <div class="panel panel-info approved-pictures">
 	     <div class="panel-heading">Fotos para Aprovação</div>
 	      <div class="panel-body">
           <table class="table table-striped table-hover">
@@ -47,17 +47,14 @@
 
   <div class="col-md-4">
 
-    <div class="panel panel-info">
+    <div class="panel panel-info ranking">
 	     <div class="panel-heading">Ranking de Concursos</div>
 	      <div class="panel-body">
           <table class="table table-striped table-hover">
               <tbody>
                 <% @contests_opening.each do |contest| %>
                   <tr>
-                    <td><%= link_to contest.title,  '#',
-											data:{toggle: "modal", target: "#modal-contest-#{contest.id}"} %>
-												<%= render 'shared/ranking_contests', :contest => contest, partial_podium => @partial_podium%>
-										</td>
+                    <td><%= link_to contest.title,  admin_contest_path(contest) %>	</td>
                   </tr>
                 <% end %>
               </tbody>

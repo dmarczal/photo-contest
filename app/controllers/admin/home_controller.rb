@@ -11,10 +11,5 @@ class Admin::HomeController < Admin::ApplicationController
     @contests_opening = Contest.opening
   end
 
-  def ranking_contests(contest_id)
-    @participants = Participant.approved.where(contest_id)
-    @partial_podium = @participants.joins("LEFT OUTER JOIN votes ON votes.participant_id = participants.id").group("participants.id").order("count(votes.participant_id) desc")
-  end
-
 
 end
