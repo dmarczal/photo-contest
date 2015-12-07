@@ -61,4 +61,9 @@ class Contest < ActiveRecord::Base
   def self.old
     contest = where("closing <= ?", Time.zone.now)
   end
+
+ def self.available
+     contests = where("opening_enrollment <= ? AND closing >= ?", Time.zone.now, Time.zone.now)
+  end
+
 end

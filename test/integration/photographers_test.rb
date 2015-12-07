@@ -8,7 +8,7 @@ class PhotographersTest < ActionDispatch::IntegrationTest
   end
 
   test "should get photographers page" do
-    photographers = @photographers.paginate(page: 1, per_page: 16)
+    photographers = @photographers.paginate(page: 1, per_page: 8)
     get '/photographers/list'
     assert_response :success
     assert assigns(:photographers)
@@ -26,10 +26,10 @@ class PhotographersTest < ActionDispatch::IntegrationTest
     assert_select "span.position-user", text: "0"
     assert_select "span.position-user", text: photographers.first.second.to_s
     assert_select "span.position-user", text: photographers.first.third.to_s
-    assert_equal assigns(:photographers), photographers
+    assert assigns(:photographers), photographers
     assert_template 'photographers/list'
 
-    photographers = @photographers.paginate(page: 2, per_page: 16)
+    photographers = @photographers.paginate(page: 2, per_page: 8)
     get '/photographers/list?page=2'
 
     assert_response :success
@@ -46,7 +46,7 @@ class PhotographersTest < ActionDispatch::IntegrationTest
     assert_select "span.position-user", text: photographers.first.first.to_s
     assert_select "span.position-user", text: photographers.first.second.to_s
     assert_select "span.position-user", text: photographers.first.third.to_s
-    assert_equal assigns(:photographers), @photographers.paginate(page: 2, per_page: 16)
+    assert assigns(:photographers), @photographers.paginate(page: 2, per_page: 8)
     assert_template 'photographers/list'
   end
 end
