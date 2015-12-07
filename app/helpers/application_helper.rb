@@ -175,5 +175,4 @@ module ApplicationHelper
     <meta property="og:image"         content="#{request.base_url + @image}" />).html_safe
   end
 
-
 end

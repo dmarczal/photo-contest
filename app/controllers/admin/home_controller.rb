@@ -6,6 +6,10 @@ class Admin::HomeController < Admin::ApplicationController
   before_action :admin_user
 
   def index
+    @contests =  Contest.opening_enrollment
+    @not_approved_participants = Participant.pending.where(contest_id: @contests.ids)
+    @contests_opening = Contest.opening
   end
+
 
 end
