@@ -14,10 +14,13 @@
 					</div>
 					<div class="col-xs-12">
 						<p class="title"><b><%= contest.title %></b></p>
-						<p><%= contest_status_label(contest) %></p>
+						<p><%= contest_status_label(contest) %>
+						<div class="fb-share-button" data-href="<%= root_url + "/contest/#{contest.id}" %>" data-layout="button_count"></div></p>
 						<p class="opening_enrollment">Início das Inscrições: <b> <%= contest.opening_enrollment.strftime("%d/%m/%Y - %H:%M") %></b></p>
 						<p class="closing_enrollment">Término das Inscrições: <b> <%= contest.closing_enrollment.strftime("%d/%m/%Y - %H:%M") %></b></p>
 						<p class="link_contest"><%= link_to "Visitar a página do concurso", contest %></p>
+
+
 						<br>
 					</div>
 				</div>

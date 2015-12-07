@@ -1,54 +1,69 @@
-<% provide(:title, "Página Inicial") %>
-<div class="row">
-    <div id="items-list" class="col-xs-8">
+<% provide(:title, "Admin - Página Inicial") %>
 
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
+
+<div class="row index-page-admin">
+  <div class="col-md-4">
+    <div class="panel panel-info contest-open">
+	     <div class="panel-heading">Concursos Abertos</div>
+	      <div class="panel-body">
+          <table class="table table-striped table-hover">
+            </thead>
+              <tbody>
+                <% @contests.each do |contest| %>
+                  <tr>
+                    <td><%= link_to contest.title, admin_contest_path(contest) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
         </div>
-
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
-
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
-
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="http://placehold.it/150x150">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Titulo</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
-                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                felis in faucibus.
-            </div>
-        </div>
-
     </div>
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="panel panel-info approved-pictures">
+	     <div class="panel-heading">Fotos para Aprovação</div>
+	      <div class="panel-body">
+          <table class="table table-striped table-hover">
+              <tbody>
+
+                  <% @not_approved_participants.each do |participant| %>
+                  <tr>
+                    <td>
+                      <%= link_to participant.title, 'javascript:void(0)',
+                        data:{toggle: "modal", target: "#modal-#{participant.id}"}%>
+                    </td>
+                  </tr>
+    <!-- Modal -->
+
+                <%= render 'shared/approved_pictures', :participant => participant %>
+
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="panel panel-info ranking">
+	     <div class="panel-heading">Ranking de Concursos</div>
+	      <div class="panel-body">
+          <table class="table table-striped table-hover">
+              <tbody>
+                <% @contests_opening.each do |contest| %>
+                  <tr>
+                    <td><%= link_to contest.title,  admin_contest_path(contest) %>	</td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+</div>
+
+  </div>
 </div>
