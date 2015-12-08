@@ -28,15 +28,16 @@
 			    	<div class="col-xs-12">
 			    		<%= @contest.description %>
 			    		<p><%= contest_status_label(@contest) %></p>
-			    		<% if(@contest.open?) %>
 							<div
-							  class="fb-like"
-							  data-share="true"
-							  data-width="450"
-							  data-show-faces="true"
+								class="fb-like"
+								data-share="true"
+								data-width="450"
+								data-show-faces="true"
 								data-href="<%= root_url + "/contest/#{@contest.id}" %>"
 								>
 							</div>
+
+
 								<table class="table partial-podium">
 									<tr>
 										<th class="col-md-2">Posição</th>
@@ -44,6 +45,7 @@
 										<th>Título</th>
 										<th class="col-md-2">Voto(s)</th>
 									</tr>
+								<% if(@contest.open?) %>	
 									<% @partial_podium.each_with_index do |participant, position| %>
 										<tr>
 											<td><%= "#{position+1}º" %></td>
